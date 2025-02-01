@@ -25,11 +25,11 @@ class LoginForm extends StatelessWidget {
 class _UsernameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return WpTextForm(
+    return WpTextFormField(
       key: const Key('loginForm_usernameInput_textField'),
       onChanged: (username) =>
           context.read<LoginBloc>().add(LoginUsernameChanged(username)),
-      labelText: 'Username',
+      label: 'Username',
     );
   }
 }
@@ -37,12 +37,11 @@ class _UsernameInput extends StatelessWidget {
 class _PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return WpTextForm(
+    return WpTextFormField(
       key: const Key('loginForm_passwordInput_textField'),
       onChanged: (password) =>
           context.read<LoginBloc>().add(LoginPasswordChanged(password)),
-      obscureText: true,
-      labelText: 'Password',
+      label: 'Password',
     );
   }
 }
