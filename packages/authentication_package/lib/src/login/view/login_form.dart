@@ -11,7 +11,7 @@ class LoginForm extends StatelessWidget {
     return SafeArea(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: 12.0,
+        spacing: AppSpacing.kSpace12,
         children: [
           _UsernameInput(),
           _PasswordInput(),

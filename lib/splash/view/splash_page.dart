@@ -1,3 +1,4 @@
+import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -9,8 +10,24 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+    return Scaffold(
+      body: Center(
+        child: SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            spacing: AppSpacing.kSpace12,
+            children: [
+              Image(
+                image: AssetImage(Assets.kLogoImagePath),
+              ),
+              Text(
+                'Tinh hoa quản trị',
+                style: context.textTheme.kXXLRegular,
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

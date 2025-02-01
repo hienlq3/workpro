@@ -57,7 +57,7 @@ packages:
     source: hosted
     version: "1.19.0"
   core_package:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/core_package"
       relative: true
