@@ -82,7 +82,10 @@ class _AppViewState extends State<AppView> {
                   (route) => false,
                 );
               case AuthenticationStatus.unknown:
-                break;
+                _navigator.pushAndRemoveUntil<void>(
+                  SubmitCodePage.route(),
+                  (route) => false,
+                );
             }
           },
           child: child,
