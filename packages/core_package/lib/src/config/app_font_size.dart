@@ -1,3 +1,4 @@
 class AppFontSize {
-  static const double kRegularFontSize = 24.0;
+  static const double kSmallFontSize = 14.0;
+  static const double kXXLFontSize = 24.0;
 }

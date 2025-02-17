@@ -65,7 +65,6 @@ class _AppViewState extends State<AppView> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: false,
-        primarySwatch: Colors.red,
       ),
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(

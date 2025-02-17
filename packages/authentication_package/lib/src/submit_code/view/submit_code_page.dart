@@ -1,5 +1,7 @@
+import 'package:authentication_package/src/submit_code/bloc/submit_code_bloc.dart';
 import 'package:authentication_package/src/submit_code/view/submit_code_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SubmitCodePage extends StatelessWidget {
   const SubmitCodePage({super.key});
@@ -10,11 +12,14 @@ class SubmitCodePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: const SubmitCodeForm(),
+    return BlocProvider(
+      create: (context) => SubmitCodeBloc(),
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: const SubmitCodeForm(),
+          ),
         ),
       ),
     );

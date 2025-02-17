@@ -29,7 +29,7 @@ class _UsernameInput extends StatelessWidget {
       key: const Key('loginForm_usernameInput_textField'),
       onChanged: (username) =>
           context.read<LoginBloc>().add(LoginUsernameChanged(username)),
-      label: 'Username',
+      labelText: 'Username',
     );
   }
 }
@@ -41,7 +41,7 @@ class _PasswordInput extends StatelessWidget {
       key: const Key('loginForm_passwordInput_textField'),
       onChanged: (password) =>
           context.read<LoginBloc>().add(LoginPasswordChanged(password)),
-      label: 'Password',
+      labelText: 'Password',
     );
   }
 }
