@@ -1,5 +1,5 @@
-import 'package:authentication_package/src/submit_code/bloc/submit_code_bloc.dart';
-import 'package:authentication_package/src/submit_code/view/submit_code_form.dart';
+import 'package:authentication_package/src/screens/submit_code/bloc/submit_code_bloc.dart';
+import 'package:authentication_package/src/screens/submit_code/view/submit_code_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
