@@ -14,11 +14,11 @@ class SubmitCodePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SubmitCodeBloc(),
-      child: Scaffold(
+      child: const Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: const SubmitCodeForm(),
+            padding: EdgeInsets.all(12),
+            child: SubmitCodeForm(),
           ),
         ),
       ),

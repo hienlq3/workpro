@@ -78,7 +78,7 @@ class _SubmitCodeButton extends StatelessWidget {
               ? null
               : () {
                   if (formKey.currentState!.validate()) {
-                    context.read<SubmitCodeBloc>().add(CodeSubmitted());
+                    context.read<SubmitCodeBloc>().add(const CodeSubmitted());
                   }
                 },
           style: ButtonStyle(
@@ -93,7 +93,7 @@ class _SubmitCodeButton extends StatelessWidget {
             ),
             padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
               (Set<WidgetState> states) {
-                return EdgeInsets.all(16.0);
+                return const EdgeInsets.all(16.0);
               },
             ),
           ),

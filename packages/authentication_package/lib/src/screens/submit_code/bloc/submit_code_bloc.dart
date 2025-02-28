@@ -21,7 +21,7 @@ class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
       await Future.delayed(const Duration(seconds: 2));
       emit(SubmitCodeSuccess());
     } catch (e) {
-      emit(SubmitCodeFailure('Submission failed'));
+      emit(const SubmitCodeFailure('Submission failed'));
     }
   }
 }
