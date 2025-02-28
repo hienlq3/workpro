@@ -10,6 +10,10 @@ jobs:
     name: SonarQube
     runs-on: windows-latest
     steps:
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29'  # Thay thế bằng phiên bản Flutter bạn muốn sử dụng
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
