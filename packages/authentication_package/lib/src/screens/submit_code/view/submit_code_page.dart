@@ -1,3 +1,4 @@
+import 'package:authentication_package/injection.dart';
 import 'package:authentication_package/src/screens/submit_code/bloc/submit_code_bloc.dart';
 import 'package:authentication_package/src/screens/submit_code/view/submit_code_form.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class SubmitCodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SubmitCodeBloc(),
+      create: (context) => getIt<SubmitCodeBloc>(),
       child: Scaffold(
         body: SafeArea(
           child: Padding(

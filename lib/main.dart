@@ -1,4 +1,5 @@
 import 'package:authentication_package/authentication_package.dart';
+import 'package:authentication_package/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/authentication/bloc/authentication_bloc.dart';
 import 'package:flutter_application_1/home/view/home_page.dart';
@@ -6,6 +7,8 @@ import 'package:flutter_application_1/splash/view/splash_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  configureDependencies();
+
   runApp(const MyApp());
 }
 
@@ -22,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _authenticationRepository = AuthenticationRepository();
+    _authenticationRepository = getIt<AuthenticationRepository>();
   }
 
   @override
