@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class WpTextFormField extends WpBaseFormField<String> {
   final int maxLength;
   final String labelText;
+  final bool disabled;
 
   const WpTextFormField({
     super.key,
@@ -14,6 +15,7 @@ class WpTextFormField extends WpBaseFormField<String> {
     this.maxLength = 255,
     super.validator,
     super.errorText,
+    this.disabled = false,
   });
 
   @override
@@ -33,6 +35,8 @@ class WpTextFormField extends WpBaseFormField<String> {
         state.didChange(newValue);
         onChanged?.call(newValue);
       },
+      readOnly: disabled,
+      enabled: !disabled,
     );
   }
 }

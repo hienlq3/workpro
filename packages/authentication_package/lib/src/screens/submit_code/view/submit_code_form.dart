@@ -58,6 +58,7 @@ class _CodeInput extends StatelessWidget {
           },
           value: state is SubmitCodeUpdated ? state.code : '',
           errorText: state is SubmitCodeFailure ? state.errorText : null,
+          disabled: state is SubmitCodeLoading,
         );
       },
     );
