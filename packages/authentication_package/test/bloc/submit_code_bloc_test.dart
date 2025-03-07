@@ -21,46 +21,61 @@ void main() {
     submitCodeBloc.close();
   });
 
-  test('initial state is SubmitCodeInitial', () {
-    expect(submitCodeBloc.state, SubmitCodeInitial());
+  test('initial state is SubmitCodeState()', () {
+    expect(submitCodeBloc.state, SubmitCodeState());
   });
 
   blocTest<SubmitCodeBloc, SubmitCodeState>(
-    'emits [SubmitCodeUpdated] when CodeChanged is added',
+    'emits new state with updated code when CodeChanged is added',
     build: () => submitCodeBloc,
-    act: (bloc) => bloc.add(CodeChanged(code: 'HuyND62T')),
-    expect: () => [SubmitCodeUpdated(code: 'HuyND62T')],
+    act: (bloc) => bloc.add(CodeChanged(code: '123456')),
+    expect: () => [
+      SubmitCodeState(code: '123456'),
+    ],
   );
 
   blocTest<SubmitCodeBloc, SubmitCodeState>(
-    'emits [SubmitCodeLoading, SubmitCodeSuccess] when valid CodeSubmitted is added',
+    'emits [loading, success] when CodeSubmitted is successful',
     build: () {
-      when(() => mockAuthenticationRepository.submitCode(code: 'HuyND62T'))
-          .thenAnswer((_) async => Future.value());
+      when(() =>
+              mockAuthenticationRepository.submitCode(code: any(named: 'code')))
+          .thenAnswer((_) async => {});
       return submitCodeBloc;
     },
-    seed: () => SubmitCodeUpdated(code: 'HuyND62T'),
-    act: (bloc) => bloc.add(CodeSubmitted()),
-    expect: () => [SubmitCodeLoading(), SubmitCodeSuccess()],
+    act: (bloc) {
+      bloc.add(CodeChanged(code: '123456'));
+      bloc.add(CodeSubmitted());
+    },
+    expect: () => [
+      SubmitCodeState(code: '123456'),
+      SubmitCodeState(code: '123456', status: SubmitCodeStatus.loading),
+      SubmitCodeState(code: '123456', status: SubmitCodeStatus.success),
+    ],
+    verify: (_) {
+      verify(() => mockAuthenticationRepository.submitCode(code: '123456'))
+          .called(1);
+    },
   );
 
   blocTest<SubmitCodeBloc, SubmitCodeState>(
-    'emits [SubmitCodeLoading, SubmitCodeFailure] when submitCode throws an error',
+    'emits [loading, error] when CodeSubmitted fails',
     build: () {
-      when(() => mockAuthenticationRepository.submitCode(code: 'HuyND62T'))
+      when(() =>
+              mockAuthenticationRepository.submitCode(code: any(named: 'code')))
           .thenThrow(Exception('Invalid code'));
       return submitCodeBloc;
     },
-    seed: () => SubmitCodeUpdated(code: 'HuyND62T'),
-    act: (bloc) => bloc.add(CodeSubmitted()),
-    expect: () =>
-        [SubmitCodeLoading(), SubmitCodeFailure('Exception: Invalid code')],
-  );
-
-  blocTest<SubmitCodeBloc, SubmitCodeState>(
-    'emits [SubmitCodeFailure] when CodeSubmitted is called in an invalid state',
-    build: () => submitCodeBloc,
-    act: (bloc) => bloc.add(CodeSubmitted()),
-    expect: () => [SubmitCodeFailure('Invalid code')],
+    act: (bloc) {
+      bloc.add(CodeChanged(code: 'wrongcode'));
+      bloc.add(CodeSubmitted());
+    },
+    expect: () => [
+      SubmitCodeState(code: 'wrongcode'),
+      SubmitCodeState(code: 'wrongcode', status: SubmitCodeStatus.loading),
+      SubmitCodeState(
+          code: 'wrongcode',
+          status: SubmitCodeStatus.error,
+          errorText: 'Exception: Invalid code'),
+    ],
   );
 }

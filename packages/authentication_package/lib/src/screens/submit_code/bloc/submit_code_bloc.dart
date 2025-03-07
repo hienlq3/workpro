@@ -12,28 +12,28 @@ class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
 
   SubmitCodeBloc({required AuthenticationRepository authenticationRepository})
       : _authenticationRepository = authenticationRepository,
-        super(SubmitCodeInitial()) {
+        super(SubmitCodeState()) {
     on<CodeChanged>(_onCodeChanged);
     on<CodeSubmitted>(_onCodeSubmitted);
   }
 
   void _onCodeChanged(CodeChanged event, Emitter<SubmitCodeState> emit) {
-    emit(SubmitCodeUpdated(code: event.code));
+    emit(state.copyWith(code: event.code));
   }
 
   Future<void> _onCodeSubmitted(
       CodeSubmitted event, Emitter<SubmitCodeState> emit) async {
     try {
-      final currentState = state;
-      if (currentState is SubmitCodeUpdated) {
-        emit(SubmitCodeLoading());
-        await _authenticationRepository.submitCode(code: currentState.code);
-        emit(SubmitCodeSuccess());
-      } else {
-        emit(SubmitCodeFailure('Invalid code'));
-      }
-    } catch (e) {
-      emit(SubmitCodeFailure(e.toString()));
+      emit(state.copyWith(status: SubmitCodeStatus.loading));
+      await _authenticationRepository.submitCode(code: state.code);
+      emit(state.copyWith(status: SubmitCodeStatus.success));
+    } catch (error) {
+      emit(
+        state.copyWith(
+          errorText: error.toString(),
+          status: SubmitCodeStatus.error,
+        ),
+      );
     }
   }
 }

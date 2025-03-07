@@ -1,61 +1,36 @@
-import 'package:core_package/src/config/config.dart';
-import 'package:core_package/src/utils/extension/build_context.dart';
 import 'package:flutter/material.dart';
 
-abstract class WpBaseFormField<T> extends StatelessWidget {
-  final T? value;
-  final bool required;
-  final ValueChanged<T>? onChanged;
-  final FormFieldValidator<T>? validator;
+abstract class WpBaseFormField<T> extends StatefulWidget {
+  final String labelText;
+  final String? Function(String?)? validator;
+  final ValueChanged<T> onChanged;
   final String? errorText;
+  final T? value;
+  final TextInputAction? textInputAction;
+  final TextCapitalization textCapitalization;
+  final bool disabled;
 
   const WpBaseFormField({
     super.key,
-    this.value,
-    this.required = false,
-    this.onChanged,
+    required this.labelText,
     this.validator,
+    required this.onChanged,
     this.errorText,
+    this.value,
+    this.textInputAction,
+    this.textCapitalization = TextCapitalization.none,
+    this.disabled = false,
   });
+}
 
-  Widget buildField(BuildContext context, FormFieldState<T> state);
-
-  @override
-  Widget build(BuildContext context) {
-    return FormField<T>(
-      key: key,
-      validator: validator,
-      builder: (state) {
-        final hasError = (state.hasError || (errorText?.isNotEmpty ?? false));
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: hasError
-                      ? context.colorScheme.error
-                      : context.colorScheme.primary,
-                ),
-                borderRadius:
-                    BorderRadius.circular(AppRadius.kMediumBorderRadius),
-              ),
-              child: buildField(context, state),
-            ),
-            if (hasError)
-              Padding(
-                padding: const EdgeInsets.only(top: AppSpacing.kSpace8),
-                child: Text(
-                  state.errorText ?? errorText ?? '',
-                  style: context.textTheme.kSmallRegular.copyWith(
-                    color: context.colorScheme.error,
-                  ),
-                ),
-              ),
-          ],
-        );
-      },
+abstract class WpBaseFormFieldState<T extends WpBaseFormField>
+    extends State<T> {
+  InputDecoration getInputDecoration() {
+    return InputDecoration(
+      border: InputBorder.none,
+      labelText: 'Nhập ${widget.labelText}',
+      contentPadding: const EdgeInsets.all(16.0),
+      counterText: '',
     );
   }
 }

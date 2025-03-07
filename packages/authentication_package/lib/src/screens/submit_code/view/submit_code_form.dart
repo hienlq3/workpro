@@ -35,15 +35,7 @@ class _CodeInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SubmitCodeBloc, SubmitCodeState>(
-      buildWhen: (previous, current) {
-        if (current is SubmitCodeUpdated && previous is SubmitCodeUpdated) {
-          return previous.code != current.code;
-        }
-        if (current is SubmitCodeFailure && previous is SubmitCodeFailure) {
-          return previous.errorText != current.errorText;
-        }
-        return previous.runtimeType != current.runtimeType;
-      },
+      buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         return WpTextFormField(
           key: const Key('submitCodeForm_codeInput_textField'),
@@ -56,9 +48,10 @@ class _CodeInput extends StatelessWidget {
             }
             return null;
           },
-          value: state is SubmitCodeUpdated ? state.code : '',
-          errorText: state is SubmitCodeFailure ? state.errorText : null,
-          disabled: state is SubmitCodeLoading,
+          value: state.code,
+          errorText: state.errorText,
+          textCapitalization: TextCapitalization.characters,
+          disabled: state.isLoading,
         );
       },
     );
@@ -75,7 +68,7 @@ class _SubmitCodeButton extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
           key: const Key('submitCodeForm_continue_raisedButton'),
-          onPressed: state is SubmitCodeLoading
+          onPressed: state.isLoading
               ? null
               : () {
                   if (formKey.currentState!.validate()) {
