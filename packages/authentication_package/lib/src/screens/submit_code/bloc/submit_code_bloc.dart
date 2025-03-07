@@ -17,9 +17,8 @@ class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
     on<CodeSubmitted>(_onCodeSubmitted);
   }
 
-  void _onCodeChanged(CodeChanged event, Emitter<SubmitCodeState> emit) {
-    emit(state.copyWith(code: event.code));
-  }
+  void _onCodeChanged(CodeChanged event, Emitter<SubmitCodeState> emit) =>
+      emit(state.copyWith(code: event.code));
 
   Future<void> _onCodeSubmitted(
       CodeSubmitted event, Emitter<SubmitCodeState> emit) async {

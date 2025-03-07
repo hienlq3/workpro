@@ -15,17 +15,15 @@ class _SubmitCodeFormState extends State<SubmitCodeForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          spacing: AppSpacing.kSpace20,
-          children: [
-            _CodeInput(),
-            _SubmitCodeButton(formKey: _formKey),
-          ],
-        ),
+    return Form(
+      key: _formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: AppSpacing.kSpace20,
+        children: [
+          _CodeInput(),
+          _SubmitCodeButton(formKey: _formKey),
+        ],
       ),
     );
   }
