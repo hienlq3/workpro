@@ -1,9 +1,7 @@
-import 'package:get_it/get_it.dart';
+import 'package:core_package/injection.dart';
 import 'package:injectable/injectable.dart';
 
 import 'injection.config.dart';
 
-final getIt = GetIt.instance;
-
 @InjectableInit()
-void configureDependencies() => getIt.init();
+void configureAuthenticationDependencies() => getIt.init();

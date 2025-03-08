@@ -30,6 +30,7 @@ class LoginState extends Equatable {
   }
 
   bool get isLoading => status == LoginStatus.loading;
+  bool get isError => status == LoginStatus.error;
 
   @override
   List<Object> get props => [username, password, status, errorText];

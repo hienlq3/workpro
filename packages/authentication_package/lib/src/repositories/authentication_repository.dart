@@ -1,7 +1,9 @@
 import 'dart:async';
 
-import 'package:authentication_package/injection.dart';
-import 'package:authentication_package/src/data/service/system_property_service.dart';
+import 'package:authentication_package/src/models/auth_model.dart';
+import 'package:authentication_package/src/models/code_model.dart';
+import 'package:core_package/core_package.dart';
+import 'package:core_package/injection.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,10 +13,13 @@ enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 class AuthenticationRepository {
   final _controller = StreamController<AuthenticationStatus>();
   final SystemPropertyService _systemPropertyService;
+  final UserService _userService;
 
   AuthenticationRepository({
     required SystemPropertyService systemPropertyService,
-  }) : _systemPropertyService = systemPropertyService;
+    required UserService userService,
+  })  : _systemPropertyService = systemPropertyService,
+        _userService = userService;
 
   Stream<AuthenticationStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
@@ -26,10 +31,21 @@ class AuthenticationRepository {
     required String username,
     required String password,
   }) async {
-    await Future.delayed(
-      const Duration(milliseconds: 300),
-      () => _controller.add(AuthenticationStatus.authenticated),
-    );
+    try {
+      final responseJson =
+          await _userService.login(username: username, password: password);
+      final authResponse = BaseResponseModel<AuthModel>.fromJson(
+        responseJson,
+        (json) => AuthModel.fromJson(json as Map<String, dynamic>),
+      );
+      final userInfo = authResponse.userInfo;
+      if (userInfo != null) {
+        getIt<Dio>().options.headers[AppConstain.kSToken] = userInfo.loginToken;
+        _controller.add(AuthenticationStatus.authenticated);
+      }
+    } catch (error) {
+      throw error.toString();
+    }
   }
 
   void logOut() {
@@ -41,14 +57,11 @@ class AuthenticationRepository {
   Future<void> submitCode({required String code}) async {
     try {
       final result = await _systemPropertyService.getCode(code: code);
-      if (result != null) {
-        getIt<Dio>().options.baseUrl = result.urlSpro;
-        _controller.add(AuthenticationStatus.unauthenticated);
-      } else {
-        throw 'Failed to submit code!';
-      }
-    } catch (e) {
-      throw e.toString();
+      final codeResult = CodeModel.fromJson(result);
+      getIt<Dio>().options.baseUrl = codeResult.urlSpro;
+      _controller.add(AuthenticationStatus.unauthenticated);
+    } catch (error) {
+      throw 'Failed to submit code!';
     }
   }
 }

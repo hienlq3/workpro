@@ -44,6 +44,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           status: LoginStatus.error,
         ),
       );
+    } finally {
+      emit(
+        state.copyWith(
+          errorText: '',
+          status: LoginStatus.initial,
+        ),
+      );
     }
   }
 }

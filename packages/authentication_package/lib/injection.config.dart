@@ -1,4 +1,3 @@
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -9,14 +8,11 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:authentication_package/register_module.dart' as _i803;
-import 'package:authentication_package/src/data/service/system_property_service.dart'
-    as _i426;
 import 'package:authentication_package/src/repositories/authentication_repository.dart'
     as _i530;
 import 'package:authentication_package/src/screens/submit_code/bloc/submit_code_bloc.dart'
     as _i56;
-import 'package:dio/dio.dart' as _i361;
+import 'package:core_package/core_package.dart' as _i996;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -31,17 +27,13 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    final dioModule = _$DioModule();
-    gh.lazySingleton<_i361.Dio>(() => dioModule.dio());
-    gh.singleton<_i426.SystemPropertyService>(
-        () => _i426.SystemPropertyService.create(gh<_i361.Dio>()));
-    gh.singleton<_i530.AuthenticationRepository>(() =>
-        _i530.AuthenticationRepository(
-            systemPropertyService: gh<_i426.SystemPropertyService>()));
+    gh.singleton<_i530.AuthenticationRepository>(
+        () => _i530.AuthenticationRepository(
+              systemPropertyService: gh<_i996.SystemPropertyService>(),
+              userService: gh<_i996.UserService>(),
+            ));
     gh.singleton<_i56.SubmitCodeBloc>(() => _i56.SubmitCodeBloc(
         authenticationRepository: gh<_i530.AuthenticationRepository>()));
     return this;
   }
 }
-
-class _$DioModule extends _i803.DioModule {}

@@ -91,7 +91,15 @@ class _LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocConsumer<LoginBloc, LoginState>(
+      listenWhen: (previous, current) => current.isError,
+      listener: (context, state) {
+        context.scaffoldMessenger.showSnackBar(
+          SnackBar(
+            content: Text(state.errorText),
+          ),
+        );
+      },
       builder: (context, state) {
         return ElevatedButton(
           key: const Key('loginForm_continue_raisedButton'),
