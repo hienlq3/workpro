@@ -60,7 +60,6 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<WpTextFormField> {
       errorText: widget.errorText,
       builder: (state) {
         return TextFormField(
-          key: widget.key,
           focusNode: _focusNode,
           controller: _controller,
           decoration: getInputDecoration(),

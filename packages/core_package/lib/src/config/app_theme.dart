@@ -11,4 +11,22 @@ extension AppTheme on TextTheme {
         fontSize: AppFontSize.kXXLFontSize,
         fontWeight: FontWeight.normal,
       );
+
+  TextStyle get kTitle2 => const TextStyle(
+        fontFamily: 'Inter',
+        fontSize: 20.0,
+        fontWeight: FontWeight.w600,
+      );
+
+  TextStyle get kLabel2 => const TextStyle(
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.normal,
+      );
+
+  TextStyle get kTextButton1 => const TextStyle(
+        fontFamily: 'Inter',
+        fontSize: 16.0,
+        fontWeight: FontWeight.w600,
+      );
 }

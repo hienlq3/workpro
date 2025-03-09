@@ -19,9 +19,21 @@ class _SubmitCodeFormState extends State<SubmitCodeForm> {
       key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: AppSpacing.kSpace20,
         children: [
-          _CodeInput(),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: AppSpacing.kSpace16,
+              bottom: AppSpacing.kSpace8,
+            ),
+            child: Text(
+              'Hãy nhập mã công ty của bạn',
+              style: context.textTheme.kTitle2,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.kSpace16),
+            child: _CodeInput(),
+          ),
           _SubmitCodeButton(formKey: _formKey),
         ],
       ),
@@ -36,7 +48,6 @@ class _CodeInput extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         return WpTextFormField(
-          key: const Key('submitCodeForm_codeInput_textField'),
           onChanged: (code) =>
               context.read<SubmitCodeBloc>().add(CodeChanged(code: code)),
           labelText: 'Code',
@@ -46,7 +57,6 @@ class _CodeInput extends StatelessWidget {
             }
             return null;
           },
-          value: state.code,
           errorText: state.errorText,
           textCapitalization: TextCapitalization.characters,
           disabled: state.isLoading,
@@ -65,7 +75,6 @@ class _SubmitCodeButton extends StatelessWidget {
     return BlocBuilder<SubmitCodeBloc, SubmitCodeState>(
       builder: (context, state) {
         return ElevatedButton(
-          key: const Key('submitCodeForm_continue_raisedButton'),
           onPressed: state.isLoading
               ? null
               : () {
@@ -85,11 +94,17 @@ class _SubmitCodeButton extends StatelessWidget {
             ),
             padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
               (Set<WidgetState> states) {
-                return EdgeInsets.all(16.0);
+                return EdgeInsets.symmetric(
+                  vertical: AppSpacing.kSpace12,
+                  horizontal: AppSpacing.kSpace24,
+                );
               },
             ),
           ),
-          child: const Text('Submit'),
+          child: Text(
+            'Submit',
+            style: context.textTheme.kTextButton1,
+          ),
         );
       },
     );

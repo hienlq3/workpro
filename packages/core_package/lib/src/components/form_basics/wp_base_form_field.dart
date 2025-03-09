@@ -1,3 +1,4 @@
+import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
 
 abstract class WpBaseFormField<T> extends StatefulWidget {
@@ -29,6 +30,7 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
     return InputDecoration(
       border: InputBorder.none,
       labelText: 'Nhập ${widget.labelText}',
+      labelStyle: context.textTheme.kLabel2,
       contentPadding: const EdgeInsets.all(16.0),
       counterText: '',
     );

@@ -39,7 +39,6 @@ class _UsernameInput extends StatelessWidget {
           previous.status != current.status,
       builder: (context, state) {
         return WpTextFormField(
-          key: const Key('loginForm_usernameInput_textField'),
           onChanged: (username) =>
               context.read<LoginBloc>().add(LoginUsernameChanged(username)),
           labelText: 'Username',
@@ -49,7 +48,6 @@ class _UsernameInput extends StatelessWidget {
             }
             return null;
           },
-          value: state.username,
           disabled: state.isLoading,
         );
       },
@@ -66,7 +64,6 @@ class _PasswordInput extends StatelessWidget {
           previous.status != current.status,
       builder: (context, state) {
         return WpTextFormField(
-          key: const Key('loginForm_passwordInput_textField'),
           onChanged: (password) =>
               context.read<LoginBloc>().add(LoginPasswordChanged(password)),
           labelText: 'Password',
@@ -76,7 +73,6 @@ class _PasswordInput extends StatelessWidget {
             }
             return null;
           },
-          value: state.password,
           disabled: state.isLoading,
         );
       },
@@ -102,7 +98,6 @@ class _LoginButton extends StatelessWidget {
       },
       builder: (context, state) {
         return ElevatedButton(
-          key: const Key('loginForm_continue_raisedButton'),
           onPressed: state.isLoading
               ? null
               : () {
