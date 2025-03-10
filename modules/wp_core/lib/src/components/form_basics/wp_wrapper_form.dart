@@ -1,8 +1,8 @@
-import 'package:core_package/src/config/app_radius.dart';
-import 'package:core_package/src/config/app_spacing.dart';
-import 'package:core_package/src/config/app_theme.dart';
-import 'package:core_package/src/utils/extension/build_context.dart';
 import 'package:flutter/material.dart';
+import 'package:wp_core/src/config/app_radius.dart';
+import 'package:wp_core/src/config/app_spacing.dart';
+import 'package:wp_core/src/config/app_theme.dart';
+import 'package:wp_core/src/utils/extension/build_context.dart';
 
 class WpBorderWrapper<T> extends StatelessWidget {
   final String? errorText;
@@ -30,12 +30,14 @@ class WpBorderWrapper<T> extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: hasError
-                      ? context.colorScheme.error
-                      : context.colorScheme.primary,
+                  color:
+                      hasError
+                          ? context.colorScheme.error
+                          : context.colorScheme.primary,
                 ),
-                borderRadius:
-                    BorderRadius.circular(AppRadius.kMediumBorderRadius),
+                borderRadius: BorderRadius.circular(
+                  AppRadius.kMediumBorderRadius,
+                ),
               ),
               child: builder(state),
             ),

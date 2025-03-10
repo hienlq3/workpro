@@ -1,12 +1,12 @@
-import 'package:core_package/src/service/base_service.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wp_core/src/service/base_service.dart';
 
 @singleton
 class MyApprovalService {
   final BaseService _baseService;
 
   MyApprovalService({required BaseService baseService})
-      : _baseService = baseService;
+    : _baseService = baseService;
 
   Future<Map<String, dynamic>> getApprovalTickets({
     required String statusType,

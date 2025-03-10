@@ -1,6 +1,6 @@
-import 'package:core_package/src/components/form_basics/wp_base_form_field.dart';
-import 'package:core_package/src/components/form_basics/wp_wrapper_form.dart';
 import 'package:flutter/material.dart';
+import 'package:wp_core/src/components/form_basics/wp_base_form_field.dart';
+import 'package:wp_core/src/components/form_basics/wp_wrapper_form.dart';
 
 class WpTextFormField<String> extends WpBaseFormField {
   const WpTextFormField({

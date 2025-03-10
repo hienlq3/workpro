@@ -1,6 +1,6 @@
-import 'package:core_package/src/models/base_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wp_core/src/models/base_response_model.dart';
 
 @singleton
 class BaseService {
@@ -20,7 +20,8 @@ class BaseService {
         url,
         data: data,
         queryParameters: queryParameters,
-        options: options ??
+        options:
+            options ??
             Options(
               headers: headers,
               contentType: Headers.formUrlEncodedContentType,

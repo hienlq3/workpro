@@ -1,5 +1,5 @@
-import 'package:core_package/injection.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wp_core/injection.dart';
 
 import 'injection.config.dart';
 

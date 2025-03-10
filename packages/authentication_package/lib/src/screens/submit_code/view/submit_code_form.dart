@@ -1,7 +1,7 @@
 import 'package:authentication_package/src/screens/submit_code/bloc/submit_code_bloc.dart';
-import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wp_core/core_package.dart';
 
 class SubmitCodeForm extends StatefulWidget {
   const SubmitCodeForm({super.key});

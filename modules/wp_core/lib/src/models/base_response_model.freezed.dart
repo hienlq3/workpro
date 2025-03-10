@@ -12,10 +12,13 @@ part of 'base_response_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 BaseResponseModel<T> _$BaseResponseModelFromJson<T>(
-    Map<String, dynamic> json, T Function(Object?) fromJsonT) {
+  Map<String, dynamic> json,
+  T Function(Object?) fromJsonT,
+) {
   return _BaseResponseModel<T>.fromJson(json, fromJsonT);
 }
 
@@ -46,22 +49,27 @@ mixin _$BaseResponseModel<T> {
 
 /// @nodoc
 abstract class $BaseResponseModelCopyWith<T, $Res> {
-  factory $BaseResponseModelCopyWith(BaseResponseModel<T> value,
-          $Res Function(BaseResponseModel<T>) then) =
-      _$BaseResponseModelCopyWithImpl<T, $Res, BaseResponseModel<T>>;
+  factory $BaseResponseModelCopyWith(
+    BaseResponseModel<T> value,
+    $Res Function(BaseResponseModel<T>) then,
+  ) = _$BaseResponseModelCopyWithImpl<T, $Res, BaseResponseModel<T>>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ResultCode') int? resultCode,
-      @JsonKey(name: 'Message') String? message,
-      @JsonKey(name: 'Data') T? data,
-      @JsonKey(name: 'ListData') List<T>? dataList,
-      @JsonKey(name: 'UserInfo') T? userInfo,
-      String? language});
+  $Res call({
+    @JsonKey(name: 'ResultCode') int? resultCode,
+    @JsonKey(name: 'Message') String? message,
+    @JsonKey(name: 'Data') T? data,
+    @JsonKey(name: 'ListData') List<T>? dataList,
+    @JsonKey(name: 'UserInfo') T? userInfo,
+    String? language,
+  });
 }
 
 /// @nodoc
-class _$BaseResponseModelCopyWithImpl<T, $Res,
-        $Val extends BaseResponseModel<T>>
+class _$BaseResponseModelCopyWithImpl<
+  T,
+  $Res,
+  $Val extends BaseResponseModel<T>
+>
     implements $BaseResponseModelCopyWith<T, $Res> {
   _$BaseResponseModelCopyWithImpl(this._value, this._then);
 
@@ -82,59 +90,71 @@ class _$BaseResponseModelCopyWithImpl<T, $Res,
     Object? userInfo = freezed,
     Object? language = freezed,
   }) {
-    return _then(_value.copyWith(
-      resultCode: freezed == resultCode
-          ? _value.resultCode
-          : resultCode // ignore: cast_nullable_to_non_nullable
-              as int?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T?,
-      dataList: freezed == dataList
-          ? _value.dataList
-          : dataList // ignore: cast_nullable_to_non_nullable
-              as List<T>?,
-      userInfo: freezed == userInfo
-          ? _value.userInfo
-          : userInfo // ignore: cast_nullable_to_non_nullable
-              as T?,
-      language: freezed == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            resultCode:
+                freezed == resultCode
+                    ? _value.resultCode
+                    : resultCode // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            message:
+                freezed == message
+                    ? _value.message
+                    : message // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            data:
+                freezed == data
+                    ? _value.data
+                    : data // ignore: cast_nullable_to_non_nullable
+                        as T?,
+            dataList:
+                freezed == dataList
+                    ? _value.dataList
+                    : dataList // ignore: cast_nullable_to_non_nullable
+                        as List<T>?,
+            userInfo:
+                freezed == userInfo
+                    ? _value.userInfo
+                    : userInfo // ignore: cast_nullable_to_non_nullable
+                        as T?,
+            language:
+                freezed == language
+                    ? _value.language
+                    : language // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$BaseResponseModelImplCopyWith<T, $Res>
     implements $BaseResponseModelCopyWith<T, $Res> {
-  factory _$$BaseResponseModelImplCopyWith(_$BaseResponseModelImpl<T> value,
-          $Res Function(_$BaseResponseModelImpl<T>) then) =
-      __$$BaseResponseModelImplCopyWithImpl<T, $Res>;
+  factory _$$BaseResponseModelImplCopyWith(
+    _$BaseResponseModelImpl<T> value,
+    $Res Function(_$BaseResponseModelImpl<T>) then,
+  ) = __$$BaseResponseModelImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'ResultCode') int? resultCode,
-      @JsonKey(name: 'Message') String? message,
-      @JsonKey(name: 'Data') T? data,
-      @JsonKey(name: 'ListData') List<T>? dataList,
-      @JsonKey(name: 'UserInfo') T? userInfo,
-      String? language});
+  $Res call({
+    @JsonKey(name: 'ResultCode') int? resultCode,
+    @JsonKey(name: 'Message') String? message,
+    @JsonKey(name: 'Data') T? data,
+    @JsonKey(name: 'ListData') List<T>? dataList,
+    @JsonKey(name: 'UserInfo') T? userInfo,
+    String? language,
+  });
 }
 
 /// @nodoc
 class __$$BaseResponseModelImplCopyWithImpl<T, $Res>
     extends _$BaseResponseModelCopyWithImpl<T, $Res, _$BaseResponseModelImpl<T>>
     implements _$$BaseResponseModelImplCopyWith<T, $Res> {
-  __$$BaseResponseModelImplCopyWithImpl(_$BaseResponseModelImpl<T> _value,
-      $Res Function(_$BaseResponseModelImpl<T>) _then)
-      : super(_value, _then);
+  __$$BaseResponseModelImplCopyWithImpl(
+    _$BaseResponseModelImpl<T> _value,
+    $Res Function(_$BaseResponseModelImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BaseResponseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -148,50 +168,59 @@ class __$$BaseResponseModelImplCopyWithImpl<T, $Res>
     Object? userInfo = freezed,
     Object? language = freezed,
   }) {
-    return _then(_$BaseResponseModelImpl<T>(
-      resultCode: freezed == resultCode
-          ? _value.resultCode
-          : resultCode // ignore: cast_nullable_to_non_nullable
-              as int?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T?,
-      dataList: freezed == dataList
-          ? _value._dataList
-          : dataList // ignore: cast_nullable_to_non_nullable
-              as List<T>?,
-      userInfo: freezed == userInfo
-          ? _value.userInfo
-          : userInfo // ignore: cast_nullable_to_non_nullable
-              as T?,
-      language: freezed == language
-          ? _value.language
-          : language // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$BaseResponseModelImpl<T>(
+        resultCode:
+            freezed == resultCode
+                ? _value.resultCode
+                : resultCode // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        message:
+            freezed == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        data:
+            freezed == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as T?,
+        dataList:
+            freezed == dataList
+                ? _value._dataList
+                : dataList // ignore: cast_nullable_to_non_nullable
+                    as List<T>?,
+        userInfo:
+            freezed == userInfo
+                ? _value.userInfo
+                : userInfo // ignore: cast_nullable_to_non_nullable
+                    as T?,
+        language:
+            freezed == language
+                ? _value.language
+                : language // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 class _$BaseResponseModelImpl<T> implements _BaseResponseModel<T> {
-  const _$BaseResponseModelImpl(
-      {@JsonKey(name: 'ResultCode') this.resultCode,
-      @JsonKey(name: 'Message') this.message,
-      @JsonKey(name: 'Data') this.data,
-      @JsonKey(name: 'ListData') final List<T>? dataList,
-      @JsonKey(name: 'UserInfo') this.userInfo,
-      this.language})
-      : _dataList = dataList;
+  const _$BaseResponseModelImpl({
+    @JsonKey(name: 'ResultCode') this.resultCode,
+    @JsonKey(name: 'Message') this.message,
+    @JsonKey(name: 'Data') this.data,
+    @JsonKey(name: 'ListData') final List<T>? dataList,
+    @JsonKey(name: 'UserInfo') this.userInfo,
+    this.language,
+  }) : _dataList = dataList;
 
   factory _$BaseResponseModelImpl.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
-      _$$BaseResponseModelImplFromJson(json, fromJsonT);
+    Map<String, dynamic> json,
+    T Function(Object?) fromJsonT,
+  ) => _$$BaseResponseModelImplFromJson(json, fromJsonT);
 
   @override
   @JsonKey(name: 'ResultCode')
@@ -242,13 +271,14 @@ class _$BaseResponseModelImpl<T> implements _BaseResponseModel<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      resultCode,
-      message,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(_dataList),
-      const DeepCollectionEquality().hash(userInfo),
-      language);
+    runtimeType,
+    resultCode,
+    message,
+    const DeepCollectionEquality().hash(data),
+    const DeepCollectionEquality().hash(_dataList),
+    const DeepCollectionEquality().hash(userInfo),
+    language,
+  );
 
   /// Create a copy of BaseResponseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -256,9 +286,11 @@ class _$BaseResponseModelImpl<T> implements _BaseResponseModel<T> {
   @override
   @pragma('vm:prefer-inline')
   _$$BaseResponseModelImplCopyWith<T, _$BaseResponseModelImpl<T>>
-      get copyWith =>
-          __$$BaseResponseModelImplCopyWithImpl<T, _$BaseResponseModelImpl<T>>(
-              this, _$identity);
+  get copyWith =>
+      __$$BaseResponseModelImplCopyWithImpl<T, _$BaseResponseModelImpl<T>>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
@@ -267,17 +299,19 @@ class _$BaseResponseModelImpl<T> implements _BaseResponseModel<T> {
 }
 
 abstract class _BaseResponseModel<T> implements BaseResponseModel<T> {
-  const factory _BaseResponseModel(
-      {@JsonKey(name: 'ResultCode') final int? resultCode,
-      @JsonKey(name: 'Message') final String? message,
-      @JsonKey(name: 'Data') final T? data,
-      @JsonKey(name: 'ListData') final List<T>? dataList,
-      @JsonKey(name: 'UserInfo') final T? userInfo,
-      final String? language}) = _$BaseResponseModelImpl<T>;
+  const factory _BaseResponseModel({
+    @JsonKey(name: 'ResultCode') final int? resultCode,
+    @JsonKey(name: 'Message') final String? message,
+    @JsonKey(name: 'Data') final T? data,
+    @JsonKey(name: 'ListData') final List<T>? dataList,
+    @JsonKey(name: 'UserInfo') final T? userInfo,
+    final String? language,
+  }) = _$BaseResponseModelImpl<T>;
 
   factory _BaseResponseModel.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =
-      _$BaseResponseModelImpl<T>.fromJson;
+    Map<String, dynamic> json,
+    T Function(Object?) fromJsonT,
+  ) = _$BaseResponseModelImpl<T>.fromJson;
 
   @override
   @JsonKey(name: 'ResultCode')
@@ -302,5 +336,5 @@ abstract class _BaseResponseModel<T> implements BaseResponseModel<T> {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BaseResponseModelImplCopyWith<T, _$BaseResponseModelImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

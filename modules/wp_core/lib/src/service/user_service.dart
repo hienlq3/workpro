@@ -1,5 +1,5 @@
-import 'package:core_package/src/service/base_service.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wp_core/src/service/base_service.dart';
 
 @singleton
 class UserService {
@@ -14,10 +14,7 @@ class UserService {
     try {
       final response = await _baseService.post(
         '/rest/sms/latest/integration-user/login',
-        data: {
-          'username': username,
-          'password': password,
-        },
+        data: {'username': username, 'password': password},
       );
 
       return response.data;

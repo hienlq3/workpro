@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:authentication_package/src/models/auth_model.dart';
 import 'package:authentication_package/src/models/code_model.dart';
-import 'package:core_package/core_package.dart';
-import 'package:core_package/injection.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wp_core/core_package.dart';
+import 'package:wp_core/injection.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 

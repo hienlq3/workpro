@@ -32,8 +32,8 @@ dependencies:
     sdk: flutter
   authentication_package:
     path: packages/authentication_package
-  core_package:
-    path: packages/core_package
+  wp_core:
+    path: modules/wp_core
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8

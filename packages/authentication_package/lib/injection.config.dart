@@ -13,9 +13,9 @@ import 'package:authentication_package/src/repositories/authentication_repositor
     as _i530;
 import 'package:authentication_package/src/screens/submit_code/bloc/submit_code_bloc.dart'
     as _i56;
-import 'package:core_package/core_package.dart' as _i996;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:wp_core/core_package.dart' as _i70;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -30,8 +30,8 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.singleton<_i530.AuthenticationRepository>(
         () => _i530.AuthenticationRepository(
-              systemPropertyService: gh<_i996.SystemPropertyService>(),
-              userService: gh<_i996.UserService>(),
+              systemPropertyService: gh<_i70.SystemPropertyService>(),
+              userService: gh<_i70.UserService>(),
             ));
     gh.singleton<_i56.SubmitCodeBloc>(() => _i56.SubmitCodeBloc(
         authenticationRepository: gh<_i530.AuthenticationRepository>()));
