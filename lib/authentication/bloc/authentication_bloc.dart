@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:authentication_package/authentication_package.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:wp_authentication/authentication_package.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

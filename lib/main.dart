@@ -1,10 +1,10 @@
-import 'package:authentication_package/authentication_package.dart';
-import 'package:authentication_package/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/authentication/bloc/authentication_bloc.dart';
 import 'package:flutter_application_1/home/view/home_page.dart';
 import 'package:flutter_application_1/splash/view/splash_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wp_authentication/authentication_package.dart';
+import 'package:wp_authentication/injection.dart';
 import 'package:wp_core/injection.dart';
 
 void main() {

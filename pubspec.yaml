@@ -30,8 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  authentication_package:
-    path: packages/authentication_package
+  wp_authentication:
+    path: modules/wp_authentication
   wp_core:
     path: modules/wp_core
   # The following adds the Cupertino Icons font to your application.

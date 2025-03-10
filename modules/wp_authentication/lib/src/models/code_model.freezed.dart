@@ -12,7 +12,8 @@ part of 'code_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 CodeModel _$CodeModelFromJson(Map<String, dynamic> json) {
   return _CodeModel.fromJson(json);
@@ -42,13 +43,14 @@ abstract class $CodeModelCopyWith<$Res> {
   factory $CodeModelCopyWith(CodeModel value, $Res Function(CodeModel) then) =
       _$CodeModelCopyWithImpl<$Res, CodeModel>;
   @useResult
-  $Res call(
-      {int? id,
-      String urlSpro,
-      CodeSSOType ssoType,
-      String? clientId,
-      String? tenantId,
-      String? code});
+  $Res call({
+    int? id,
+    String urlSpro,
+    CodeSSOType ssoType,
+    String? clientId,
+    String? tenantId,
+    String? code,
+  });
 }
 
 /// @nodoc
@@ -73,32 +75,41 @@ class _$CodeModelCopyWithImpl<$Res, $Val extends CodeModel>
     Object? tenantId = freezed,
     Object? code = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      urlSpro: null == urlSpro
-          ? _value.urlSpro
-          : urlSpro // ignore: cast_nullable_to_non_nullable
-              as String,
-      ssoType: null == ssoType
-          ? _value.ssoType
-          : ssoType // ignore: cast_nullable_to_non_nullable
-              as CodeSSOType,
-      clientId: freezed == clientId
-          ? _value.clientId
-          : clientId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tenantId: freezed == tenantId
-          ? _value.tenantId
-          : tenantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                freezed == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            urlSpro:
+                null == urlSpro
+                    ? _value.urlSpro
+                    : urlSpro // ignore: cast_nullable_to_non_nullable
+                        as String,
+            ssoType:
+                null == ssoType
+                    ? _value.ssoType
+                    : ssoType // ignore: cast_nullable_to_non_nullable
+                        as CodeSSOType,
+            clientId:
+                freezed == clientId
+                    ? _value.clientId
+                    : clientId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tenantId:
+                freezed == tenantId
+                    ? _value.tenantId
+                    : tenantId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            code:
+                freezed == code
+                    ? _value.code
+                    : code // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -106,17 +117,19 @@ class _$CodeModelCopyWithImpl<$Res, $Val extends CodeModel>
 abstract class _$$CodeModelImplCopyWith<$Res>
     implements $CodeModelCopyWith<$Res> {
   factory _$$CodeModelImplCopyWith(
-          _$CodeModelImpl value, $Res Function(_$CodeModelImpl) then) =
-      __$$CodeModelImplCopyWithImpl<$Res>;
+    _$CodeModelImpl value,
+    $Res Function(_$CodeModelImpl) then,
+  ) = __$$CodeModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      String urlSpro,
-      CodeSSOType ssoType,
-      String? clientId,
-      String? tenantId,
-      String? code});
+  $Res call({
+    int? id,
+    String urlSpro,
+    CodeSSOType ssoType,
+    String? clientId,
+    String? tenantId,
+    String? code,
+  });
 }
 
 /// @nodoc
@@ -124,8 +137,9 @@ class __$$CodeModelImplCopyWithImpl<$Res>
     extends _$CodeModelCopyWithImpl<$Res, _$CodeModelImpl>
     implements _$$CodeModelImplCopyWith<$Res> {
   __$$CodeModelImplCopyWithImpl(
-      _$CodeModelImpl _value, $Res Function(_$CodeModelImpl) _then)
-      : super(_value, _then);
+    _$CodeModelImpl _value,
+    $Res Function(_$CodeModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CodeModel
   /// with the given fields replaced by the non-null parameter values.
@@ -139,46 +153,54 @@ class __$$CodeModelImplCopyWithImpl<$Res>
     Object? tenantId = freezed,
     Object? code = freezed,
   }) {
-    return _then(_$CodeModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      urlSpro: null == urlSpro
-          ? _value.urlSpro
-          : urlSpro // ignore: cast_nullable_to_non_nullable
-              as String,
-      ssoType: null == ssoType
-          ? _value.ssoType
-          : ssoType // ignore: cast_nullable_to_non_nullable
-              as CodeSSOType,
-      clientId: freezed == clientId
-          ? _value.clientId
-          : clientId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tenantId: freezed == tenantId
-          ? _value.tenantId
-          : tenantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$CodeModelImpl(
+        id:
+            freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        urlSpro:
+            null == urlSpro
+                ? _value.urlSpro
+                : urlSpro // ignore: cast_nullable_to_non_nullable
+                    as String,
+        ssoType:
+            null == ssoType
+                ? _value.ssoType
+                : ssoType // ignore: cast_nullable_to_non_nullable
+                    as CodeSSOType,
+        clientId:
+            freezed == clientId
+                ? _value.clientId
+                : clientId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tenantId:
+            freezed == tenantId
+                ? _value.tenantId
+                : tenantId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        code:
+            freezed == code
+                ? _value.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CodeModelImpl extends _CodeModel {
-  const _$CodeModelImpl(
-      {this.id,
-      this.urlSpro = '',
-      this.ssoType = CodeSSOType.none,
-      this.clientId,
-      this.tenantId,
-      this.code})
-      : super._();
+  const _$CodeModelImpl({
+    this.id,
+    this.urlSpro = '',
+    this.ssoType = CodeSSOType.none,
+    this.clientId,
+    this.tenantId,
+    this.code,
+  }) : super._();
 
   factory _$CodeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CodeModelImplFromJson(json);
@@ -233,20 +255,19 @@ class _$CodeModelImpl extends _CodeModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CodeModelImplToJson(
-      this,
-    );
+    return _$$CodeModelImplToJson(this);
   }
 }
 
 abstract class _CodeModel extends CodeModel {
-  const factory _CodeModel(
-      {final int? id,
-      final String urlSpro,
-      final CodeSSOType ssoType,
-      final String? clientId,
-      final String? tenantId,
-      final String? code}) = _$CodeModelImpl;
+  const factory _CodeModel({
+    final int? id,
+    final String urlSpro,
+    final CodeSSOType ssoType,
+    final String? clientId,
+    final String? tenantId,
+    final String? code,
+  }) = _$CodeModelImpl;
   const _CodeModel._() : super._();
 
   factory _CodeModel.fromJson(Map<String, dynamic> json) =

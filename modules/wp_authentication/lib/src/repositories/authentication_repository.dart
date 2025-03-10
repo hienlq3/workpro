@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:authentication_package/src/models/auth_model.dart';
-import 'package:authentication_package/src/models/code_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wp_authentication/src/models/auth_model.dart';
+import 'package:wp_authentication/src/models/code_model.dart';
 import 'package:wp_core/core_package.dart';
 import 'package:wp_core/injection.dart';
 
@@ -18,8 +18,8 @@ class AuthenticationRepository {
   AuthenticationRepository({
     required SystemPropertyService systemPropertyService,
     required UserService userService,
-  })  : _systemPropertyService = systemPropertyService,
-        _userService = userService;
+  }) : _systemPropertyService = systemPropertyService,
+       _userService = userService;
 
   Stream<AuthenticationStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
@@ -32,8 +32,10 @@ class AuthenticationRepository {
     required String password,
   }) async {
     try {
-      final responseJson =
-          await _userService.login(username: username, password: password);
+      final responseJson = await _userService.login(
+        username: username,
+        password: password,
+      );
       final authResponse = BaseResponseModel<AuthModel>.fromJson(
         responseJson,
         (json) => AuthModel.fromJson(json as Map<String, dynamic>),

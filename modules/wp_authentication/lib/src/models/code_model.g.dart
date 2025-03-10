@@ -10,7 +10,8 @@ _$CodeModelImpl _$$CodeModelImplFromJson(Map<String, dynamic> json) =>
     _$CodeModelImpl(
       id: (json['id'] as num?)?.toInt(),
       urlSpro: json['urlSpro'] as String? ?? '',
-      ssoType: $enumDecodeNullable(_$CodeSSOTypeEnumMap, json['ssoType']) ??
+      ssoType:
+          $enumDecodeNullable(_$CodeSSOTypeEnumMap, json['ssoType']) ??
           CodeSSOType.none,
       clientId: json['clientId'] as String?,
       tenantId: json['tenantId'] as String?,

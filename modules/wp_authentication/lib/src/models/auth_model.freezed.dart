@@ -12,7 +12,8 @@ part of 'auth_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 AuthModel _$AuthModelFromJson(Map<String, dynamic> json) {
   return _AuthModel.fromJson(json);
@@ -43,12 +44,13 @@ abstract class $AuthModelCopyWith<$Res> {
   factory $AuthModelCopyWith(AuthModel value, $Res Function(AuthModel) then) =
       _$AuthModelCopyWithImpl<$Res, AuthModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'Email') String email,
-      String text,
-      String value,
-      @JsonKey(name: 'Avatar') String avatar,
-      String loginToken});
+  $Res call({
+    @JsonKey(name: 'Email') String email,
+    String text,
+    String value,
+    @JsonKey(name: 'Avatar') String avatar,
+    String loginToken,
+  });
 }
 
 /// @nodoc
@@ -72,28 +74,36 @@ class _$AuthModelCopyWithImpl<$Res, $Val extends AuthModel>
     Object? avatar = null,
     Object? loginToken = null,
   }) {
-    return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-      avatar: null == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
-      loginToken: null == loginToken
-          ? _value.loginToken
-          : loginToken // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            email:
+                null == email
+                    ? _value.email
+                    : email // ignore: cast_nullable_to_non_nullable
+                        as String,
+            text:
+                null == text
+                    ? _value.text
+                    : text // ignore: cast_nullable_to_non_nullable
+                        as String,
+            value:
+                null == value
+                    ? _value.value
+                    : value // ignore: cast_nullable_to_non_nullable
+                        as String,
+            avatar:
+                null == avatar
+                    ? _value.avatar
+                    : avatar // ignore: cast_nullable_to_non_nullable
+                        as String,
+            loginToken:
+                null == loginToken
+                    ? _value.loginToken
+                    : loginToken // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -101,16 +111,18 @@ class _$AuthModelCopyWithImpl<$Res, $Val extends AuthModel>
 abstract class _$$AuthModelImplCopyWith<$Res>
     implements $AuthModelCopyWith<$Res> {
   factory _$$AuthModelImplCopyWith(
-          _$AuthModelImpl value, $Res Function(_$AuthModelImpl) then) =
-      __$$AuthModelImplCopyWithImpl<$Res>;
+    _$AuthModelImpl value,
+    $Res Function(_$AuthModelImpl) then,
+  ) = __$$AuthModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'Email') String email,
-      String text,
-      String value,
-      @JsonKey(name: 'Avatar') String avatar,
-      String loginToken});
+  $Res call({
+    @JsonKey(name: 'Email') String email,
+    String text,
+    String value,
+    @JsonKey(name: 'Avatar') String avatar,
+    String loginToken,
+  });
 }
 
 /// @nodoc
@@ -118,8 +130,9 @@ class __$$AuthModelImplCopyWithImpl<$Res>
     extends _$AuthModelCopyWithImpl<$Res, _$AuthModelImpl>
     implements _$$AuthModelImplCopyWith<$Res> {
   __$$AuthModelImplCopyWithImpl(
-      _$AuthModelImpl _value, $Res Function(_$AuthModelImpl) _then)
-      : super(_value, _then);
+    _$AuthModelImpl _value,
+    $Res Function(_$AuthModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthModel
   /// with the given fields replaced by the non-null parameter values.
@@ -132,28 +145,35 @@ class __$$AuthModelImplCopyWithImpl<$Res>
     Object? avatar = null,
     Object? loginToken = null,
   }) {
-    return _then(_$AuthModelImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-      avatar: null == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String,
-      loginToken: null == loginToken
-          ? _value.loginToken
-          : loginToken // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$AuthModelImpl(
+        email:
+            null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String,
+        text:
+            null == text
+                ? _value.text
+                : text // ignore: cast_nullable_to_non_nullable
+                    as String,
+        value:
+            null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                    as String,
+        avatar:
+            null == avatar
+                ? _value.avatar
+                : avatar // ignore: cast_nullable_to_non_nullable
+                    as String,
+        loginToken:
+            null == loginToken
+                ? _value.loginToken
+                : loginToken // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -161,12 +181,13 @@ class __$$AuthModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(includeIfNull: false)
 class _$AuthModelImpl implements _AuthModel {
-  const _$AuthModelImpl(
-      {@JsonKey(name: 'Email') this.email = '',
-      this.text = '',
-      this.value = '',
-      @JsonKey(name: 'Avatar') this.avatar = '',
-      this.loginToken = ''});
+  const _$AuthModelImpl({
+    @JsonKey(name: 'Email') this.email = '',
+    this.text = '',
+    this.value = '',
+    @JsonKey(name: 'Avatar') this.avatar = '',
+    this.loginToken = '',
+  });
 
   factory _$AuthModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthModelImplFromJson(json);
@@ -220,19 +241,18 @@ class _$AuthModelImpl implements _AuthModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AuthModelImplToJson(
-      this,
-    );
+    return _$$AuthModelImplToJson(this);
   }
 }
 
 abstract class _AuthModel implements AuthModel {
-  const factory _AuthModel(
-      {@JsonKey(name: 'Email') final String email,
-      final String text,
-      final String value,
-      @JsonKey(name: 'Avatar') final String avatar,
-      final String loginToken}) = _$AuthModelImpl;
+  const factory _AuthModel({
+    @JsonKey(name: 'Email') final String email,
+    final String text,
+    final String value,
+    @JsonKey(name: 'Avatar') final String avatar,
+    final String loginToken,
+  }) = _$AuthModelImpl;
 
   factory _AuthModel.fromJson(Map<String, dynamic> json) =
       _$AuthModelImpl.fromJson;

@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: core_package
-dependency_overrides:
-  wp_core:
-    path: ../../modules/wp_core

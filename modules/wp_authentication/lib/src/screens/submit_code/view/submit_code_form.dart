@@ -1,6 +1,6 @@
-import 'package:authentication_package/src/screens/submit_code/bloc/submit_code_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wp_authentication/src/screens/submit_code/bloc/submit_code_bloc.dart';
 import 'package:wp_core/core_package.dart';
 
 class SubmitCodeForm extends StatefulWidget {
@@ -48,8 +48,9 @@ class _CodeInput extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         return WpTextFormField(
-          onChanged: (code) =>
-              context.read<SubmitCodeBloc>().add(CodeChanged(code: code)),
+          onChanged:
+              (code) =>
+                  context.read<SubmitCodeBloc>().add(CodeChanged(code: code)),
           labelText: 'Code',
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -75,36 +76,35 @@ class _SubmitCodeButton extends StatelessWidget {
     return BlocBuilder<SubmitCodeBloc, SubmitCodeState>(
       builder: (context, state) {
         return ElevatedButton(
-          onPressed: state.isLoading
-              ? null
-              : () {
-                  if (formKey.currentState!.validate()) {
-                    context.read<SubmitCodeBloc>().add(CodeSubmitted());
-                  }
-                },
+          onPressed:
+              state.isLoading
+                  ? null
+                  : () {
+                    if (formKey.currentState!.validate()) {
+                      context.read<SubmitCodeBloc>().add(CodeSubmitted());
+                    }
+                  },
           style: ButtonStyle(
             minimumSize: WidgetStateProperty.all(
               Size(MediaQuery.of(context).size.width, 48.0),
             ),
             shape: WidgetStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(AppRadius.kMediumBorderRadius),
+                borderRadius: BorderRadius.circular(
+                  AppRadius.kMediumBorderRadius,
+                ),
               ),
             ),
-            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
-              (Set<WidgetState> states) {
-                return EdgeInsets.symmetric(
-                  vertical: AppSpacing.kSpace12,
-                  horizontal: AppSpacing.kSpace24,
-                );
-              },
-            ),
+            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((
+              Set<WidgetState> states,
+            ) {
+              return EdgeInsets.symmetric(
+                vertical: AppSpacing.kSpace12,
+                horizontal: AppSpacing.kSpace24,
+              );
+            }),
           ),
-          child: Text(
-            'Submit',
-            style: context.textTheme.kTextButton1,
-          ),
+          child: Text('Submit', style: context.textTheme.kTextButton1),
         );
       },
     );

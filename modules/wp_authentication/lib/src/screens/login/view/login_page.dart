@@ -1,8 +1,8 @@
-import 'package:authentication_package/src/screens/login/bloc/login_bloc.dart';
-import 'package:authentication_package/src/screens/login/view/login_form.dart';
-import 'package:authentication_package/src/repositories/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wp_authentication/src/repositories/authentication_repository.dart';
+import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart';
+import 'package:wp_authentication/src/screens/login/view/login_form.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -14,9 +14,10 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(
-        authenticationRepository: context.read<AuthenticationRepository>(),
-      ),
+      create:
+          (context) => LoginBloc(
+            authenticationRepository: context.read<AuthenticationRepository>(),
+          ),
       child: Scaffold(
         body: SafeArea(
           child: Padding(

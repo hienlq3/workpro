@@ -1,6 +1,6 @@
-import 'package:authentication_package/src/screens/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart';
 import 'package:wp_core/core_package.dart';
 
 class LoginForm extends StatefulWidget {
@@ -34,13 +34,15 @@ class _UsernameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
-      buildWhen: (previous, current) =>
-          previous.username != current.username ||
-          previous.status != current.status,
+      buildWhen:
+          (previous, current) =>
+              previous.username != current.username ||
+              previous.status != current.status,
       builder: (context, state) {
         return WpTextFormField(
-          onChanged: (username) =>
-              context.read<LoginBloc>().add(LoginUsernameChanged(username)),
+          onChanged:
+              (username) =>
+                  context.read<LoginBloc>().add(LoginUsernameChanged(username)),
           labelText: 'Username',
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -59,13 +61,15 @@ class _PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
-      buildWhen: (previous, current) =>
-          previous.password != current.password ||
-          previous.status != current.status,
+      buildWhen:
+          (previous, current) =>
+              previous.password != current.password ||
+              previous.status != current.status,
       builder: (context, state) {
         return WpTextFormField(
-          onChanged: (password) =>
-              context.read<LoginBloc>().add(LoginPasswordChanged(password)),
+          onChanged:
+              (password) =>
+                  context.read<LoginBloc>().add(LoginPasswordChanged(password)),
           labelText: 'Password',
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -91,35 +95,35 @@ class _LoginButton extends StatelessWidget {
       listenWhen: (previous, current) => current.isError,
       listener: (context, state) {
         context.scaffoldMessenger.showSnackBar(
-          SnackBar(
-            content: Text(state.errorText),
-          ),
+          SnackBar(content: Text(state.errorText)),
         );
       },
       builder: (context, state) {
         return ElevatedButton(
-          onPressed: state.isLoading
-              ? null
-              : () {
-                  if (formKey.currentState!.validate()) {
-                    context.read<LoginBloc>().add(const LoginSubmitted());
-                  }
-                },
+          onPressed:
+              state.isLoading
+                  ? null
+                  : () {
+                    if (formKey.currentState!.validate()) {
+                      context.read<LoginBloc>().add(const LoginSubmitted());
+                    }
+                  },
           style: ButtonStyle(
             minimumSize: WidgetStateProperty.all(
               Size(MediaQuery.of(context).size.width, 48.0),
             ),
             shape: WidgetStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(AppRadius.kMediumBorderRadius),
+                borderRadius: BorderRadius.circular(
+                  AppRadius.kMediumBorderRadius,
+                ),
               ),
             ),
-            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
-              (Set<WidgetState> states) {
-                return EdgeInsets.all(16.0);
-              },
-            ),
+            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((
+              Set<WidgetState> states,
+            ) {
+              return EdgeInsets.all(16.0);
+            }),
           ),
           child: const Text('Login'),
         );
