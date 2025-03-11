@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wp_core/src/components/form_basics/wp_base_form_field.dart';
 import 'package:wp_core/src/components/form_basics/wp_wrapper_form.dart';
+import 'package:wp_core/src/config/app_theme.dart';
+import 'package:wp_core/src/utils/extension/build_context.dart';
 
 class WpTextFormField<String> extends WpBaseFormField {
   const WpTextFormField({
@@ -62,13 +64,21 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<WpTextFormField> {
         return TextFormField(
           focusNode: _focusNode,
           controller: _controller,
-          decoration: getInputDecoration(),
+          decoration: getInputDecoration(
+            controller: _controller,
+            onPressed: () {
+              _controller.clear();
+              widget.onChanged(_controller.text);
+              state.didChange(_controller.text);
+            },
+          ),
           onChanged: state.didChange,
           onTapOutside: (event) => _focusNode.unfocus(),
           textCapitalization: widget.textCapitalization,
           textInputAction: widget.textInputAction,
           enabled: !widget.disabled,
           readOnly: widget.disabled,
+          style: context.textTheme.kBody1,
         );
       },
     );

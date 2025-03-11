@@ -27,13 +27,23 @@ abstract class WpBaseFormField<T> extends StatefulWidget {
 
 abstract class WpBaseFormFieldState<T extends WpBaseFormField>
     extends State<T> {
-  InputDecoration getInputDecoration() {
+  InputDecoration getInputDecoration({
+    required TextEditingController controller,
+    required void Function()? onPressed,
+  }) {
     return InputDecoration(
       border: InputBorder.none,
       labelText: 'Nhập ${widget.labelText}',
       labelStyle: context.textTheme.kLabel2,
       contentPadding: const EdgeInsets.all(16.0),
       counterText: '',
+      suffixIcon:
+          controller.text.isNotEmpty
+              ? IconButton(
+                icon: const Icon(Icons.cancel, size: 24.0),
+                onPressed: onPressed,
+              )
+              : null,
     );
   }
 }

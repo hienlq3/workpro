@@ -29,4 +29,10 @@ extension AppTheme on TextTheme {
     fontSize: 16.0,
     fontWeight: FontWeight.w600,
   );
+
+  TextStyle get kBody1 => const TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 16.0,
+    fontWeight: FontWeight.normal,
+  );
 }
