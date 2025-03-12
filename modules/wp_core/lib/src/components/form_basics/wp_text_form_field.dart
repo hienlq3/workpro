@@ -5,6 +5,8 @@ import 'package:wp_core/src/config/app_theme.dart';
 import 'package:wp_core/src/utils/extension/build_context.dart';
 
 class WpTextFormField<String> extends WpBaseFormField {
+  final bool obscureText;
+
   const WpTextFormField({
     super.key,
     super.validator,
@@ -15,6 +17,8 @@ class WpTextFormField<String> extends WpBaseFormField {
     super.textInputAction,
     super.textCapitalization,
     super.disabled,
+    this.obscureText = false,
+    super.suffixIcon,
   });
 
   @override
@@ -79,6 +83,7 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<WpTextFormField> {
           enabled: !widget.disabled,
           readOnly: widget.disabled,
           style: context.textTheme.kBody1,
+          obscureText: widget.obscureText,
         );
       },
     );

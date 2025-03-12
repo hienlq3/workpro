@@ -54,6 +54,10 @@ class AuthenticationRepository {
     _controller.add(AuthenticationStatus.unauthenticated);
   }
 
+  void logOutCode() {
+    _controller.add(AuthenticationStatus.unknown);
+  }
+
   void dispose() => _controller.close();
 
   Future<void> submitCode({required String code}) async {

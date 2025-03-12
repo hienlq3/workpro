@@ -11,6 +11,7 @@ abstract class WpBaseFormField<T> extends StatefulWidget {
   final TextInputAction? textInputAction;
   final TextCapitalization textCapitalization;
   final bool disabled;
+  final Widget? suffixIcon;
 
   const WpBaseFormField({
     super.key,
@@ -22,6 +23,7 @@ abstract class WpBaseFormField<T> extends StatefulWidget {
     this.textInputAction,
     this.textCapitalization = TextCapitalization.none,
     this.disabled = false,
+    this.suffixIcon,
   });
 }
 
@@ -38,12 +40,27 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
       contentPadding: const EdgeInsets.all(16.0),
       counterText: '',
       suffixIcon:
-          controller.text.isNotEmpty
-              ? IconButton(
-                icon: const Icon(Icons.cancel, size: 24.0),
-                onPressed: onPressed,
+          widget.suffixIcon != null
+              ? Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Visibility(
+                    visible: controller.text.isNotEmpty,
+                    child: IconButton(
+                      icon: const Icon(Icons.cancel, size: 24.0),
+                      onPressed: onPressed,
+                    ),
+                  ),
+                  widget.suffixIcon!,
+                ],
               )
-              : null,
+              : Visibility(
+                visible: controller.text.isNotEmpty,
+                child: IconButton(
+                  icon: const Icon(Icons.cancel, size: 24.0),
+                  onPressed: onPressed,
+                ),
+              ),
     );
   }
 }

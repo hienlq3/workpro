@@ -6,7 +6,7 @@ import 'package:wp_authentication/src/repositories/authentication_repository.dar
 part 'submit_code_event.dart';
 part 'submit_code_state.dart';
 
-@singleton
+@injectable
 class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
   final AuthenticationRepository _authenticationRepository;
 
@@ -28,7 +28,8 @@ class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
       emit(state.copyWith(status: SubmitCodeStatus.loading));
       await _authenticationRepository.submitCode(code: state.code);
       emit(state.copyWith(status: SubmitCodeStatus.success));
-    } catch (error) {
+    } catch (error, trace) {
+      onError(error, trace);
       emit(
         state.copyWith(
           errorText: error.toString(),

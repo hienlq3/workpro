@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 import 'package:wp_authentication/src/repositories/authentication_repository.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 
+@injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({required AuthenticationRepository authenticationRepository})
     : _authenticationRepository = authenticationRepository,
@@ -12,6 +14,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginUsernameChanged>(_onUsernameChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSubmitted>(_onSubmitted);
+    on<LogoutCodeSubmitted>(_onLogoutCodeSubmitted);
   }
   final AuthenticationRepository _authenticationRepository;
 
@@ -43,5 +46,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     } finally {
       emit(state.copyWith(errorText: '', status: LoginStatus.initial));
     }
+  }
+
+  void _onLogoutCodeSubmitted(
+    LogoutCodeSubmitted event,
+    Emitter<LoginState> emit,
+  ) {
+    _authenticationRepository.logOutCode();
   }
 }

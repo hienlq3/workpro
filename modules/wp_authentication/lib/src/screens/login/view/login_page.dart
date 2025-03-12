@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/src/repositories/authentication_repository.dart';
 import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart';
 import 'package:wp_authentication/src/screens/login/view/login_form.dart';
+import 'package:wp_core/core_package.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -18,13 +19,30 @@ class LoginPage extends StatelessWidget {
           (context) => LoginBloc(
             authenticationRepository: context.read<AuthenticationRepository>(),
           ),
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: const LoginForm(),
-          ),
-        ),
+      child: BlocBuilder<LoginBloc, LoginState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0.0,
+              leading: BackButton(
+                color: Colors.black,
+                onPressed:
+                    () => context.read<LoginBloc>().add(LogoutCodeSubmitted()),
+              ),
+            ),
+            body: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: context.mediaQuery.size.height / 7,
+                  left: AppSpacing.kSpace16,
+                  right: AppSpacing.kSpace16,
+                ),
+                child: const LoginForm(),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

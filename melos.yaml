@@ -1,7 +1,6 @@
 name: apidash
 
 packages:
-  - packages/**
   - modules/**
 
 scripts:

@@ -13,6 +13,8 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:wp_authentication/src/repositories/authentication_repository.dart'
     as _i26;
+import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart'
+    as _i318;
 import 'package:wp_authentication/src/screens/submit_code/bloc/submit_code_bloc.dart'
     as _i20;
 import 'package:wp_core/core_package.dart' as _i70;
@@ -30,8 +32,13 @@ extension GetItInjectableX on _i174.GetIt {
         userService: gh<_i70.UserService>(),
       ),
     );
-    gh.singleton<_i20.SubmitCodeBloc>(
+    gh.factory<_i20.SubmitCodeBloc>(
       () => _i20.SubmitCodeBloc(
+        authenticationRepository: gh<_i26.AuthenticationRepository>(),
+      ),
+    );
+    gh.factory<_i318.LoginBloc>(
+      () => _i318.LoginBloc(
         authenticationRepository: gh<_i26.AuthenticationRepository>(),
       ),
     );

@@ -5,9 +5,14 @@ import 'package:flutter_application_1/splash/view/splash_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/authentication_package.dart';
 import 'package:wp_authentication/injection.dart';
+import 'package:wp_core/core_package.dart';
 import 'package:wp_core/injection.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Bloc.observer = AppBlocObserver();
+
   configureDependencies();
 
   configureAuthenticationDependencies();
@@ -71,6 +76,7 @@ class _AppViewState extends State<AppView> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: false,
+        fontFamily: 'Inter',
       ),
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(

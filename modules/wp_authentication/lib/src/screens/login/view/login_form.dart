@@ -19,8 +19,9 @@ class _LoginFormState extends State<LoginForm> {
       key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: AppSpacing.kSpace12,
+        spacing: AppSpacing.kSpace16,
         children: [
+          Text('Đăng nhập', style: context.textTheme.kTitle2),
           _UsernameInput(),
           _PasswordInput(),
           _LoginButton(formKey: _formKey),
@@ -34,10 +35,7 @@ class _UsernameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
-      buildWhen:
-          (previous, current) =>
-              previous.username != current.username ||
-              previous.status != current.status,
+      buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return WpTextFormField(
           onChanged:
@@ -57,7 +55,20 @@ class _UsernameInput extends StatelessWidget {
   }
 }
 
-class _PasswordInput extends StatelessWidget {
+class _PasswordInput extends StatefulWidget {
+  @override
+  State<_PasswordInput> createState() => _PasswordInputState();
+}
+
+class _PasswordInputState extends State<_PasswordInput> {
+  bool _obscureText = true;
+
+  void _toggleObscureText() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
@@ -78,6 +89,11 @@ class _PasswordInput extends StatelessWidget {
             return null;
           },
           disabled: state.isLoading,
+          obscureText: _obscureText,
+          suffixIcon: IconButton(
+            icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
+            onPressed: _toggleObscureText,
+          ),
         );
       },
     );
@@ -122,10 +138,13 @@ class _LoginButton extends StatelessWidget {
             padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((
               Set<WidgetState> states,
             ) {
-              return EdgeInsets.all(16.0);
+              return EdgeInsets.symmetric(
+                vertical: AppSpacing.kSpace12,
+                horizontal: AppSpacing.kSpace24,
+              );
             }),
           ),
-          child: const Text('Login'),
+          child: Text('Login', style: context.textTheme.kTextButton1),
         );
       },
     );

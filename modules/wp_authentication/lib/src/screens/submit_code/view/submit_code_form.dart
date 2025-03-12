@@ -45,7 +45,10 @@ class _CodeInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SubmitCodeBloc, SubmitCodeState>(
-      buildWhen: (previous, current) => previous != current,
+      buildWhen:
+          (previous, current) =>
+              previous.errorText != current.errorText ||
+              previous.status != current.status,
       builder: (context, state) {
         return WpTextFormField(
           onChanged:
