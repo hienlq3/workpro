@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/src/screens/submit_code/bloc/submit_code_bloc.dart';
 import 'package:wp_core/core_package.dart';
+import 'package:wp_localization/wp_localization.dart';
 
 class SubmitCodeForm extends StatefulWidget {
   const SubmitCodeForm({super.key});
@@ -26,7 +27,7 @@ class _SubmitCodeFormState extends State<SubmitCodeForm> {
               bottom: AppSpacing.kSpace8,
             ),
             child: Text(
-              'Hãy nhập mã công ty của bạn',
+              context.appLocalizations.enterCompanyCodePrompt,
               style: context.textTheme.kTitle2,
             ),
           ),
@@ -54,10 +55,10 @@ class _CodeInput extends StatelessWidget {
           onChanged:
               (code) =>
                   context.read<SubmitCodeBloc>().add(CodeChanged(code: code)),
-          labelText: 'Code',
+          labelText: context.appLocalizations.codeLabel,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter some text';
+              return context.appLocalizations.requiredValidation;
             }
             return null;
           },
@@ -107,7 +108,10 @@ class _SubmitCodeButton extends StatelessWidget {
               );
             }),
           ),
-          child: Text('Submit', style: context.textTheme.kTextButton1),
+          child: Text(
+            context.appLocalizations.submitBtn,
+            style: context.textTheme.kTextButton1,
+          ),
         );
       },
     );

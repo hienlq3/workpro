@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart';
 import 'package:wp_core/core_package.dart';
+import 'package:wp_localization/wp_localization.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -21,7 +22,10 @@ class _LoginFormState extends State<LoginForm> {
         mainAxisSize: MainAxisSize.min,
         spacing: AppSpacing.kSpace16,
         children: [
-          Text('Đăng nhập', style: context.textTheme.kTitle2),
+          Text(
+            context.appLocalizations.loginTitle,
+            style: context.textTheme.kTitle2,
+          ),
           _UsernameInput(),
           _PasswordInput(),
           _LoginButton(formKey: _formKey),
@@ -41,10 +45,10 @@ class _UsernameInput extends StatelessWidget {
           onChanged:
               (username) =>
                   context.read<LoginBloc>().add(LoginUsernameChanged(username)),
-          labelText: 'Username',
+          labelText: context.appLocalizations.usernameLabel,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter some text';
+              return context.appLocalizations.requiredValidation;
             }
             return null;
           },
@@ -81,10 +85,10 @@ class _PasswordInputState extends State<_PasswordInput> {
           onChanged:
               (password) =>
                   context.read<LoginBloc>().add(LoginPasswordChanged(password)),
-          labelText: 'Password',
+          labelText: context.appLocalizations.passwordLabel,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter some text';
+              return context.appLocalizations.requiredValidation;
             }
             return null;
           },
@@ -144,7 +148,10 @@ class _LoginButton extends StatelessWidget {
               );
             }),
           ),
-          child: Text('Login', style: context.textTheme.kTextButton1),
+          child: Text(
+            context.appLocalizations.loginBtn,
+            style: context.textTheme.kTextButton1,
+          ),
         );
       },
     );

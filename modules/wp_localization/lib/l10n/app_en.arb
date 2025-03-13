@@ -1,0 +1,11 @@
+{
+    "@@locale": "en",
+    "loginTitle": "Login",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "codeLabel": "Code",
+    "enterCompanyCodePrompt": "Please enter your company code",
+    "requiredValidation": "Please enter some text",
+    "loginBtn": "Login",
+    "submitBtn": "Submit"
+}

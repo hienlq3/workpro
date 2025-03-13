@@ -1,0 +1,11 @@
+{
+    "@@locale": "vi",
+    "loginTitle": "Đăng nhập",
+    "usernameLabel": "Tên tài khoản",
+    "passwordLabel": "Mật khẩu",
+    "codeLabel": "Mã",
+    "enterCompanyCodePrompt": "Hãy nhập mã công ty của bạn",
+    "requiredValidation": "Trường này không được để trống",
+    "loginBtn": "Đăng nhập",
+    "submitBtn": "Gửi"
+}

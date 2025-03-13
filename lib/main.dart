@@ -7,6 +7,7 @@ import 'package:wp_authentication/authentication_package.dart';
 import 'package:wp_authentication/injection.dart';
 import 'package:wp_core/core_package.dart';
 import 'package:wp_core/injection.dart';
+import 'package:wp_localization/wp_localization.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -78,6 +79,8 @@ class _AppViewState extends State<AppView> {
         useMaterial3: false,
         fontFamily: 'Inter',
       ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {

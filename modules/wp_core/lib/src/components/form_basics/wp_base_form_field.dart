@@ -35,7 +35,7 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
   }) {
     return InputDecoration(
       border: InputBorder.none,
-      labelText: 'Nhập ${widget.labelText}',
+      labelText: widget.labelText,
       labelStyle: context.textTheme.kLabel2,
       contentPadding: const EdgeInsets.all(16.0),
       counterText: '',
