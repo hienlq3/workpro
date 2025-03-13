@@ -64,6 +64,7 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<WpTextFormField> {
     return WpBorderWrapper<String>(
       validator: widget.validator,
       errorText: widget.errorText,
+      focusNode: _focusNode,
       builder: (state) {
         return TextFormField(
           focusNode: _focusNode,

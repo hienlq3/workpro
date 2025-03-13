@@ -8,12 +8,14 @@ class WpBorderWrapper<T> extends StatelessWidget {
   final String? errorText;
   final FormFieldValidator<T>? validator;
   final Widget Function(FormFieldState<T> state) builder;
+  final FocusNode focusNode;
 
   const WpBorderWrapper({
     super.key,
     this.errorText,
     this.validator,
     required this.builder,
+    required this.focusNode,
   });
 
   @override
@@ -33,7 +35,9 @@ class WpBorderWrapper<T> extends StatelessWidget {
                   color:
                       hasError
                           ? context.colorScheme.error
-                          : context.colorScheme.primary,
+                          : focusNode.hasFocus
+                          ? context.theme.primaryColor
+                          : context.theme.unselectedWidgetColor,
                 ),
                 borderRadius: BorderRadius.circular(
                   AppRadius.kMediumBorderRadius,

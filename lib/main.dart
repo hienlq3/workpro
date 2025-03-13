@@ -78,6 +78,7 @@ class _AppViewState extends State<AppView> {
       theme: ThemeData(
         useMaterial3: false,
         fontFamily: 'Inter',
+        primarySwatch: AppColor.wpPrimarySwatch,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
