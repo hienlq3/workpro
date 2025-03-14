@@ -32,13 +32,15 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             body: SafeArea(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: context.mediaQuery.size.height / 7,
-                  left: AppSpacing.kSpace16,
-                  right: AppSpacing.kSpace16,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: context.mediaQuery.size.height / 7,
+                    left: AppSpacing.kSpace16,
+                    right: AppSpacing.kSpace16,
+                  ),
+                  child: const LoginForm(),
                 ),
-                child: const LoginForm(),
               ),
             ),
           );
