@@ -9,12 +9,12 @@ import 'package:wp_core/core_package.dart';
 import 'package:wp_core/injection.dart';
 import 'package:wp_localization/wp_localization.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Bloc.observer = AppBlocObserver();
 
-  configureDependencies();
+  await configureDependencies();
 
   configureAuthenticationDependencies();
 
