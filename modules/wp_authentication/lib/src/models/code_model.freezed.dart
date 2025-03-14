@@ -27,6 +27,7 @@ mixin _$CodeModel {
   String? get clientId => throw _privateConstructorUsedError;
   String? get tenantId => throw _privateConstructorUsedError;
   String? get code => throw _privateConstructorUsedError;
+  String? get taskbarColor => throw _privateConstructorUsedError;
 
   /// Serializes this CodeModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $CodeModelCopyWith<$Res> {
     String? clientId,
     String? tenantId,
     String? code,
+    String? taskbarColor,
   });
 }
 
@@ -74,6 +76,7 @@ class _$CodeModelCopyWithImpl<$Res, $Val extends CodeModel>
     Object? clientId = freezed,
     Object? tenantId = freezed,
     Object? code = freezed,
+    Object? taskbarColor = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -107,6 +110,11 @@ class _$CodeModelCopyWithImpl<$Res, $Val extends CodeModel>
                     ? _value.code
                     : code // ignore: cast_nullable_to_non_nullable
                         as String?,
+            taskbarColor:
+                freezed == taskbarColor
+                    ? _value.taskbarColor
+                    : taskbarColor // ignore: cast_nullable_to_non_nullable
+                        as String?,
           )
           as $Val,
     );
@@ -129,6 +137,7 @@ abstract class _$$CodeModelImplCopyWith<$Res>
     String? clientId,
     String? tenantId,
     String? code,
+    String? taskbarColor,
   });
 }
 
@@ -152,6 +161,7 @@ class __$$CodeModelImplCopyWithImpl<$Res>
     Object? clientId = freezed,
     Object? tenantId = freezed,
     Object? code = freezed,
+    Object? taskbarColor = freezed,
   }) {
     return _then(
       _$CodeModelImpl(
@@ -185,6 +195,11 @@ class __$$CodeModelImplCopyWithImpl<$Res>
                 ? _value.code
                 : code // ignore: cast_nullable_to_non_nullable
                     as String?,
+        taskbarColor:
+            freezed == taskbarColor
+                ? _value.taskbarColor
+                : taskbarColor // ignore: cast_nullable_to_non_nullable
+                    as String?,
       ),
     );
   }
@@ -200,6 +215,7 @@ class _$CodeModelImpl extends _CodeModel {
     this.clientId,
     this.tenantId,
     this.code,
+    this.taskbarColor,
   }) : super._();
 
   factory _$CodeModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -219,10 +235,12 @@ class _$CodeModelImpl extends _CodeModel {
   final String? tenantId;
   @override
   final String? code;
+  @override
+  final String? taskbarColor;
 
   @override
   String toString() {
-    return 'CodeModel(id: $id, urlSpro: $urlSpro, ssoType: $ssoType, clientId: $clientId, tenantId: $tenantId, code: $code)';
+    return 'CodeModel(id: $id, urlSpro: $urlSpro, ssoType: $ssoType, clientId: $clientId, tenantId: $tenantId, code: $code, taskbarColor: $taskbarColor)';
   }
 
   @override
@@ -237,13 +255,23 @@ class _$CodeModelImpl extends _CodeModel {
                 other.clientId == clientId) &&
             (identical(other.tenantId, tenantId) ||
                 other.tenantId == tenantId) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.taskbarColor, taskbarColor) ||
+                other.taskbarColor == taskbarColor));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, urlSpro, ssoType, clientId, tenantId, code);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    urlSpro,
+    ssoType,
+    clientId,
+    tenantId,
+    code,
+    taskbarColor,
+  );
 
   /// Create a copy of CodeModel
   /// with the given fields replaced by the non-null parameter values.
@@ -267,6 +295,7 @@ abstract class _CodeModel extends CodeModel {
     final String? clientId,
     final String? tenantId,
     final String? code,
+    final String? taskbarColor,
   }) = _$CodeModelImpl;
   const _CodeModel._() : super._();
 
@@ -285,6 +314,8 @@ abstract class _CodeModel extends CodeModel {
   String? get tenantId;
   @override
   String? get code;
+  @override
+  String? get taskbarColor;
 
   /// Create a copy of CodeModel
   /// with the given fields replaced by the non-null parameter values.

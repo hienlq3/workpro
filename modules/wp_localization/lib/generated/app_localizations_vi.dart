@@ -12,23 +12,23 @@ class AppLocalizationsVi extends AppLocalizations {
   String get loginTitle => 'Đăng nhập';
 
   @override
-  String get loginBtn => 'Đăng nhập';
-
-  @override
   String get usernameLabel => 'Tên tài khoản';
 
   @override
   String get passwordLabel => 'Mật khẩu';
 
   @override
-  String get enterCompanyCodePrompt => 'Hãy nhập mã công ty của bạn';
-
-  @override
   String get codeLabel => 'Mã';
 
   @override
-  String get submitBtn => 'Gửi';
+  String get enterCompanyCodePrompt => 'Hãy nhập mã công ty của bạn';
 
   @override
   String get requiredValidation => 'Trường này không được để trống';
+
+  @override
+  String get loginBtn => 'Đăng nhập';
+
+  @override
+  String get submitBtn => 'Gửi';
 }

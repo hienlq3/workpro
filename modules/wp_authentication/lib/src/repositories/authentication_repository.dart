@@ -65,6 +65,9 @@ class AuthenticationRepository {
       final result = await _systemPropertyService.getCode(code: code);
       final codeResult = CodeModel.fromJson(result);
       getIt<Dio>().options.baseUrl = codeResult.urlSpro;
+      if (codeResult.taskbarColor?.isNotEmpty == true) {
+        AppColor.setPrimaryColor(codeResult.taskbarColor!);
+      }
       _controller.add(AuthenticationStatus.unauthenticated);
     } catch (error) {
       throw 'Failed to submit code!';

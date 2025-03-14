@@ -71,6 +71,7 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<WpTextFormField> {
           controller: _controller,
           decoration: getInputDecoration(
             controller: _controller,
+            focusNode: _focusNode,
             onPressed: () {
               _controller.clear();
               widget.onChanged(_controller.text);

@@ -72,41 +72,53 @@ class _AppViewState extends State<AppView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: _navigatorKey,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: false,
-        fontFamily: 'Inter',
-        primarySwatch: AppColor.wpPrimarySwatch,
-      ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      builder: (context, child) {
-        return BlocListener<AuthenticationBloc, AuthenticationState>(
-          listener: (context, state) {
-            switch (state.status) {
-              case AuthenticationStatus.authenticated:
-                _navigator.pushAndRemoveUntil<void>(
-                  HomePage.route(),
-                  (route) => false,
-                );
-              case AuthenticationStatus.unauthenticated:
-                _navigator.pushAndRemoveUntil<void>(
-                  LoginPage.route(),
-                  (route) => false,
-                );
-              case AuthenticationStatus.unknown:
-                _navigator.pushAndRemoveUntil<void>(
-                  SubmitCodePage.route(),
-                  (route) => false,
-                );
-            }
+    return ValueListenableBuilder<Color>(
+      valueListenable: AppColor.wpPrimaryColor,
+      builder: (context, primaryColor, child) {
+        return MaterialApp(
+          navigatorKey: _navigatorKey,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            useMaterial3: false,
+            fontFamily: 'Inter',
+            primaryColor: primaryColor,
+            scaffoldBackgroundColor: Colors.white,
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: primaryColor,
+              ),
+            ),
+          ),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          builder: (context, child) {
+            return BlocListener<AuthenticationBloc, AuthenticationState>(
+              listener: (context, state) {
+                switch (state.status) {
+                  case AuthenticationStatus.authenticated:
+                    _navigator.pushAndRemoveUntil<void>(
+                      HomePage.route(),
+                      (route) => false,
+                    );
+                  case AuthenticationStatus.unauthenticated:
+                    _navigator.pushAndRemoveUntil<void>(
+                      LoginPage.route(),
+                      (route) => false,
+                    );
+                  case AuthenticationStatus.unknown:
+                    _navigator.pushAndRemoveUntil<void>(
+                      SubmitCodePage.route(),
+                      (route) => false,
+                    );
+                }
+              },
+              child: child,
+            );
           },
-          child: child,
+          onGenerateRoute: (_) => SplashPage.route(),
         );
       },
-      onGenerateRoute: (_) => SplashPage.route(),
     );
   }
 }

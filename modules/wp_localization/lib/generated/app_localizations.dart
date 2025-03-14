@@ -104,12 +104,6 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get loginTitle;
 
-  /// No description provided for @loginBtn.
-  ///
-  /// In en, this message translates to:
-  /// **'Login'**
-  String get loginBtn;
-
   /// No description provided for @usernameLabel.
   ///
   /// In en, this message translates to:
@@ -122,29 +116,35 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get passwordLabel;
 
-  /// No description provided for @enterCompanyCodePrompt.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter your company code'**
-  String get enterCompanyCodePrompt;
-
   /// No description provided for @codeLabel.
   ///
   /// In en, this message translates to:
   /// **'Code'**
   String get codeLabel;
 
-  /// No description provided for @submitBtn.
+  /// No description provided for @enterCompanyCodePrompt.
   ///
   /// In en, this message translates to:
-  /// **'Submit'**
-  String get submitBtn;
+  /// **'Please enter your company code'**
+  String get enterCompanyCodePrompt;
 
   /// No description provided for @requiredValidation.
   ///
   /// In en, this message translates to:
   /// **'Please enter some text'**
   String get requiredValidation;
+
+  /// No description provided for @loginBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginBtn;
+
+  /// No description provided for @submitBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submitBtn;
 }
 
 class _AppLocalizationsDelegate

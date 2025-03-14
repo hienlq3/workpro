@@ -12,23 +12,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginTitle => 'Login';
 
   @override
-  String get loginBtn => 'Login';
-
-  @override
   String get usernameLabel => 'Username';
 
   @override
   String get passwordLabel => 'Password';
 
   @override
-  String get enterCompanyCodePrompt => 'Please enter your company code';
-
-  @override
   String get codeLabel => 'Code';
 
   @override
-  String get submitBtn => 'Submit';
+  String get enterCompanyCodePrompt => 'Please enter your company code';
 
   @override
   String get requiredValidation => 'Please enter some text';
+
+  @override
+  String get loginBtn => 'Login';
+
+  @override
+  String get submitBtn => 'Submit';
 }

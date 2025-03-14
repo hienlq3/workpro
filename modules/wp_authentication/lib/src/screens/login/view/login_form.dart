@@ -96,6 +96,7 @@ class _PasswordInputState extends State<_PasswordInput> {
           obscureText: _obscureText,
           suffixIcon: IconButton(
             icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
+            color: context.theme.unselectedWidgetColor,
             onPressed: _toggleObscureText,
           ),
         );

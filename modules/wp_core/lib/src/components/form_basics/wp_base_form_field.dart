@@ -31,12 +31,15 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
     extends State<T> {
   InputDecoration getInputDecoration({
     required TextEditingController controller,
+    required FocusNode focusNode,
     required void Function()? onPressed,
   }) {
     return InputDecoration(
       border: InputBorder.none,
       labelText: widget.labelText,
-      labelStyle: context.textTheme.kLabel2,
+      labelStyle: context.textTheme.kLabel2.copyWith(
+        color: focusNode.hasFocus ? context.theme.primaryColor : null,
+      ),
       contentPadding: const EdgeInsets.all(16.0),
       counterText: '',
       suffixIcon:
@@ -49,6 +52,7 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
                     child: IconButton(
                       icon: const Icon(Icons.cancel, size: 24.0),
                       onPressed: onPressed,
+                      color: context.theme.unselectedWidgetColor,
                     ),
                   ),
                   widget.suffixIcon!,
@@ -58,6 +62,7 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
                 visible: controller.text.isNotEmpty,
                 child: IconButton(
                   icon: const Icon(Icons.cancel, size: 24.0),
+                  color: context.theme.unselectedWidgetColor,
                   onPressed: onPressed,
                 ),
               ),

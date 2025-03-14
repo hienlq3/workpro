@@ -16,6 +16,7 @@ _$CodeModelImpl _$$CodeModelImplFromJson(Map<String, dynamic> json) =>
       clientId: json['clientId'] as String?,
       tenantId: json['tenantId'] as String?,
       code: json['code'] as String?,
+      taskbarColor: json['taskbarColor'] as String?,
     );
 
 Map<String, dynamic> _$$CodeModelImplToJson(_$CodeModelImpl instance) =>
@@ -26,6 +27,7 @@ Map<String, dynamic> _$$CodeModelImplToJson(_$CodeModelImpl instance) =>
       'clientId': instance.clientId,
       'tenantId': instance.tenantId,
       'code': instance.code,
+      'taskbarColor': instance.taskbarColor,
     };
 
 const _$CodeSSOTypeEnumMap = {

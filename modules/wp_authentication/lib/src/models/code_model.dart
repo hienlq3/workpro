@@ -15,6 +15,7 @@ class CodeModel with _$CodeModel {
     final String? clientId,
     final String? tenantId,
     final String? code,
+    final String? taskbarColor,
   }) = _CodeModel;
 
   factory CodeModel.fromJson(Map<String, dynamic> json) =>
