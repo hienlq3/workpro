@@ -22,4 +22,8 @@ class AppConstraint {
       sproUrl,
     );
   }
+
+  static Future<bool> clearAllCommon() async {
+    return await DefaultKeyValueStorage().clearAllCommon();
+  }
 }

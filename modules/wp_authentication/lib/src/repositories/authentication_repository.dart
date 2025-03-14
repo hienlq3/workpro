@@ -60,6 +60,7 @@ class AuthenticationRepository {
 
   void logOutCode() {
     _baseUrlNotifier.resetBaseUrl();
+    AppConstraint.clearAllCommon();
     _controller.add(AuthenticationStatus.unknown);
   }
 
@@ -71,6 +72,9 @@ class AuthenticationRepository {
       final codeResult = CodeModel.fromJson(result);
       if (!codeResult.validateUrlSpro()) {
         _baseUrlNotifier.baseUrl = codeResult.urlSpro;
+      }
+      if (codeResult.code?.isNotEmpty == true) {
+        await AppConstraint.setCode(codeResult.code!);
       }
       if (codeResult.taskbarColor?.isNotEmpty == true) {
         AppColor.setPrimaryColor(codeResult.taskbarColor!);
