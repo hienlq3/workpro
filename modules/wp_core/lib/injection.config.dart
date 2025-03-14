@@ -18,6 +18,9 @@ import 'package:wp_core/src/service/base_service.dart' as _i909;
 import 'package:wp_core/src/service/my_approval_service.dart' as _i812;
 import 'package:wp_core/src/service/system_property_service.dart' as _i956;
 import 'package:wp_core/src/service/user_service.dart' as _i407;
+import 'package:wp_core/src/utils/default_key_value_storage.dart' as _i514;
+import 'package:wp_core/src/utils/notifier/base_url_notifier.dart' as _i609;
+import 'package:wp_core/src/utils/notifier/headers_notifier.dart' as _i660;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -32,7 +35,17 @@ extension GetItInjectableX on _i174.GetIt {
       () => registerModule.prefs,
       preResolve: true,
     );
-    gh.lazySingleton<_i361.Dio>(() => dioModule.dio());
+    gh.singleton<_i514.DefaultKeyValueStorage>(
+      () => registerModule.provideDefaultKeyValueStorage(),
+    );
+    gh.lazySingleton<_i609.BaseUrlNotifier>(() => _i609.BaseUrlNotifier());
+    gh.lazySingleton<_i660.HeadersNotifier>(() => _i660.HeadersNotifier());
+    gh.lazySingleton<_i361.Dio>(
+      () => dioModule.dio(
+        baseUrlNotifier: gh<_i609.BaseUrlNotifier>(),
+        headersNotifier: gh<_i660.HeadersNotifier>(),
+      ),
+    );
     gh.singleton<_i909.BaseService>(
       () => _i909.BaseService(dio: gh<_i361.Dio>()),
     );

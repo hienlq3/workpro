@@ -12,8 +12,6 @@ import 'package:wp_localization/wp_localization.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Bloc.observer = AppBlocObserver();
-
   await configureDependencies();
 
   configureAuthenticationDependencies();

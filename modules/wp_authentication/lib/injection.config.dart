@@ -30,6 +30,8 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i26.AuthenticationRepository(
         systemPropertyService: gh<_i70.SystemPropertyService>(),
         userService: gh<_i70.UserService>(),
+        baseUrlNotifier: gh<_i70.BaseUrlNotifier>(),
+        headersNotifier: gh<_i70.HeadersNotifier>(),
       ),
     );
     gh.factory<_i20.SubmitCodeBloc>(

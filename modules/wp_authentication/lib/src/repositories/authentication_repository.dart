@@ -1,11 +1,9 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:wp_authentication/src/models/auth_model.dart';
 import 'package:wp_authentication/src/models/code_model.dart';
 import 'package:wp_core/core_package.dart';
-import 'package:wp_core/injection.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
@@ -14,12 +12,18 @@ class AuthenticationRepository {
   final _controller = StreamController<AuthenticationStatus>();
   final SystemPropertyService _systemPropertyService;
   final UserService _userService;
+  final BaseUrlNotifier _baseUrlNotifier;
+  final HeadersNotifier _headersNotifier;
 
   AuthenticationRepository({
     required SystemPropertyService systemPropertyService,
     required UserService userService,
+    required BaseUrlNotifier baseUrlNotifier,
+    required HeadersNotifier headersNotifier,
   }) : _systemPropertyService = systemPropertyService,
-       _userService = userService;
+       _userService = userService,
+       _baseUrlNotifier = baseUrlNotifier,
+       _headersNotifier = headersNotifier;
 
   Stream<AuthenticationStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
@@ -42,7 +46,7 @@ class AuthenticationRepository {
       );
       final userInfo = authResponse.userInfo;
       if (userInfo != null) {
-        getIt<Dio>().options.headers[AppConstain.kSToken] = userInfo.loginToken;
+        _headersNotifier.updateHeader(AppInfo.kSToken, userInfo.loginToken);
         _controller.add(AuthenticationStatus.authenticated);
       }
     } catch (error) {
@@ -55,6 +59,7 @@ class AuthenticationRepository {
   }
 
   void logOutCode() {
+    _baseUrlNotifier.resetBaseUrl();
     _controller.add(AuthenticationStatus.unknown);
   }
 
@@ -64,7 +69,9 @@ class AuthenticationRepository {
     try {
       final result = await _systemPropertyService.getCode(code: code);
       final codeResult = CodeModel.fromJson(result);
-      getIt<Dio>().options.baseUrl = codeResult.urlSpro;
+      if (!codeResult.validateUrlSpro()) {
+        _baseUrlNotifier.baseUrl = codeResult.urlSpro;
+      }
       if (codeResult.taskbarColor?.isNotEmpty == true) {
         AppColor.setPrimaryColor(codeResult.taskbarColor!);
       }
