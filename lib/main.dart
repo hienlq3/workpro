@@ -74,6 +74,7 @@ class _AppViewState extends State<AppView> {
       valueListenable: AppColor.wpPrimaryColor,
       builder: (context, primaryColor, child) {
         return MaterialApp(
+          title: AppInfo.kTitle,
           navigatorKey: _navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
