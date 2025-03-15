@@ -5,7 +5,7 @@ part 'base_response_model.freezed.dart';
 part 'base_response_model.g.dart';
 
 @Freezed(genericArgumentFactories: true)
-class BaseResponseModel<T> with _$BaseResponseModel<T> {
+abstract class BaseResponseModel<T> with _$BaseResponseModel<T> {
   const factory BaseResponseModel({
     @JsonKey(name: 'ResultCode') final int? resultCode,
     @JsonKey(name: 'Message') final String? message,
@@ -16,6 +16,7 @@ class BaseResponseModel<T> with _$BaseResponseModel<T> {
   }) = _BaseResponseModel;
 
   factory BaseResponseModel.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
-      _$BaseResponseModelFromJson(json, fromJsonT);
+    Map<String, dynamic> json,
+    T Function(Object?) fromJsonT,
+  ) => _$BaseResponseModelFromJson(json, fromJsonT);
 }

@@ -5,7 +5,7 @@ part 'code_model.freezed.dart';
 part 'code_model.g.dart';
 
 @freezed
-class CodeModel with _$CodeModel {
+abstract class CodeModel with _$CodeModel {
   const CodeModel._();
 
   const factory CodeModel({

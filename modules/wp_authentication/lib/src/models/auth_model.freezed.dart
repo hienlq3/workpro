@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,272 +10,151 @@ part of 'auth_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-AuthModel _$AuthModelFromJson(Map<String, dynamic> json) {
-  return _AuthModel.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AuthModel {
-  @JsonKey(name: 'Email')
-  String get email => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
-  String get value => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Avatar')
-  String get avatar => throw _privateConstructorUsedError;
-  String get loginToken => throw _privateConstructorUsedError;
+
+@JsonKey(name: 'Email') String get email; String get text; String get value;@JsonKey(name: 'Avatar') String get avatar; String get loginToken;
+/// Create a copy of AuthModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AuthModelCopyWith<AuthModel> get copyWith => _$AuthModelCopyWithImpl<AuthModel>(this as AuthModel, _$identity);
 
   /// Serializes this AuthModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of AuthModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuthModelCopyWith<AuthModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthModel&&(identical(other.email, email) || other.email == email)&&(identical(other.text, text) || other.text == text)&&(identical(other.value, value) || other.value == value)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.loginToken, loginToken) || other.loginToken == loginToken));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,email,text,value,avatar,loginToken);
+
+@override
+String toString() {
+  return 'AuthModel(email: $email, text: $text, value: $value, avatar: $avatar, loginToken: $loginToken)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AuthModelCopyWith<$Res> {
-  factory $AuthModelCopyWith(AuthModel value, $Res Function(AuthModel) then) =
-      _$AuthModelCopyWithImpl<$Res, AuthModel>;
-  @useResult
-  $Res call({
-    @JsonKey(name: 'Email') String email,
-    String text,
-    String value,
-    @JsonKey(name: 'Avatar') String avatar,
-    String loginToken,
-  });
-}
+abstract mixin class $AuthModelCopyWith<$Res>  {
+  factory $AuthModelCopyWith(AuthModel value, $Res Function(AuthModel) _then) = _$AuthModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: 'Email') String email, String text, String value,@JsonKey(name: 'Avatar') String avatar, String loginToken
+});
 
+
+
+
+}
 /// @nodoc
-class _$AuthModelCopyWithImpl<$Res, $Val extends AuthModel>
+class _$AuthModelCopyWithImpl<$Res>
     implements $AuthModelCopyWith<$Res> {
-  _$AuthModelCopyWithImpl(this._value, this._then);
+  _$AuthModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AuthModel _self;
+  final $Res Function(AuthModel) _then;
 
-  /// Create a copy of AuthModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = null,
-    Object? text = null,
-    Object? value = null,
-    Object? avatar = null,
-    Object? loginToken = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            email:
-                null == email
-                    ? _value.email
-                    : email // ignore: cast_nullable_to_non_nullable
-                        as String,
-            text:
-                null == text
-                    ? _value.text
-                    : text // ignore: cast_nullable_to_non_nullable
-                        as String,
-            value:
-                null == value
-                    ? _value.value
-                    : value // ignore: cast_nullable_to_non_nullable
-                        as String,
-            avatar:
-                null == avatar
-                    ? _value.avatar
-                    : avatar // ignore: cast_nullable_to_non_nullable
-                        as String,
-            loginToken:
-                null == loginToken
-                    ? _value.loginToken
-                    : loginToken // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of AuthModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? text = null,Object? value = null,Object? avatar = null,Object? loginToken = null,}) {
+  return _then(_self.copyWith(
+email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as String,avatar: null == avatar ? _self.avatar : avatar // ignore: cast_nullable_to_non_nullable
+as String,loginToken: null == loginToken ? _self.loginToken : loginToken // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AuthModelImplCopyWith<$Res>
-    implements $AuthModelCopyWith<$Res> {
-  factory _$$AuthModelImplCopyWith(
-    _$AuthModelImpl value,
-    $Res Function(_$AuthModelImpl) then,
-  ) = __$$AuthModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    @JsonKey(name: 'Email') String email,
-    String text,
-    String value,
-    @JsonKey(name: 'Avatar') String avatar,
-    String loginToken,
-  });
 }
 
-/// @nodoc
-class __$$AuthModelImplCopyWithImpl<$Res>
-    extends _$AuthModelCopyWithImpl<$Res, _$AuthModelImpl>
-    implements _$$AuthModelImplCopyWith<$Res> {
-  __$$AuthModelImplCopyWithImpl(
-    _$AuthModelImpl _value,
-    $Res Function(_$AuthModelImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AuthModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = null,
-    Object? text = null,
-    Object? value = null,
-    Object? avatar = null,
-    Object? loginToken = null,
-  }) {
-    return _then(
-      _$AuthModelImpl(
-        email:
-            null == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                    as String,
-        text:
-            null == text
-                ? _value.text
-                : text // ignore: cast_nullable_to_non_nullable
-                    as String,
-        value:
-            null == value
-                ? _value.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as String,
-        avatar:
-            null == avatar
-                ? _value.avatar
-                : avatar // ignore: cast_nullable_to_non_nullable
-                    as String,
-        loginToken:
-            null == loginToken
-                ? _value.loginToken
-                : loginToken // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$AuthModelImpl extends _AuthModel {
-  const _$AuthModelImpl({
-    @JsonKey(name: 'Email') this.email = '',
-    this.text = '',
-    this.value = '',
-    @JsonKey(name: 'Avatar') this.avatar = '',
-    this.loginToken = '',
-  }) : super._();
+class _AuthModel extends AuthModel {
+  const _AuthModel({@JsonKey(name: 'Email') this.email = '', this.text = '', this.value = '', @JsonKey(name: 'Avatar') this.avatar = '', this.loginToken = ''}): super._();
+  factory _AuthModel.fromJson(Map<String, dynamic> json) => _$AuthModelFromJson(json);
 
-  factory _$AuthModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuthModelImplFromJson(json);
+@override@JsonKey(name: 'Email') final  String email;
+@override@JsonKey() final  String text;
+@override@JsonKey() final  String value;
+@override@JsonKey(name: 'Avatar') final  String avatar;
+@override@JsonKey() final  String loginToken;
 
-  @override
-  @JsonKey(name: 'Email')
-  final String email;
-  @override
-  @JsonKey()
-  final String text;
-  @override
-  @JsonKey()
-  final String value;
-  @override
-  @JsonKey(name: 'Avatar')
-  final String avatar;
-  @override
-  @JsonKey()
-  final String loginToken;
+/// Create a copy of AuthModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AuthModelCopyWith<_AuthModel> get copyWith => __$AuthModelCopyWithImpl<_AuthModel>(this, _$identity);
 
-  @override
-  String toString() {
-    return 'AuthModel(email: $email, text: $text, value: $value, avatar: $avatar, loginToken: $loginToken)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthModelImpl &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.text, text) || other.text == text) &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            (identical(other.loginToken, loginToken) ||
-                other.loginToken == loginToken));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, email, text, value, avatar, loginToken);
-
-  /// Create a copy of AuthModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthModelImplCopyWith<_$AuthModelImpl> get copyWith =>
-      __$$AuthModelImplCopyWithImpl<_$AuthModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AuthModelImplToJson(this);
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$AuthModelToJson(this, );
 }
 
-abstract class _AuthModel extends AuthModel {
-  const factory _AuthModel({
-    @JsonKey(name: 'Email') final String email,
-    final String text,
-    final String value,
-    @JsonKey(name: 'Avatar') final String avatar,
-    final String loginToken,
-  }) = _$AuthModelImpl;
-  const _AuthModel._() : super._();
-
-  factory _AuthModel.fromJson(Map<String, dynamic> json) =
-      _$AuthModelImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'Email')
-  String get email;
-  @override
-  String get text;
-  @override
-  String get value;
-  @override
-  @JsonKey(name: 'Avatar')
-  String get avatar;
-  @override
-  String get loginToken;
-
-  /// Create a copy of AuthModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthModelImplCopyWith<_$AuthModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthModel&&(identical(other.email, email) || other.email == email)&&(identical(other.text, text) || other.text == text)&&(identical(other.value, value) || other.value == value)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.loginToken, loginToken) || other.loginToken == loginToken));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,email,text,value,avatar,loginToken);
+
+@override
+String toString() {
+  return 'AuthModel(email: $email, text: $text, value: $value, avatar: $avatar, loginToken: $loginToken)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AuthModelCopyWith<$Res> implements $AuthModelCopyWith<$Res> {
+  factory _$AuthModelCopyWith(_AuthModel value, $Res Function(_AuthModel) _then) = __$AuthModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: 'Email') String email, String text, String value,@JsonKey(name: 'Avatar') String avatar, String loginToken
+});
+
+
+
+
+}
+/// @nodoc
+class __$AuthModelCopyWithImpl<$Res>
+    implements _$AuthModelCopyWith<$Res> {
+  __$AuthModelCopyWithImpl(this._self, this._then);
+
+  final _AuthModel _self;
+  final $Res Function(_AuthModel) _then;
+
+/// Create a copy of AuthModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? text = null,Object? value = null,Object? avatar = null,Object? loginToken = null,}) {
+  return _then(_AuthModel(
+email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as String,avatar: null == avatar ? _self.avatar : avatar // ignore: cast_nullable_to_non_nullable
+as String,loginToken: null == loginToken ? _self.loginToken : loginToken // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on
