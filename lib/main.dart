@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/authentication/bloc/authentication_bloc.dart';
-import 'package:flutter_application_1/home/view/home_page.dart';
-import 'package:flutter_application_1/splash/view/splash_page.dart';
+import 'package:flutter_application_1/src/routing/app_router.dart';
+import 'package:flutter_application_1/src/authentication/bloc/authentication_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/authentication_package.dart';
 import 'package:wp_authentication/injection.dart';
@@ -64,18 +63,13 @@ class AppView extends StatefulWidget {
 }
 
 class _AppViewState extends State<AppView> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-
-  NavigatorState get _navigator => _navigatorKey.currentState!;
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Color>(
       valueListenable: AppColor.wpPrimaryColor,
       builder: (context, primaryColor, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           title: AppInfo.kTitle,
-          navigatorKey: _navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             useMaterial3: false,
@@ -94,28 +88,14 @@ class _AppViewState extends State<AppView> {
           builder: (context, child) {
             return BlocListener<AuthenticationBloc, AuthenticationState>(
               listener: (context, state) {
-                switch (state.status) {
-                  case AuthenticationStatus.authenticated:
-                    _navigator.pushAndRemoveUntil<void>(
-                      HomePage.route(),
-                      (route) => false,
-                    );
-                  case AuthenticationStatus.unauthenticated:
-                    _navigator.pushAndRemoveUntil<void>(
-                      LoginPage.route(),
-                      (route) => false,
-                    );
-                  case AuthenticationStatus.unknown:
-                    _navigator.pushAndRemoveUntil<void>(
-                      SubmitCodePage.route(),
-                      (route) => false,
-                    );
-                }
+                AppRouter.router.refresh();
               },
               child: child,
             );
           },
-          onGenerateRoute: (_) => SplashPage.route(),
+          routeInformationParser: AppRouter.router.routeInformationParser,
+          routerDelegate: AppRouter.router.routerDelegate,
+          routeInformationProvider: AppRouter.router.routeInformationProvider,
         );
       },
     );

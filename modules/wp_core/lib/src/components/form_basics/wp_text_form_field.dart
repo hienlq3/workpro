@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wp_core/src/components/form_basics/wp_base_form_field.dart';
 import 'package:wp_core/src/components/form_basics/wp_wrapper_form.dart';
 import 'package:wp_core/src/config/app_theme.dart';
-import 'package:wp_core/src/utils/extension/build_context.dart';
+import 'package:wp_core/src/utils/extensions/build_context.dart';
 
 class WpTextFormField<String> extends WpBaseFormField {
   final bool obscureText;

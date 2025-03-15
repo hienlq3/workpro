@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wp_core/src/config/app_radius.dart';
 import 'package:wp_core/src/config/app_spacing.dart';
 import 'package:wp_core/src/config/app_theme.dart';
-import 'package:wp_core/src/utils/extension/build_context.dart';
+import 'package:wp_core/src/utils/extensions/build_context.dart';
 
 class WpBorderWrapper<T> extends StatelessWidget {
   final String? errorText;
