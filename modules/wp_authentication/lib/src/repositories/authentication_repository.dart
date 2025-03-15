@@ -46,8 +46,11 @@ class AuthenticationRepository {
       );
       final userInfo = authResponse.userInfo;
       if (userInfo != null) {
-        _headersNotifier.updateHeader(AppInfo.kSToken, userInfo.loginToken);
-        _controller.add(AuthenticationStatus.authenticated);
+        if (!userInfo.validateLoginToken()) {
+          _headersNotifier.updateHeader(AppInfo.kSToken, userInfo.loginToken);
+          await AppConstraint.setSproToken(userInfo.loginToken);
+          _controller.add(AuthenticationStatus.authenticated);
+        }
       }
     } catch (error) {
       throw error.toString();
@@ -55,12 +58,14 @@ class AuthenticationRepository {
   }
 
   void logOut() {
+    AppConstraint.clearAllEncrypted();
     _controller.add(AuthenticationStatus.unauthenticated);
   }
 
   void logOutCode() {
     _baseUrlNotifier.resetBaseUrl();
     AppConstraint.clearAllCommon();
+    AppConstraint.clearAllEncrypted();
     _controller.add(AuthenticationStatus.unknown);
   }
 
@@ -82,6 +87,13 @@ class AuthenticationRepository {
       _controller.add(AuthenticationStatus.unauthenticated);
     } catch (error) {
       throw 'Failed to submit code!';
+    }
+  }
+
+  Future<void> handleTokenAvailable() async {
+    final sproToken = await AppConstraint.getSproToken();
+    if (sproToken?.isNotEmpty == true) {
+      _controller.add(AuthenticationStatus.authenticated);
     }
   }
 }

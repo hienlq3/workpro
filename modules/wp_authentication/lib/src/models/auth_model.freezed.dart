@@ -180,14 +180,14 @@ class __$$AuthModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$AuthModelImpl implements _AuthModel {
+class _$AuthModelImpl extends _AuthModel {
   const _$AuthModelImpl({
     @JsonKey(name: 'Email') this.email = '',
     this.text = '',
     this.value = '',
     @JsonKey(name: 'Avatar') this.avatar = '',
     this.loginToken = '',
-  });
+  }) : super._();
 
   factory _$AuthModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthModelImplFromJson(json);
@@ -245,7 +245,7 @@ class _$AuthModelImpl implements _AuthModel {
   }
 }
 
-abstract class _AuthModel implements AuthModel {
+abstract class _AuthModel extends AuthModel {
   const factory _AuthModel({
     @JsonKey(name: 'Email') final String email,
     final String text,
@@ -253,6 +253,7 @@ abstract class _AuthModel implements AuthModel {
     @JsonKey(name: 'Avatar') final String avatar,
     final String loginToken,
   }) = _$AuthModelImpl;
+  const _AuthModel._() : super._();
 
   factory _AuthModel.fromJson(Map<String, dynamic> json) =
       _$AuthModelImpl.fromJson;

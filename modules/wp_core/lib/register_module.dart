@@ -5,6 +5,7 @@ import 'package:wp_core/injection.dart';
 import 'package:wp_core/src/utils/default_key_value_storage.dart';
 import 'package:wp_core/src/utils/notifier/base_url_notifier.dart';
 import 'package:wp_core/src/utils/notifier/headers_notifier.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 @module
 abstract class DioModule {
@@ -39,11 +40,14 @@ abstract class RegisterModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   @singleton
+  FlutterSecureStorage get secureStorage => FlutterSecureStorage();
+
+  @singleton
   DefaultKeyValueStorage provideDefaultKeyValueStorage() {
     final defaultKeyValueStorage = DefaultKeyValueStorage();
     defaultKeyValueStorage.init(
       sharedPrefs: getIt<SharedPreferences>(),
-      // secureStorage: getIt<FlutterSecureStorage>(),
+      secureStorage: getIt<FlutterSecureStorage>(),
     );
     return defaultKeyValueStorage;
   }

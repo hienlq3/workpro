@@ -23,7 +23,22 @@ class AppConstraint {
     );
   }
 
+  static Future<String?> getSproToken() {
+    return DefaultKeyValueStorage().getEncrypted(AppInfo.kSproTokenKey);
+  }
+
+  static Future<bool> setSproToken(String token) async {
+    return await DefaultKeyValueStorage().setEncrypted(
+      AppInfo.kSproTokenKey,
+      token,
+    );
+  }
+
   static Future<bool> clearAllCommon() async {
     return await DefaultKeyValueStorage().clearAllCommon();
+  }
+
+  static Future<bool> clearAllEncrypted() async {
+    return await DefaultKeyValueStorage().clearAllEncrypted();
   }
 }

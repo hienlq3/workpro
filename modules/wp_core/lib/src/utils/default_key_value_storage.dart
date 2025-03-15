@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
-// import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class DefaultKeyValueStorage {
   static SharedPreferences? _sharedPrefs;
 
-  // static FlutterSecureStorage? _secureStorage;
+  static FlutterSecureStorage? _secureStorage;
 
   static DefaultKeyValueStorage? _instance;
 
@@ -17,10 +17,10 @@ class DefaultKeyValueStorage {
 
   void init({
     required SharedPreferences sharedPrefs,
-    // required FlutterSecureStorage secureStorage,
+    required FlutterSecureStorage secureStorage,
   }) async {
     _sharedPrefs = sharedPrefs;
-    // _secureStorage = secureStorage;
+    _secureStorage = secureStorage;
   }
 
   T? getCommon<T>(String key) {
@@ -43,14 +43,14 @@ class DefaultKeyValueStorage {
     }
   }
 
-  // Future<String?> getEncrypted(String key) {
-  //   try {
-  //     return _secureStorage!.read(key: key);
-  //   } on PlatformException catch (ex) {
-  //     debugPrint('$ex');
-  //     return Future<String?>.value();
-  //   }
-  // }
+  Future<String?> getEncrypted(String key) {
+    try {
+      return _secureStorage!.read(key: key);
+    } on PlatformException catch (ex) {
+      debugPrint('$ex');
+      return Future<String?>.value();
+    }
+  }
 
   Future<bool> setCommon<T>(String key, T value) async {
     if (T == String) {
@@ -77,35 +77,35 @@ class DefaultKeyValueStorage {
     }
   }
 
-  // Future<bool> clearEncrypted(String key) async {
-  //   try {
-  //     await _secureStorage!.delete(key: key);
-  //     return Future.value(true);
-  //   } on PlatformException catch (ex) {
-  //     debugPrint('$ex');
-  //     return Future.value(false);
-  //   }
-  // }
+  Future<bool> clearEncrypted(String key) async {
+    try {
+      await _secureStorage!.delete(key: key);
+      return Future.value(true);
+    } on PlatformException catch (ex) {
+      debugPrint('$ex');
+      return Future.value(false);
+    }
+  }
 
-  // Future<bool> setEncrypted(String key, String value) {
-  //   try {
-  //     _secureStorage!.write(key: key, value: value);
-  //     return Future.value(true);
-  //   } on PlatformException catch (ex) {
-  //     debugPrint('$ex');
-  //     return Future.value(false);
-  //   }
-  // }
+  Future<bool> setEncrypted(String key, String value) {
+    try {
+      _secureStorage!.write(key: key, value: value);
+      return Future.value(true);
+    } on PlatformException catch (ex) {
+      debugPrint('$ex');
+      return Future.value(false);
+    }
+  }
 
   Future<bool> clearAllCommon() => _sharedPrefs!.clear();
 
-  // Future<bool> clearAllEncrypted() async {
-  //   try {
-  //     await _secureStorage!.deleteAll();
-  //     return true;
-  //   } on PlatformException catch (ex) {
-  //     debugPrint('$ex');
-  //     return false;
-  //   }
-  // }
+  Future<bool> clearAllEncrypted() async {
+    try {
+      await _secureStorage!.deleteAll();
+      return true;
+    } on PlatformException catch (ex) {
+      debugPrint('$ex');
+      return false;
+    }
+  }
 }

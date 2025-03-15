@@ -34,13 +34,13 @@ extension GetItInjectableX on _i174.GetIt {
         headersNotifier: gh<_i70.HeadersNotifier>(),
       ),
     );
-    gh.factory<_i318.LoginBloc>(
-      () => _i318.LoginBloc(
+    gh.factory<_i20.SubmitCodeBloc>(
+      () => _i20.SubmitCodeBloc(
         authenticationRepository: gh<_i26.AuthenticationRepository>(),
       ),
     );
-    gh.factory<_i20.SubmitCodeBloc>(
-      () => _i20.SubmitCodeBloc(
+    gh.factory<_i318.LoginBloc>(
+      () => _i318.LoginBloc(
         authenticationRepository: gh<_i26.AuthenticationRepository>(),
       ),
     );
