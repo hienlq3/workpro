@@ -76,9 +76,9 @@ class AuthenticationRepository {
       if (codeResult.code?.isNotEmpty == true) {
         await AppConstraint.setCode(codeResult.code!);
       }
-      if (codeResult.taskbarColor?.isNotEmpty == true) {
-        AppColor.setPrimaryColor(codeResult.taskbarColor!);
-      }
+      // if (codeResult.taskbarColor?.isNotEmpty == true) {
+      //   AppColor.setPrimaryColor(codeResult.taskbarColor!);
+      // }
       _controller.add(AuthenticationStatus.unauthenticated);
     } catch (error) {
       throw 'Failed to submit code!';

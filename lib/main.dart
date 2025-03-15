@@ -18,36 +18,17 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late final AuthenticationRepository _authenticationRepository;
-
-  @override
-  void initState() {
-    super.initState();
-    _authenticationRepository = getIt<AuthenticationRepository>();
-  }
-
-  @override
-  void dispose() {
-    _authenticationRepository.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
-      value: _authenticationRepository,
+      value: getIt<AuthenticationRepository>(),
       child: BlocProvider(
         lazy: false,
         create: (_) => AuthenticationBloc(
-          authenticationRepository: _authenticationRepository,
+          authenticationRepository: getIt<AuthenticationRepository>(),
         )..add(AuthenticationSubscriptionRequested()),
         child: const AppView(),
       ),
