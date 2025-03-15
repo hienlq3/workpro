@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wp_core/injection.dart';
+import 'package:wp_core/src/utils/app_interceptors.dart';
 import 'package:wp_core/src/utils/default_key_value_storage.dart';
 import 'package:wp_core/src/utils/notifier/base_url_notifier.dart';
 import 'package:wp_core/src/utils/notifier/headers_notifier.dart';
@@ -21,6 +22,8 @@ abstract class DioModule {
     );
 
     final dio = Dio(options);
+
+    dio.interceptors.add(AppInterceptors());
 
     baseUrlNotifier.addListener(() {
       dio.options.baseUrl = baseUrlNotifier.baseUrl;
