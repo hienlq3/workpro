@@ -18,6 +18,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get passwordLabel => 'Mật khẩu';
 
   @override
+  String get languageLabel => 'Ngôn ngữ';
+
+  @override
   String get codeLabel => 'Mã';
 
   @override

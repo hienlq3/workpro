@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get passwordLabel;
 
+  /// No description provided for @languageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get languageLabel;
+
   /// No description provided for @codeLabel.
   ///
   /// In en, this message translates to:

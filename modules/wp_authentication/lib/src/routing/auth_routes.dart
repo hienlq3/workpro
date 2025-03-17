@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:wp_authentication/src/screens/login/login.dart';
+import 'package:wp_authentication/src/screens/more/view/more_page.dart';
 import 'package:wp_authentication/src/screens/submit_code/submit_code.dart';
 import 'package:wp_core/core_package.dart';
 
@@ -9,4 +10,5 @@ final List<GoRoute> authRoutes = [
     path: AppRoutes.kSubmitCode,
     builder: (context, state) => SubmitCodePage(),
   ),
+  GoRoute(path: AppRoutes.kMore, builder: (context, state) => MorePage()),
 ];

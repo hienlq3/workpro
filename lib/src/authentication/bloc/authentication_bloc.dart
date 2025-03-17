@@ -16,6 +16,7 @@ class AuthenticationBloc
         super(const AuthenticationState.unknown()) {
     on<AuthenticationSubscriptionRequested>(_onSubscriptionRequested);
     on<AuthenticationLogoutPressed>(_onLogoutPressed);
+    add(AuthenticationSubscriptionRequested());
   }
 
   final AuthenticationRepository _authenticationRepository;

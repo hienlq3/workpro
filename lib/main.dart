@@ -25,11 +25,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
       value: getIt<AuthenticationRepository>(),
-      child: BlocProvider(
-        lazy: false,
-        create: (_) => AuthenticationBloc(
-          authenticationRepository: getIt<AuthenticationRepository>(),
-        )..add(AuthenticationSubscriptionRequested()),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<AuthenticationBloc>(
+              lazy: false,
+              create: (context) => AuthenticationBloc(
+                  authenticationRepository: getIt<AuthenticationRepository>())),
+          BlocProvider<LocalizationBloc>(
+            create: (context) => LocalizationBloc(),
+          ),
+        ],
         child: const AppView(),
       ),
     );
@@ -49,34 +54,41 @@ class _AppViewState extends State<AppView> {
     return ValueListenableBuilder<Color>(
       valueListenable: AppColor.wpPrimaryColor,
       builder: (context, primaryColor, child) {
-        return MaterialApp.router(
-          title: AppInfo.kTitle,
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            useMaterial3: false,
-            fontFamily: 'Inter',
-            primaryColor: primaryColor,
-            scaffoldBackgroundColor: Colors.white,
-            elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: primaryColor,
+        return BlocBuilder<LocalizationBloc, LocalizationState>(
+          buildWhen: (previous, current) => previous.locale != current.locale,
+          builder: (context, state) {
+            return MaterialApp.router(
+              title: AppInfo.kTitle,
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                useMaterial3: false,
+                fontFamily: 'Inter',
+                primaryColor: primaryColor,
+                scaffoldBackgroundColor: Colors.white,
+                elevatedButtonTheme: ElevatedButtonThemeData(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: primaryColor,
+                  ),
+                ),
               ),
-            ),
-          ),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          builder: (context, child) {
-            return BlocListener<AuthenticationBloc, AuthenticationState>(
-              listener: (context, state) {
-                AppRouter.router.refresh();
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: state.supportedLocales,
+              locale: state.locale,
+              builder: (context, child) {
+                return BlocListener<AuthenticationBloc, AuthenticationState>(
+                  listener: (context, state) {
+                    AppRouter.router.refresh();
+                  },
+                  child: child,
+                );
               },
-              child: child,
+              routeInformationParser: AppRouter.router.routeInformationParser,
+              routerDelegate: AppRouter.router.routerDelegate,
+              routeInformationProvider:
+                  AppRouter.router.routeInformationProvider,
             );
           },
-          routeInformationParser: AppRouter.router.routeInformationParser,
-          routerDelegate: AppRouter.router.routerDelegate,
-          routeInformationProvider: AppRouter.router.routeInformationProvider,
         );
       },
     );

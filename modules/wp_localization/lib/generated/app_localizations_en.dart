@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordLabel => 'Password';
 
   @override
+  String get languageLabel => 'Language';
+
+  @override
   String get codeLabel => 'Code';
 
   @override

@@ -27,7 +27,7 @@ abstract class AppRouter {
       switch (status) {
         case AuthenticationStatus.authenticated:
           if (state.matchedLocation.equalsIgnoreCase(AppRoutes.kLogin)) {
-            return AppRoutes.kHome;
+            return AppRoutes.kMore;
           } else {
             return null;
           }
