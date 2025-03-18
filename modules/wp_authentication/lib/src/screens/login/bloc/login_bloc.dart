@@ -15,6 +15,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSubmitted>(_onSubmitted);
     on<LogoutCodeSubmitted>(_onLogoutCodeSubmitted);
+    on<CheckTokenRequested>(_onCheckTokenRequested);
+    add(CheckTokenRequested());
   }
   final AuthenticationRepository _authenticationRepository;
 
@@ -51,7 +53,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void _onLogoutCodeSubmitted(
     LogoutCodeSubmitted event,
     Emitter<LoginState> emit,
-  ) {
-    _authenticationRepository.logOutCode();
-  }
+  ) => _authenticationRepository.logOutCode();
+
+  void _onCheckTokenRequested(
+    CheckTokenRequested event,
+    Emitter<LoginState> emit,
+  ) => _authenticationRepository.handleTokenAvailable();
 }

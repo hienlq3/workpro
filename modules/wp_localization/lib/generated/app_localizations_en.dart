@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordLabel => 'Password';
 
   @override
+  String get languageLabel => 'Language';
+
+  @override
   String get codeLabel => 'Code';
 
   @override
@@ -31,4 +34,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get submitBtn => 'Submit';
+
+  @override
+  String get languageSelection => 'Select Language';
+
+  @override
+  String get more_btn_logout => 'Logout';
 }

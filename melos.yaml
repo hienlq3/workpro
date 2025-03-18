@@ -24,3 +24,9 @@ scripts:
   pub-get:
     run: melos exec -- "flutter pub get"
     description: Run pub get for all packages
+  
+  upgrade:
+    run: |
+      melos exec -- "flutter pub upgrade --major-versions"
+      flutter upgrade
+    description: Upgrade all packages and Flutter to the latest version

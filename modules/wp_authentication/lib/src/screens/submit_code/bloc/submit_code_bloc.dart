@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:wp_authentication/src/repositories/authentication_repository.dart';
+import 'package:wp_core/wp_core.dart';
 
 part 'submit_code_event.dart';
 part 'submit_code_state.dart';
@@ -15,6 +16,10 @@ class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
       super(SubmitCodeState()) {
     on<CodeChanged>(_onCodeChanged);
     on<CodeSubmitted>(_onCodeSubmitted);
+    if (AppConstraint.getCode().isNotEmpty) {
+      add(CodeChanged(code: AppConstraint.getCode()));
+      add(CodeSubmitted());
+    }
   }
 
   void _onCodeChanged(CodeChanged event, Emitter<SubmitCodeState> emit) =>

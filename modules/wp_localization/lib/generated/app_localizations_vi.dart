@@ -18,6 +18,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get passwordLabel => 'Mật khẩu';
 
   @override
+  String get languageLabel => 'Ngôn ngữ';
+
+  @override
   String get codeLabel => 'Mã';
 
   @override
@@ -31,4 +34,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get submitBtn => 'Gửi';
+
+  @override
+  String get languageSelection => 'Lựa chọn ngôn ngữ';
+
+  @override
+  String get more_btn_logout => 'Đăng xuất';
 }

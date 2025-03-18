@@ -6,10 +6,10 @@ part of 'base_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BaseResponseModelImpl<T> _$$BaseResponseModelImplFromJson<T>(
+_BaseResponseModel<T> _$BaseResponseModelFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
-) => _$BaseResponseModelImpl<T>(
+) => _BaseResponseModel<T>(
   resultCode: (json['ResultCode'] as num?)?.toInt(),
   message: json['Message'] as String?,
   data: _$nullableGenericFromJson(json['Data'], fromJsonT),
@@ -18,8 +18,8 @@ _$BaseResponseModelImpl<T> _$$BaseResponseModelImplFromJson<T>(
   language: json['language'] as String?,
 );
 
-Map<String, dynamic> _$$BaseResponseModelImplToJson<T>(
-  _$BaseResponseModelImpl<T> instance,
+Map<String, dynamic> _$BaseResponseModelToJson<T>(
+  _BaseResponseModel<T> instance,
   Object? Function(T value) toJsonT,
 ) => <String, dynamic>{
   'ResultCode': instance.resultCode,

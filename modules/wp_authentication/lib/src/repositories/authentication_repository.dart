@@ -3,9 +3,14 @@ import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:wp_authentication/src/models/auth_model.dart';
 import 'package:wp_authentication/src/models/code_model.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 
-enum AuthenticationStatus { unknown, authenticated, unauthenticated }
+enum AuthenticationStatus {
+  unknown,
+  enteringCode,
+  authenticated,
+  unauthenticated,
+}
 
 @singleton
 class AuthenticationRepository {
@@ -27,7 +32,7 @@ class AuthenticationRepository {
 
   Stream<AuthenticationStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
-    yield AuthenticationStatus.unknown;
+    yield AuthenticationStatus.enteringCode;
     yield* _controller.stream;
   }
 
@@ -46,8 +51,11 @@ class AuthenticationRepository {
       );
       final userInfo = authResponse.userInfo;
       if (userInfo != null) {
-        _headersNotifier.updateHeader(AppInfo.kSToken, userInfo.loginToken);
-        _controller.add(AuthenticationStatus.authenticated);
+        if (!userInfo.validateLoginToken()) {
+          _headersNotifier.updateHeader(AppInfo.kSToken, userInfo.loginToken);
+          await AppConstraint.setSproToken(userInfo.loginToken);
+          _controller.add(AuthenticationStatus.authenticated);
+        }
       }
     } catch (error) {
       throw error.toString();
@@ -55,12 +63,15 @@ class AuthenticationRepository {
   }
 
   void logOut() {
+    AppConstraint.clearAllEncrypted();
     _controller.add(AuthenticationStatus.unauthenticated);
   }
 
   void logOutCode() {
     _baseUrlNotifier.resetBaseUrl();
-    _controller.add(AuthenticationStatus.unknown);
+    AppConstraint.clearAllCommon();
+    AppConstraint.clearAllEncrypted();
+    _controller.add(AuthenticationStatus.enteringCode);
   }
 
   void dispose() => _controller.close();
@@ -72,12 +83,22 @@ class AuthenticationRepository {
       if (!codeResult.validateUrlSpro()) {
         _baseUrlNotifier.baseUrl = codeResult.urlSpro;
       }
-      if (codeResult.taskbarColor?.isNotEmpty == true) {
-        AppColor.setPrimaryColor(codeResult.taskbarColor!);
+      if (codeResult.code?.isNotEmpty == true) {
+        await AppConstraint.setCode(codeResult.code!);
       }
+      // if (codeResult.taskbarColor?.isNotEmpty == true) {
+      //   AppColor.setPrimaryColor(codeResult.taskbarColor!);
+      // }
       _controller.add(AuthenticationStatus.unauthenticated);
     } catch (error) {
       throw 'Failed to submit code!';
+    }
+  }
+
+  Future<void> handleTokenAvailable() async {
+    final sproToken = await AppConstraint.getSproToken();
+    if (sproToken?.isNotEmpty == true) {
+      _controller.add(AuthenticationStatus.authenticated);
     }
   }
 }

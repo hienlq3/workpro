@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get passwordLabel;
 
+  /// No description provided for @languageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get languageLabel;
+
   /// No description provided for @codeLabel.
   ///
   /// In en, this message translates to:
@@ -145,6 +151,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Submit'**
   String get submitBtn;
+
+  /// No description provided for @languageSelection.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get languageSelection;
+
+  /// No description provided for @more_btn_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get more_btn_logout;
 }
 
 class _AppLocalizationsDelegate

@@ -6,20 +6,19 @@ part of 'code_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CodeModelImpl _$$CodeModelImplFromJson(Map<String, dynamic> json) =>
-    _$CodeModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      urlSpro: json['urlSpro'] as String? ?? '',
-      ssoType:
-          $enumDecodeNullable(_$CodeSSOTypeEnumMap, json['ssoType']) ??
-          CodeSSOType.none,
-      clientId: json['clientId'] as String?,
-      tenantId: json['tenantId'] as String?,
-      code: json['code'] as String?,
-      taskbarColor: json['taskbarColor'] as String?,
-    );
+_CodeModel _$CodeModelFromJson(Map<String, dynamic> json) => _CodeModel(
+  id: (json['id'] as num?)?.toInt(),
+  urlSpro: json['urlSpro'] as String? ?? '',
+  ssoType:
+      $enumDecodeNullable(_$CodeSSOTypeEnumMap, json['ssoType']) ??
+      CodeSSOType.none,
+  clientId: json['clientId'] as String?,
+  tenantId: json['tenantId'] as String?,
+  code: json['code'] as String?,
+  taskbarColor: json['taskbarColor'] as String?,
+);
 
-Map<String, dynamic> _$$CodeModelImplToJson(_$CodeModelImpl instance) =>
+Map<String, dynamic> _$CodeModelToJson(_CodeModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'urlSpro': instance.urlSpro,

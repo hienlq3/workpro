@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wp_core/src/config/app_theme.dart';
-import 'package:wp_core/src/utils/extension/build_context.dart';
+import 'package:wp_core/src/utils/extensions/build_context.dart';
 
 abstract class WpBaseFormField<T> extends StatefulWidget {
   final String labelText;

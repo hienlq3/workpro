@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
 
 class LoginForm extends StatefulWidget {
@@ -133,21 +133,6 @@ class _LoginButton extends StatelessWidget {
             minimumSize: WidgetStateProperty.all(
               Size(MediaQuery.of(context).size.width, 48.0),
             ),
-            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  AppRadius.kMediumBorderRadius,
-                ),
-              ),
-            ),
-            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((
-              Set<WidgetState> states,
-            ) {
-              return EdgeInsets.symmetric(
-                vertical: AppSpacing.kSpace12,
-                horizontal: AppSpacing.kSpace24,
-              );
-            }),
           ),
           child: Text(
             context.appLocalizations.loginBtn,

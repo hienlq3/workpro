@@ -32,3 +32,7 @@ final class LoginSubmitted extends LoginEvent {
 final class LogoutCodeSubmitted extends LoginEvent {
   const LogoutCodeSubmitted();
 }
+
+final class CheckTokenRequested extends LoginEvent {
+  const CheckTokenRequested();
+}
