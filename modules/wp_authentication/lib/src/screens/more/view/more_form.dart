@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
 
 class MoreForm extends StatelessWidget {
@@ -47,6 +47,33 @@ class MoreForm extends StatelessWidget {
               onTap: () => _showLanguageSelection(context, state),
             );
           },
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          style: ButtonStyle(
+            minimumSize: WidgetStateProperty.all(
+              Size(MediaQuery.of(context).size.width, 48.0),
+            ),
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  AppRadius.kMediumBorderRadius,
+                ),
+              ),
+            ),
+            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((
+              Set<WidgetState> states,
+            ) {
+              return EdgeInsets.symmetric(
+                vertical: AppSpacing.kSpace12,
+                horizontal: AppSpacing.kSpace24,
+              );
+            }),
+          ),
+          child: Text(
+            context.appLocalizations.loginBtn,
+            style: context.textTheme.kTextButton1,
+          ),
         ),
       ],
     );

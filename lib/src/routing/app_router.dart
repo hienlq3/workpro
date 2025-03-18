@@ -3,8 +3,8 @@ import 'package:flutter_application_1/src/authentication/bloc/authentication_blo
 import 'package:flutter_application_1/src/screens/home/view/home_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wp_authentication/authentication_package.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_authentication/wp_authentication.dart';
+import 'package:wp_core/wp_core.dart';
 
 abstract class AppRouter {
   static GoRouter router = GoRouter(

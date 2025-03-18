@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:wp_authentication/src/models/auth_model.dart';
 import 'package:wp_authentication/src/models/code_model.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
 
 class LoginForm extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/src/repositories/authentication_repository.dart';
 import 'package:wp_authentication/src/screens/login/bloc/login_bloc.dart';
 import 'package:wp_authentication/src/screens/login/view/login_form.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

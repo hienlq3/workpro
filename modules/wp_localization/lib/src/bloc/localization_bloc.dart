@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/generated/app_localizations.dart';
 
 part 'localization_event.dart';

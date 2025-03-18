@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 import 'package:wp_core/src/components/wp_modal_bottom_sheet/wp_modal_bottom_sheet_builder.dart';
 
 class WpModalBottomSheet {

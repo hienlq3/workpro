@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wp_core/core_package.dart';
+import 'package:wp_core/wp_core.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
