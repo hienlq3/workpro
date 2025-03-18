@@ -37,4 +37,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get languageSelection => 'Select Language';
+
+  @override
+  String get more_btn_logout => 'Logout';
 }

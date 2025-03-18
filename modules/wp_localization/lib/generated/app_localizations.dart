@@ -157,6 +157,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select Language'**
   String get languageSelection;
+
+  /// No description provided for @more_btn_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get more_btn_logout;
 }
 
 class _AppLocalizationsDelegate

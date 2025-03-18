@@ -48,33 +48,7 @@ class MoreForm extends StatelessWidget {
             );
           },
         ),
-        ElevatedButton(
-          onPressed: () {},
-          style: ButtonStyle(
-            minimumSize: WidgetStateProperty.all(
-              Size(MediaQuery.of(context).size.width, 48.0),
-            ),
-            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  AppRadius.kMediumBorderRadius,
-                ),
-              ),
-            ),
-            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((
-              Set<WidgetState> states,
-            ) {
-              return EdgeInsets.symmetric(
-                vertical: AppSpacing.kSpace12,
-                horizontal: AppSpacing.kSpace24,
-              );
-            }),
-          ),
-          child: Text(
-            context.appLocalizations.loginBtn,
-            style: context.textTheme.kTextButton1,
-          ),
-        ),
+        _LogoutButton(),
       ],
     );
   }
@@ -112,6 +86,26 @@ class MoreForm extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class _LogoutButton extends StatelessWidget {
+  const _LogoutButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFFCEEED)),
+      ),
+      child: Text(
+        context.appLocalizations.more_btn_logout,
+        style: context.textTheme.kTextButton1.copyWith(
+          color: context.colorScheme.error,
+        ),
       ),
     );
   }

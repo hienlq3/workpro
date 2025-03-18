@@ -37,4 +37,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get languageSelection => 'Lựa chọn ngôn ngữ';
+
+  @override
+  String get more_btn_logout => 'Đăng xuất';
 }

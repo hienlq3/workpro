@@ -9,5 +9,6 @@
     "requiredValidation": "Please enter some text",
     "loginBtn": "Login",
     "submitBtn": "Submit",
-    "languageSelection": "Select Language"
+    "languageSelection": "Select Language",
+    "more_btn_logout": "Logout"
 }

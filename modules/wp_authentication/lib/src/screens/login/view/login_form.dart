@@ -133,21 +133,6 @@ class _LoginButton extends StatelessWidget {
             minimumSize: WidgetStateProperty.all(
               Size(MediaQuery.of(context).size.width, 48.0),
             ),
-            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  AppRadius.kMediumBorderRadius,
-                ),
-              ),
-            ),
-            padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((
-              Set<WidgetState> states,
-            ) {
-              return EdgeInsets.symmetric(
-                vertical: AppSpacing.kSpace12,
-                horizontal: AppSpacing.kSpace24,
-              );
-            }),
           ),
           child: Text(
             context.appLocalizations.loginBtn,

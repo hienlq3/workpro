@@ -67,9 +67,18 @@ class _AppViewState extends State<AppView> {
                 scaffoldBackgroundColor: Colors.white,
                 elevatedButtonTheme: ElevatedButtonThemeData(
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: primaryColor,
-                  ),
+                      foregroundColor: Colors.white,
+                      backgroundColor: primaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          AppRadius.kMediumBorderRadius,
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: AppSpacing.kSpace12,
+                        horizontal: AppSpacing.kSpace24,
+                      ),
+                      elevation: 0.0),
                 ),
               ),
               localizationsDelegates: AppLocalizations.localizationsDelegates,
