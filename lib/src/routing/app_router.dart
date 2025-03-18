@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/screens/home/view/home_page.dart';
+import 'package:flutter_application_1/src/screens/splash/view/splash_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wp_authentication/wp_authentication.dart';
@@ -11,6 +12,10 @@ abstract class AppRouter {
       GoRoute(
         path: AppRoutes.kHome,
         builder: (context, state) => HomePage(),
+      ),
+      GoRoute(
+        path: AppRoutes.kSplash,
+        builder: (context, state) => SplashPage(),
       ),
       ...authRoutes
     ],
@@ -33,6 +38,8 @@ abstract class AppRouter {
         case AuthenticationStatus.unauthenticated:
           return AppRoutes.kLogin;
         case AuthenticationStatus.unknown:
+          return AppRoutes.kSplash;
+        case AuthenticationStatus.enteringCode:
           return AppRoutes.kSubmitCode;
       }
     },

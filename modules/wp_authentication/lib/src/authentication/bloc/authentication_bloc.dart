@@ -34,6 +34,8 @@ class AuthenticationBloc
             return emit(AuthenticationState.authenticated());
           case AuthenticationStatus.unknown:
             return emit(const AuthenticationState.unknown());
+          case AuthenticationStatus.enteringCode:
+            return emit(const AuthenticationState.enteringCode());
         }
       },
       onError: addError,

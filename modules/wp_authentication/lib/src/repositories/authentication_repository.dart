@@ -5,7 +5,12 @@ import 'package:wp_authentication/src/models/auth_model.dart';
 import 'package:wp_authentication/src/models/code_model.dart';
 import 'package:wp_core/wp_core.dart';
 
-enum AuthenticationStatus { unknown, authenticated, unauthenticated }
+enum AuthenticationStatus {
+  unknown,
+  enteringCode,
+  authenticated,
+  unauthenticated,
+}
 
 @singleton
 class AuthenticationRepository {
@@ -27,7 +32,7 @@ class AuthenticationRepository {
 
   Stream<AuthenticationStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
-    yield AuthenticationStatus.unknown;
+    yield AuthenticationStatus.enteringCode;
     yield* _controller.stream;
   }
 
@@ -66,7 +71,7 @@ class AuthenticationRepository {
     _baseUrlNotifier.resetBaseUrl();
     AppConstraint.clearAllCommon();
     AppConstraint.clearAllEncrypted();
-    _controller.add(AuthenticationStatus.unknown);
+    _controller.add(AuthenticationStatus.enteringCode);
   }
 
   void dispose() => _controller.close();
