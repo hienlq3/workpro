@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/routing/app_router.dart';
-import 'package:flutter_application_1/src/authentication/bloc/authentication_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/wp_authentication.dart';
 import 'package:wp_authentication/injection.dart';

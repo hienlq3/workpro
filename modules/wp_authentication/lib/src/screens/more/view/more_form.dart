@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wp_authentication/src/authentication/bloc/authentication_bloc.dart';
 import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
 
@@ -97,7 +98,10 @@ class _LogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed:
+          () => context.read<AuthenticationBloc>().add(
+            AuthenticationLogoutPressed(),
+          ),
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all<Color>(Color(0xFFFCEEED)),
       ),
