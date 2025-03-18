@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:wp_core/src/config/app_info.dart';
 import 'package:wp_core/src/utils/default_key_value_storage.dart';
 
@@ -31,6 +33,18 @@ class AppConstraint {
     return await DefaultKeyValueStorage().setEncrypted(
       AppInfo.kSproTokenKey,
       token,
+    );
+  }
+
+  static String getLanguageCode() {
+    return DefaultKeyValueStorage().getCommon(AppInfo.kLanguageCodeKey) ??
+        PlatformDispatcher.instance.locale.languageCode;
+  }
+
+  static Future<bool> setLanguageCode(String languageCode) async {
+    return await DefaultKeyValueStorage().setCommon(
+      AppInfo.kLanguageCodeKey,
+      languageCode,
     );
   }
 

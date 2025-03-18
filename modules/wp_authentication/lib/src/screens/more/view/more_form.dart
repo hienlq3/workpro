@@ -43,28 +43,39 @@ class MoreForm extends StatelessWidget {
   }
 
   void _showLanguageSelection(BuildContext context, LocalizationState state) {
-    showModalBottomSheet(
+    WpModalBottomSheet.showWpModalBottomSheet(
       context: context,
-      builder:
-          (context) => ListView.separated(
-            itemCount: state.supportedLocales.length,
-            separatorBuilder: (_, __) => const Divider(),
-            itemBuilder: (context, index) {
-              final locale = state.supportedLocales[index];
-              return ListTile(
-                title: Text(
-                  locale.languageName,
-                  style: context.textTheme.kTitle6,
-                ),
-                onTap: () {
-                  context.read<LocalizationBloc>().add(
-                    LanguageChanged(locale.languageCode),
-                  );
-                  context.pop();
-                },
-              );
-            },
-          ),
+      title: context.appLocalizations.languageSelection,
+      child: ListView.separated(
+        shrinkWrap: true,
+        itemCount: state.supportedLocales.length,
+        separatorBuilder: (_, __) => const Divider(),
+        itemBuilder: (context, index) {
+          final locale = state.supportedLocales[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.kSpace16,
+            ),
+            child: ListTile(
+              title: Text(
+                locale.languageName,
+                style: context.textTheme.kTitle6,
+              ),
+              trailing: Visibility(
+                visible: state.locale == locale,
+                child: Icon(Icons.check, color: context.theme.primaryColor),
+              ),
+              onTap: () {
+                context.read<LocalizationBloc>().add(
+                  LanguageChanged(locale.languageCode),
+                );
+                context.pop();
+              },
+              contentPadding: EdgeInsets.zero,
+            ),
+          );
+        },
+      ),
     );
   }
 }

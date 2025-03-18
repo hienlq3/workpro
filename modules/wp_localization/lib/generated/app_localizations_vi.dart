@@ -34,4 +34,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get submitBtn => 'Gửi';
+
+  @override
+  String get languageSelection => 'Lựa chọn ngôn ngữ';
 }

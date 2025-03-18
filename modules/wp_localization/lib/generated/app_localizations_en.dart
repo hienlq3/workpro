@@ -34,4 +34,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get submitBtn => 'Submit';
+
+  @override
+  String get languageSelection => 'Select Language';
 }

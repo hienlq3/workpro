@@ -8,5 +8,6 @@
     "enterCompanyCodePrompt": "Hãy nhập mã công ty của bạn",
     "requiredValidation": "Trường này không được để trống",
     "loginBtn": "Đăng nhập",
-    "submitBtn": "Gửi"
+    "submitBtn": "Gửi",
+    "languageSelection": "Lựa chọn ngôn ngữ"
 }

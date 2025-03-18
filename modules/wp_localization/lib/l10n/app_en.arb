@@ -8,5 +8,6 @@
     "enterCompanyCodePrompt": "Please enter your company code",
     "requiredValidation": "Please enter some text",
     "loginBtn": "Login",
-    "submitBtn": "Submit"
+    "submitBtn": "Submit",
+    "languageSelection": "Select Language"
 }

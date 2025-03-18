@@ -151,6 +151,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Submit'**
   String get submitBtn;
+
+  /// No description provided for @languageSelection.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get languageSelection;
 }
 
 class _AppLocalizationsDelegate
