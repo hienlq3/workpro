@@ -107,7 +107,7 @@ class _LogoutButton extends StatelessWidget {
       ),
       child: Text(
         context.appLocalizations.more_btn_logout,
-        style: context.textTheme.kTextButton1.copyWith(
+        style: context.textTheme.kTextButton2.copyWith(
           color: context.colorScheme.error,
         ),
       ),
