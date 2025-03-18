@@ -11,6 +11,6 @@ final getIt = GetIt.instance;
 @InjectableInit()
 Future<GetIt> configureDependencies() async {
   Bloc.observer = AppBlocObserver();
-  await dotenv.load(fileName: 'modules/wp_core/.env');
+  await dotenv.load(fileName: 'packages/wp_core/.env');
   return getIt.init();
 }
