@@ -30,9 +30,19 @@ class MoreForm extends StatelessWidget {
                 appLocalizations.languageLabel,
                 style: textTheme.kTitle6,
               ),
-              trailing: Text(
-                state.locale?.languageName ?? '',
-                style: textTheme.kTextButton5.copyWith(color: theme.hintColor),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                spacing: AppSpacing.kSpace8,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    state.locale?.languageName ?? '',
+                    style: textTheme.kTextButton5.copyWith(
+                      color: theme.hintColor,
+                    ),
+                  ),
+                  Icon(Icons.chevron_right),
+                ],
               ),
               onTap: () => _showLanguageSelection(context, state),
             );
