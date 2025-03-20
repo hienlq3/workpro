@@ -1,5 +1,6 @@
 class AppInfo {
   static const String kTitle = 'Workpro';
+  static const String kVersion = 'v1.3.0';
 
   static const String kSToken = 'S-Token';
   static const String kCodeKey = 'CODE';
