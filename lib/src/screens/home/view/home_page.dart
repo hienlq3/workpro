@@ -1,53 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/wp_authentication.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  static Route<void> route() {
-    return MaterialPageRoute<void>(builder: (_) => const HomePage());
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    MorePage(),
+    MorePage(),
+    MorePage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // _UserId(),
-            _LogoutButton(),
-          ],
-        ),
+    return Scaffold(
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications), label: 'Notifications'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
 }
-
-class _LogoutButton extends StatelessWidget {
-  const _LogoutButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: const Text('Logout'),
-      onPressed: () {
-        context.read<AuthenticationBloc>().add(AuthenticationLogoutPressed());
-      },
-    );
-  }
-}
-
-// class _UserId extends StatelessWidget {
-//   const _UserId();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final userId = context.select(
-//       (AuthenticationBloc bloc) => bloc.state.user.id,
-//     );
-
-//     return Text('UserID: $userId');
-//   }
-// }

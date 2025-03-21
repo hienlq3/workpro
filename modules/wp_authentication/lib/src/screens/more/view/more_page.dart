@@ -7,15 +7,11 @@ class MorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.kSpace16,
-            ),
-            child: const MoreForm(),
-          ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.kSpace16),
+          child: const MoreForm(),
         ),
       ),
     );
