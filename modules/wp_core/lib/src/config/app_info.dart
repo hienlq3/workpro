@@ -7,4 +7,5 @@ class AppInfo {
   static const String kSproUrley = 'SPROURL';
   static const String kSproTokenKey = 'SPROTOKEN';
   static const String kLanguageCodeKey = 'LANGUAGECODE';
+  static const String kDeviceIdKey = 'DEVICEID';
 }

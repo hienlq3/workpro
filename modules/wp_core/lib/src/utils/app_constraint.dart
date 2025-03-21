@@ -48,6 +48,17 @@ class AppConstraint {
     );
   }
 
+  static String getDeviceId() {
+    return DefaultKeyValueStorage().getCommon(AppInfo.kDeviceIdKey) ?? '';
+  }
+
+  static Future<bool> setDeviceId(String deviceId) async {
+    return await DefaultKeyValueStorage().setCommon(
+      AppInfo.kDeviceIdKey,
+      deviceId,
+    );
+  }
+
   static Future<bool> clearAllCommon() async {
     return await DefaultKeyValueStorage().clearAllCommon();
   }

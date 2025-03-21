@@ -6,6 +6,7 @@ import 'package:wp_authentication/injection.dart';
 import 'package:wp_core/wp_core.dart';
 import 'package:wp_core/injection.dart';
 import 'package:wp_localization/wp_localization.dart';
+import 'package:wp_notification/wp_notification.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +14,8 @@ Future<void> main() async {
   await configureDependencies();
 
   configureAuthenticationDependencies();
+
+  await WPNotification.initialize();
 
   runApp(const MyApp());
 }
