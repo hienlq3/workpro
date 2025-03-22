@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wp_authentication/wp_authentication.dart';
+import 'package:wp_notification/wp_notification.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,8 +13,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    MorePage(),
-    MorePage(),
+    SizedBox.shrink(),
+    NotificationsPage(),
     MorePage(),
   ];
 

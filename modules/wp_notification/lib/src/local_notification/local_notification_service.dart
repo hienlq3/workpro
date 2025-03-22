@@ -6,11 +6,9 @@ class LocalNotificationService {
       FlutterLocalNotificationsPlugin();
 
   static Future<void> initialize() async {
-    // Cấu hình Android
     const AndroidInitializationSettings androidInit =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    // Cấu hình iOS (BẮT BUỘC để tránh lỗi)
     final DarwinInitializationSettings iosInit = DarwinInitializationSettings();
 
     final InitializationSettings initSettings = InitializationSettings(

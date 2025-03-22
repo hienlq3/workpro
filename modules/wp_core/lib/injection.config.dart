@@ -17,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 import 'package:wp_core/register_module.dart' as _i137;
 import 'package:wp_core/src/service/base_service.dart' as _i909;
 import 'package:wp_core/src/service/my_approval_service.dart' as _i812;
+import 'package:wp_core/src/service/notification_service.dart' as _i1029;
 import 'package:wp_core/src/service/system_property_service.dart' as _i956;
 import 'package:wp_core/src/service/user_service.dart' as _i407;
 import 'package:wp_core/src/utils/default_key_value_storage.dart' as _i514;
@@ -61,6 +62,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.singleton<_i407.UserService>(
       () => _i407.UserService(baseService: gh<_i909.BaseService>()),
+    );
+    gh.singleton<_i1029.NotificationService>(
+      () => _i1029.NotificationService(baseService: gh<_i909.BaseService>()),
     );
     return this;
   }
