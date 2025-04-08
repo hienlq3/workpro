@@ -9,7 +9,8 @@ class LocalNotificationService {
     const AndroidInitializationSettings androidInit =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    final DarwinInitializationSettings iosInit = DarwinInitializationSettings();
+    final DarwinInitializationSettings iosInit =
+        const DarwinInitializationSettings();
 
     final InitializationSettings initSettings = InitializationSettings(
       android: androidInit,
@@ -20,14 +21,14 @@ class LocalNotificationService {
   }
 
   static Future<void> showNotification(RemoteMessage message) async {
-    AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+    final androidDetails = const AndroidNotificationDetails(
       'channel_id',
       'channel_name',
       importance: Importance.max,
       priority: Priority.high,
     );
 
-    NotificationDetails details = NotificationDetails(android: androidDetails);
+    final details = NotificationDetails(android: androidDetails);
 
     await _notificationsPlugin.show(
       0,

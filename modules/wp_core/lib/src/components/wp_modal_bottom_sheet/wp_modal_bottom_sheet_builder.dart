@@ -19,7 +19,7 @@ class WpModalBottomSheetBuilder extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: AppSpacing.kSpace8),
+          margin: const EdgeInsets.symmetric(vertical: AppSpacing.kSpace8),
           width: 32.0,
           height: 4.0,
           decoration: BoxDecoration(

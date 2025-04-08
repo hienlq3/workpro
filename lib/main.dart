@@ -6,6 +6,7 @@ import 'package:wp_authentication/injection.dart';
 import 'package:wp_core/wp_core.dart';
 import 'package:wp_core/injection.dart';
 import 'package:wp_localization/wp_localization.dart';
+import 'package:wp_notification/injection.dart';
 import 'package:wp_notification/wp_notification.dart';
 
 Future<void> main() async {
@@ -14,6 +15,8 @@ Future<void> main() async {
   await configureDependencies();
 
   configureAuthenticationDependencies();
+
+  configureNotificationDependencies();
 
   await WPNotification.initialize();
 
@@ -76,7 +79,7 @@ class _AppViewState extends State<AppView> {
                           AppRadius.kMediumBorderRadius,
                         ),
                       ),
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: AppSpacing.kSpace12,
                         horizontal: AppSpacing.kSpace24,
                       ),

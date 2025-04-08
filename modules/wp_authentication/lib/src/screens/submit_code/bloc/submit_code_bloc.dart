@@ -13,12 +13,12 @@ class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
 
   SubmitCodeBloc({required AuthenticationRepository authenticationRepository})
     : _authenticationRepository = authenticationRepository,
-      super(SubmitCodeState()) {
+      super(const SubmitCodeState()) {
     on<CodeChanged>(_onCodeChanged);
     on<CodeSubmitted>(_onCodeSubmitted);
     if (AppConstraint.getCode().isNotEmpty) {
       add(CodeChanged(code: AppConstraint.getCode()));
-      add(CodeSubmitted());
+      add(const CodeSubmitted());
     }
   }
 

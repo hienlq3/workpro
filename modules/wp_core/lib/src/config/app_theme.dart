@@ -18,6 +18,9 @@ extension AppTheme on TextTheme {
   TextStyle get kTitle3 =>
       const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600);
 
+  TextStyle get kTitle5 =>
+      const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600);
+
   TextStyle get kTitle6 =>
       const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500);
 
@@ -35,4 +38,7 @@ extension AppTheme on TextTheme {
 
   TextStyle get kBody1 =>
       const TextStyle(fontSize: 16.0, fontWeight: FontWeight.normal);
+
+  TextStyle get kSubtitle3 =>
+      const TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal);
 }

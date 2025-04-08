@@ -17,7 +17,7 @@ class SplashPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: AppSpacing.kSpace12,
             children: [
-              Image(
+              const Image(
                 image: AssetImage(Assets.kLogoImagePath),
               ),
               Text(

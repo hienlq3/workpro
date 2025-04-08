@@ -21,7 +21,6 @@ abstract class NotificationModel with _$NotificationModel {
       _$NotificationModelFromJson(json);
 
   static const fakeData = NotificationModel(
-    notificationId: -1,
     args: NotificationArgsModel.fakeData,
     message: 'Notification message',
   );

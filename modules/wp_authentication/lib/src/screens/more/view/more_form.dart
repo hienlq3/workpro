@@ -7,6 +7,6 @@ class MoreForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [const LanguageTile(), const LogoutButton()]);
+    return const Column(children: [LanguageTile(), LogoutButton()]);
   }
 }

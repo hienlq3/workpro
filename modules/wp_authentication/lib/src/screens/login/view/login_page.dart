@@ -28,7 +28,9 @@ class LoginPage extends StatelessWidget {
               leading: BackButton(
                 color: Colors.black,
                 onPressed:
-                    () => context.read<LoginBloc>().add(LogoutCodeSubmitted()),
+                    () => context.read<LoginBloc>().add(
+                      const LogoutCodeSubmitted(),
+                    ),
               ),
             ),
             body: SafeArea(

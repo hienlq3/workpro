@@ -85,7 +85,7 @@ class _SubmitCodeButton extends StatelessWidget {
                   ? null
                   : () {
                     if (formKey.currentState!.validate()) {
-                      context.read<SubmitCodeBloc>().add(CodeSubmitted());
+                      context.read<SubmitCodeBloc>().add(const CodeSubmitted());
                     }
                   },
           style: ButtonStyle(

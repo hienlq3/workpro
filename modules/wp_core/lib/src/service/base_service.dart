@@ -50,6 +50,31 @@ class BaseService {
     }
   }
 
+  Future<Response> put(
+    String url, {
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    Options? options,
+  }) async {
+    try {
+      final response = await _dio.put(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options:
+            options ??
+            Options(
+              headers: headers,
+              contentType: Headers.formUrlEncodedContentType,
+            ),
+      );
+      return response;
+    } on DioException catch (error) {
+      throw _handleDioError(error);
+    }
+  }
+
   Exception _handleDioError(DioException error) {
     if (error.response != null) {
       String errorMessage = '';

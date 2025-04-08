@@ -26,7 +26,6 @@ class LanguageTile extends StatelessWidget {
       title: Text(appLocalizations.languageLabel, style: textTheme.kTitle6),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             locale?.languageName ?? '',

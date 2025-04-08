@@ -98,6 +98,7 @@ class AuthenticationRepository {
   Future<void> handleTokenAvailable() async {
     final sproToken = await AppConstraint.getSproToken();
     if (sproToken?.isNotEmpty == true) {
+      _headersNotifier.updateHeader(AppInfo.kSToken, sproToken!);
       _controller.add(AuthenticationStatus.authenticated);
     }
   }

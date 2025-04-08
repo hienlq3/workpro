@@ -6,7 +6,7 @@ class FirebaseService {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   Future<void> initFirebaseMessaging() async {
-    String? token = await _firebaseMessaging.getToken();
+    final token = await _firebaseMessaging.getToken();
     await AppConstraint.setDeviceId(token ?? '');
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {

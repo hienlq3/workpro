@@ -43,7 +43,7 @@ abstract class RegisterModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   @singleton
-  FlutterSecureStorage get secureStorage => FlutterSecureStorage();
+  FlutterSecureStorage get secureStorage => const FlutterSecureStorage();
 
   @singleton
   DefaultKeyValueStorage provideDefaultKeyValueStorage() {

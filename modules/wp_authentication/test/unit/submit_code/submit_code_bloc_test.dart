@@ -23,14 +23,14 @@ void main() {
   });
 
   test('initial state is SubmitCodeState()', () {
-    expect(submitCodeBloc.state, SubmitCodeState());
+    expect(submitCodeBloc.state, const SubmitCodeState());
   });
 
   blocTest<SubmitCodeBloc, SubmitCodeState>(
     'emits new state with updated code when CodeChanged is added',
     build: () => submitCodeBloc,
-    act: (bloc) => bloc.add(CodeChanged(code: '123456')),
-    expect: () => [SubmitCodeState(code: '123456')],
+    act: (bloc) => bloc.add(const CodeChanged(code: '123456')),
+    expect: () => [const SubmitCodeState(code: '123456')],
   );
 
   blocTest<SubmitCodeBloc, SubmitCodeState>(
@@ -42,14 +42,20 @@ void main() {
       return submitCodeBloc;
     },
     act: (bloc) {
-      bloc.add(CodeChanged(code: '123456'));
-      bloc.add(CodeSubmitted());
+      bloc.add(const CodeChanged(code: '123456'));
+      bloc.add(const CodeSubmitted());
     },
     expect:
         () => [
-          SubmitCodeState(code: '123456'),
-          SubmitCodeState(code: '123456', status: SubmitCodeStatus.loading),
-          SubmitCodeState(code: '123456', status: SubmitCodeStatus.success),
+          const SubmitCodeState(code: '123456'),
+          const SubmitCodeState(
+            code: '123456',
+            status: SubmitCodeStatus.loading,
+          ),
+          const SubmitCodeState(
+            code: '123456',
+            status: SubmitCodeStatus.success,
+          ),
         ],
     verify: (_) {
       verify(
@@ -67,14 +73,17 @@ void main() {
       return submitCodeBloc;
     },
     act: (bloc) {
-      bloc.add(CodeChanged(code: 'wrongcode'));
-      bloc.add(CodeSubmitted());
+      bloc.add(const CodeChanged(code: 'wrongcode'));
+      bloc.add(const CodeSubmitted());
     },
     expect:
         () => [
-          SubmitCodeState(code: 'wrongcode'),
-          SubmitCodeState(code: 'wrongcode', status: SubmitCodeStatus.loading),
-          SubmitCodeState(
+          const SubmitCodeState(code: 'wrongcode'),
+          const SubmitCodeState(
+            code: 'wrongcode',
+            status: SubmitCodeStatus.loading,
+          ),
+          const SubmitCodeState(
             code: 'wrongcode',
             status: SubmitCodeStatus.error,
             errorText: 'Exception: Invalid code',

@@ -20,4 +20,14 @@ class NotificationService {
       throw error.toString();
     }
   }
+
+  Future<void> markNotification({required dynamic id}) async {
+    try {
+      await _baseService.put(
+        '/rest/sms/latest/integration-notification/read/$id',
+      );
+    } on Exception catch (error) {
+      throw error.toString();
+    }
+  }
 }

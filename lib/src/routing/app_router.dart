@@ -11,11 +11,11 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: AppRoutes.kHome,
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => const HomePage(),
       ),
       GoRoute(
         path: AppRoutes.kSplash,
-        builder: (context, state) => SplashPage(),
+        builder: (context, state) => const SplashPage(),
       ),
       ...authRoutes
     ],
