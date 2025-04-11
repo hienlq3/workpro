@@ -4,18 +4,17 @@ sealed class NotificationEvent extends Equatable {
   const NotificationEvent();
 
   @override
-  List<Object> get props => [];
+  List<dynamic> get props => [];
 }
 
 final class NotificationFetched extends NotificationEvent {}
 
 final class NotificationsMarked extends NotificationEvent {
+  const NotificationsMarked({required this.id});
   final dynamic id;
 
-  const NotificationsMarked({required this.id});
-
   @override
-  List<Object> get props => [id];
+  List<dynamic> get props => [id];
 }
 
 final class NotificationsRefreshed extends NotificationEvent {}

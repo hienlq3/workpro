@@ -3,15 +3,14 @@ part of 'submit_code_bloc.dart';
 enum SubmitCodeStatus { initial, loading, success, error }
 
 class SubmitCodeState extends Equatable {
-  final String code;
-  final SubmitCodeStatus status;
-  final String errorText;
-
   const SubmitCodeState({
     this.code = '',
     this.status = SubmitCodeStatus.initial,
     this.errorText = '',
   });
+  final String code;
+  final SubmitCodeStatus status;
+  final String errorText;
 
   SubmitCodeState copyWith({
     String? code,

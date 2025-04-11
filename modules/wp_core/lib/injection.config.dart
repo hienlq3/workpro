@@ -60,11 +60,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i956.SystemPropertyService>(
       () => _i956.SystemPropertyService(baseService: gh<_i909.BaseService>()),
     );
-    gh.singleton<_i407.UserService>(
-      () => _i407.UserService(baseService: gh<_i909.BaseService>()),
-    );
     gh.singleton<_i1029.NotificationService>(
       () => _i1029.NotificationService(baseService: gh<_i909.BaseService>()),
+    );
+    gh.singleton<_i407.UserService>(
+      () => _i407.UserService(baseService: gh<_i909.BaseService>()),
     );
     return this;
   }

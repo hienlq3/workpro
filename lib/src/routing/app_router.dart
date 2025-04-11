@@ -17,7 +17,7 @@ abstract class AppRouter {
         path: AppRoutes.kSplash,
         builder: (context, state) => const SplashPage(),
       ),
-      ...authRoutes
+      ...authRoutes,
     ],
     errorPageBuilder: (context, state) => const MaterialPage(
       child: Scaffold(

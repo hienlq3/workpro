@@ -23,7 +23,7 @@ class SplashPage extends StatelessWidget {
               Text(
                 'Tinh hoa quản trị',
                 style: context.textTheme.kXXLRegular,
-              )
+              ),
             ],
           ),
         ),

@@ -13,7 +13,10 @@ class AppInterceptors extends InterceptorsWrapper {
   }
 
   @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
+  void onResponse(
+    Response<dynamic> response,
+    ResponseInterceptorHandler handler,
+  ) {
     logger.d(
       'RESPONSE[${response.statusCode}] => URI: ${response.requestOptions.uri}',
     );
@@ -25,7 +28,7 @@ class AppInterceptors extends InterceptorsWrapper {
   }
 
   @override
-  Future onError(DioException err, ErrorInterceptorHandler handler) async {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     logger.e(
       'ERROR[${err.response?.statusCode}] => URI: ${err.requestOptions.uri}',
     );

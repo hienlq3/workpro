@@ -3,12 +3,11 @@ import 'package:wp_core/src/service/base_service.dart';
 
 @singleton
 class MyApprovalService {
-  final BaseService _baseService;
-
   MyApprovalService({required BaseService baseService})
     : _baseService = baseService;
+  final BaseService _baseService;
 
-  Future<Map<String, dynamic>> getApprovalTickets({
+  Future<Map<String, dynamic>?> getApprovalTickets({
     required String statusType,
     required int pageSize,
     required int currentPages,
@@ -24,8 +23,8 @@ class MyApprovalService {
       );
 
       return response.data;
-    } on Exception catch (error) {
-      throw error.toString();
+    } on Exception {
+      rethrow;
     }
   }
 }

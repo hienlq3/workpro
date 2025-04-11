@@ -51,7 +51,7 @@ class _CodeInput extends StatelessWidget {
               previous.errorText != current.errorText ||
               previous.status != current.status,
       builder: (context, state) {
-        return WpTextFormField(
+        return WpTextFormField<String>(
           onChanged:
               (code) =>
                   context.read<SubmitCodeBloc>().add(CodeChanged(code: code)),
@@ -62,6 +62,7 @@ class _CodeInput extends StatelessWidget {
             }
             return null;
           },
+          value: state.code,
           errorText: state.errorText,
           textCapitalization: TextCapitalization.characters,
           disabled: state.isLoading,
@@ -72,8 +73,8 @@ class _CodeInput extends StatelessWidget {
 }
 
 class _SubmitCodeButton extends StatelessWidget {
-  final GlobalKey<FormState> formKey;
   const _SubmitCodeButton({required this.formKey});
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +91,7 @@ class _SubmitCodeButton extends StatelessWidget {
                   },
           style: ButtonStyle(
             minimumSize: WidgetStateProperty.all(
-              Size(MediaQuery.of(context).size.width, 48.0),
+              Size(MediaQuery.of(context).size.width, 48),
             ),
           ),
           child: Text(

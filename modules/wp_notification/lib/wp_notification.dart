@@ -12,6 +12,6 @@ class WPNotification {
     );
     await LocalNotificationService.initialize();
     await FirebaseService().initFirebaseMessaging();
-    FlutterAppBadger.removeBadge();
+    await FlutterAppBadger.removeBadge();
   }
 }

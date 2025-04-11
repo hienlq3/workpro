@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:wp_notification/src/models/notification_model.dart';
 import 'package:wp_notification/src/repositories/notification_repository.dart';
-import 'package:injectable/injectable.dart';
 
 part 'notification_event.dart';
 part 'notification_state.dart';
@@ -22,8 +22,6 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
 
 @injectable
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
-  final NotificationRepository _notificationRepository;
-
   NotificationBloc({required NotificationRepository notificationRepository})
     : _notificationRepository = notificationRepository,
       super(const NotificationState()) {
@@ -34,6 +32,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     on<NotificationsMarked>(_onNotificationsMarked);
     on<NotificationsRefreshed>(_onNotificationsRefreshed);
   }
+  final NotificationRepository _notificationRepository;
 
   Future<void> _onFetched(
     NotificationFetched event,

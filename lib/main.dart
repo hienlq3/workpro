@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/routing/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wp_authentication/wp_authentication.dart';
 import 'package:wp_authentication/injection.dart';
-import 'package:wp_core/wp_core.dart';
+import 'package:wp_authentication/wp_authentication.dart';
 import 'package:wp_core/injection.dart';
+import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
 import 'package:wp_notification/injection.dart';
 import 'package:wp_notification/wp_notification.dart';
@@ -33,9 +33,11 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<AuthenticationBloc>(
-              lazy: false,
-              create: (context) => AuthenticationBloc(
-                  authenticationRepository: getIt<AuthenticationRepository>())),
+            lazy: false,
+            create: (context) => AuthenticationBloc(
+              authenticationRepository: getIt<AuthenticationRepository>(),
+            ),
+          ),
           BlocProvider<LocalizationBloc>(
             create: (context) => LocalizationBloc(),
           ),
@@ -72,18 +74,19 @@ class _AppViewState extends State<AppView> {
                 scaffoldBackgroundColor: Colors.white,
                 elevatedButtonTheme: ElevatedButtonThemeData(
                   style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          AppRadius.kMediumBorderRadius,
-                        ),
+                    foregroundColor: Colors.white,
+                    backgroundColor: primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        AppRadius.kMediumBorderRadius,
                       ),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: AppSpacing.kSpace12,
-                        horizontal: AppSpacing.kSpace24,
-                      ),
-                      elevation: 0.0),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: AppSpacing.kSpace12,
+                      horizontal: AppSpacing.kSpace24,
+                    ),
+                    elevation: 0,
+                  ),
                 ),
               ),
               localizationsDelegates: AppLocalizations.localizationsDelegates,

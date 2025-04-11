@@ -9,8 +9,6 @@ part 'submit_code_state.dart';
 
 @injectable
 class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
-  final AuthenticationRepository _authenticationRepository;
-
   SubmitCodeBloc({required AuthenticationRepository authenticationRepository})
     : _authenticationRepository = authenticationRepository,
       super(const SubmitCodeState()) {
@@ -21,6 +19,7 @@ class SubmitCodeBloc extends Bloc<SubmitCodeEvent, SubmitCodeState> {
       add(const CodeSubmitted());
     }
   }
+  final AuthenticationRepository _authenticationRepository;
 
   void _onCodeChanged(CodeChanged event, Emitter<SubmitCodeState> emit) =>
       emit(state.copyWith(code: event.code));

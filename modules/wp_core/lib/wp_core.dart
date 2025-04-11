@@ -1,11 +1,11 @@
 export 'src/components/components.dart';
 export 'src/config/config.dart';
-export 'src/utils/extensions/build_context.dart';
-export 'src/service/service.dart';
 export 'src/models/models.dart';
+export 'src/service/service.dart';
 export 'src/utils/app_constraint.dart';
-export 'src/utils/notifier/base_url_notifier.dart';
-export 'src/utils/notifier/headers_notifier.dart';
-export 'src/utils/extensions/string_extension.dart';
+export 'src/utils/extensions/build_context.dart';
 export 'src/utils/extensions/list_extension.dart';
 export 'src/utils/extensions/string_date_time_extension.dart';
+export 'src/utils/extensions/string_extension.dart';
+export 'src/utils/notifier/base_url_notifier.dart';
+export 'src/utils/notifier/headers_notifier.dart';

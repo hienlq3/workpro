@@ -62,7 +62,7 @@ class _NotificationsListState extends State<NotificationsList> {
                         );
                       },
                       separatorBuilder:
-                          (context, index) => const Divider(height: 1.0),
+                          (context, index) => const Divider(height: 1),
                     ),
           ),
         );

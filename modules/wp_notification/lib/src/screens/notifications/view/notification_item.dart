@@ -8,9 +8,8 @@ import 'package:wp_notification/src/models/notification_model.dart';
 import 'package:wp_notification/src/screens/notifications/bloc/notification_bloc.dart';
 
 class NotificationItem extends StatelessWidget {
+  const NotificationItem({required this.notificationId, super.key});
   final int notificationId;
-
-  const NotificationItem({super.key, required this.notificationId});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class NotificationItem extends StatelessWidget {
         return InkWell(
           key: ValueKey(notification.notificationId),
           onTap: () {
-            if (notification.unread != false) {
+            if (!(notification.unread ?? false)) {
               context.read<NotificationBloc>().add(
                 NotificationsMarked(id: notification.notificationId),
               );
@@ -33,7 +32,7 @@ class NotificationItem extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(AppSpacing.kSpace16),
             color:
-                notification.unread == true
+                notification.unread ?? false
                     ? AppColor.wpPrimaryBackgroundColor.value
                     : null,
             child: Row(
@@ -41,7 +40,7 @@ class NotificationItem extends StatelessWidget {
               spacing: AppSpacing.kSpace12,
               children: [
                 SvgPicture.asset(
-                  notification.unread == true
+                  notification.unread ?? false
                       ? NotificationAssets.kIcApproveUnreadPath
                       : NotificationAssets.kIcApprovePath,
                 ),

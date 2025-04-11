@@ -1,13 +1,12 @@
 part of 'localization_bloc.dart';
 
 class LocalizationState extends Equatable {
-  final Locale? locale;
-  final List<Locale> supportedLocales;
-
   const LocalizationState({
     this.locale,
     this.supportedLocales = AppLocalizations.supportedLocales,
   });
+  final Locale? locale;
+  final List<Locale> supportedLocales;
 
   LocalizationState copyWith({Locale? locale, List<Locale>? supportedLocales}) {
     return LocalizationState(

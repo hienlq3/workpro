@@ -4,11 +4,10 @@ import 'package:wp_core/src/models/base_response_model.dart';
 
 @singleton
 class BaseService {
+  BaseService({required Dio dio}) : _dio = dio;
   final Dio _dio;
 
-  BaseService({required Dio dio}) : _dio = dio;
-
-  Future<Response> post(
+  Future<Response<Map<String, dynamic>>> post(
     String url, {
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
@@ -16,7 +15,7 @@ class BaseService {
     Options? options,
   }) async {
     try {
-      final response = await _dio.post(
+      final response = await _dio.post<Map<String, dynamic>>(
         url,
         data: data,
         queryParameters: queryParameters,
@@ -33,13 +32,13 @@ class BaseService {
     }
   }
 
-  Future<Response> get(
+  Future<Response<Map<String, dynamic>>> get(
     String url, {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await _dio.get(
+      final response = await _dio.get<Map<String, dynamic>>(
         url,
         queryParameters: queryParameters,
         options: Options(headers: headers),
@@ -50,7 +49,7 @@ class BaseService {
     }
   }
 
-  Future<Response> put(
+  Future<Response<Map<String, dynamic>>> put(
     String url, {
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
@@ -58,7 +57,7 @@ class BaseService {
     Options? options,
   }) async {
     try {
-      final response = await _dio.put(
+      final response = await _dio.put<Map<String, dynamic>>(
         url,
         data: data,
         queryParameters: queryParameters,
@@ -77,9 +76,10 @@ class BaseService {
 
   Exception _handleDioError(DioException error) {
     if (error.response != null) {
-      String errorMessage = '';
+      var errorMessage = '';
       final errorResponse = BaseResponseModel.fromJson(
-        error.response?.data,
+        (error.response?.data as Map<String, dynamic>?) ??
+            const <String, dynamic>{},
         (p0) => null,
       );
       errorMessage = errorResponse.message ?? '';

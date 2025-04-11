@@ -42,8 +42,9 @@ void main() {
       return submitCodeBloc;
     },
     act: (bloc) {
-      bloc.add(const CodeChanged(code: '123456'));
-      bloc.add(const CodeSubmitted());
+      bloc
+        ..add(const CodeChanged(code: '123456'))
+        ..add(const CodeSubmitted());
     },
     expect:
         () => [
@@ -73,8 +74,9 @@ void main() {
       return submitCodeBloc;
     },
     act: (bloc) {
-      bloc.add(const CodeChanged(code: 'wrongcode'));
-      bloc.add(const CodeSubmitted());
+      bloc
+        ..add(const CodeChanged(code: 'wrongcode'))
+        ..add(const CodeSubmitted());
     },
     expect:
         () => [

@@ -5,13 +5,13 @@ import 'package:wp_core/src/config/app_theme.dart';
 import 'package:wp_core/src/utils/extensions/build_context.dart';
 
 class WpModalBottomSheetBuilder extends StatelessWidget {
-  final String title;
-  final Widget child;
   const WpModalBottomSheetBuilder({
-    super.key,
     required this.title,
     required this.child,
+    super.key,
   });
+  final String title;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class WpModalBottomSheetBuilder extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(vertical: AppSpacing.kSpace8),
-          width: 32.0,
-          height: 4.0,
+          width: 32,
+          height: 4,
           decoration: BoxDecoration(
             color: Colors.grey[400],
             borderRadius: BorderRadius.circular(AppRadius.kMaxBorderRadius),

@@ -11,7 +11,7 @@ class AppConstraint {
   }
 
   static Future<bool> setCode(String code) async {
-    return await DefaultKeyValueStorage().setCommon(AppInfo.kCodeKey, code);
+    return DefaultKeyValueStorage().setCommon(AppInfo.kCodeKey, code);
   }
 
   static String getSproUrl() {
@@ -19,10 +19,7 @@ class AppConstraint {
   }
 
   static Future<bool> setSproUrl(String sproUrl) async {
-    return await DefaultKeyValueStorage().setCommon(
-      AppInfo.kSproUrley,
-      sproUrl,
-    );
+    return DefaultKeyValueStorage().setCommon(AppInfo.kSproUrley, sproUrl);
   }
 
   static Future<String?> getSproToken() {
@@ -30,10 +27,7 @@ class AppConstraint {
   }
 
   static Future<bool> setSproToken(String token) async {
-    return await DefaultKeyValueStorage().setEncrypted(
-      AppInfo.kSproTokenKey,
-      token,
-    );
+    return DefaultKeyValueStorage().setEncrypted(AppInfo.kSproTokenKey, token);
   }
 
   static String getLanguageCode() {
@@ -42,7 +36,7 @@ class AppConstraint {
   }
 
   static Future<bool> setLanguageCode(String languageCode) async {
-    return await DefaultKeyValueStorage().setCommon(
+    return DefaultKeyValueStorage().setCommon(
       AppInfo.kLanguageCodeKey,
       languageCode,
     );
@@ -53,17 +47,14 @@ class AppConstraint {
   }
 
   static Future<bool> setDeviceId(String deviceId) async {
-    return await DefaultKeyValueStorage().setCommon(
-      AppInfo.kDeviceIdKey,
-      deviceId,
-    );
+    return DefaultKeyValueStorage().setCommon(AppInfo.kDeviceIdKey, deviceId);
   }
 
   static Future<bool> clearAllCommon() async {
-    return await DefaultKeyValueStorage().clearAllCommon();
+    return DefaultKeyValueStorage().clearAllCommon();
   }
 
   static Future<bool> clearAllEncrypted() async {
-    return await DefaultKeyValueStorage().clearAllEncrypted();
+    return DefaultKeyValueStorage().clearAllEncrypted();
   }
 }

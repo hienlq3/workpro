@@ -3,31 +3,30 @@ import 'package:wp_core/src/config/app_theme.dart';
 import 'package:wp_core/src/utils/extensions/build_context.dart';
 
 abstract class WpBaseFormField<T> extends StatefulWidget {
-  final String labelText;
-  final String? Function(String?)? validator;
-  final ValueChanged<T> onChanged;
-  final String? errorText;
-  final T? value;
-  final TextInputAction? textInputAction;
-  final TextCapitalization textCapitalization;
-  final bool disabled;
-  final Widget? suffixIcon;
-
   const WpBaseFormField({
-    super.key,
     required this.labelText,
-    this.validator,
     required this.onChanged,
+    super.key,
+    this.validator,
     this.errorText,
-    this.value,
+    required this.value,
     this.textInputAction,
     this.textCapitalization = TextCapitalization.none,
     this.disabled = false,
     this.suffixIcon,
   });
+  final String labelText;
+  final String? Function(String?)? validator;
+  final ValueChanged<T> onChanged;
+  final String? errorText;
+  final T value;
+  final TextInputAction? textInputAction;
+  final TextCapitalization textCapitalization;
+  final bool disabled;
+  final Widget? suffixIcon;
 }
 
-abstract class WpBaseFormFieldState<T extends WpBaseFormField>
+abstract class WpBaseFormFieldState<T extends WpBaseFormField<T>>
     extends State<T> {
   InputDecoration getInputDecoration({
     required TextEditingController controller,
@@ -40,7 +39,7 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
       labelStyle: context.textTheme.kLabel2.copyWith(
         color: focusNode.hasFocus ? context.theme.primaryColor : null,
       ),
-      contentPadding: const EdgeInsets.all(16.0),
+      contentPadding: const EdgeInsets.all(16),
       counterText: '',
       suffixIcon:
           widget.suffixIcon != null
@@ -50,7 +49,7 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
                   Visibility(
                     visible: controller.text.isNotEmpty,
                     child: IconButton(
-                      icon: const Icon(Icons.cancel, size: 24.0),
+                      icon: const Icon(Icons.cancel, size: 24),
                       onPressed: onPressed,
                       color: context.theme.unselectedWidgetColor,
                     ),
@@ -61,7 +60,7 @@ abstract class WpBaseFormFieldState<T extends WpBaseFormField>
               : Visibility(
                 visible: controller.text.isNotEmpty,
                 child: IconButton(
-                  icon: const Icon(Icons.cancel, size: 24.0),
+                  icon: const Icon(Icons.cancel, size: 24),
                   color: context.theme.unselectedWidgetColor,
                   onPressed: onPressed,
                 ),

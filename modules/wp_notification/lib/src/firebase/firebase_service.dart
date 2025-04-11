@@ -9,9 +9,9 @@ class FirebaseService {
     final token = await _firebaseMessaging.getToken();
     await AppConstraint.setDeviceId(token ?? '');
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      LocalNotificationService.showNotification(message);
-    });
+    FirebaseMessaging.onMessage.listen(
+      LocalNotificationService.showNotification,
+    );
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {});
   }

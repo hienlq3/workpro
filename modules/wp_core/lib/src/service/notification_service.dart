@@ -3,12 +3,11 @@ import 'package:wp_core/src/service/base_service.dart';
 
 @singleton
 class NotificationService {
-  final BaseService _baseService;
-
   NotificationService({required BaseService baseService})
     : _baseService = baseService;
+  final BaseService _baseService;
 
-  Future<Map<String, dynamic>> getAllNotifications({required int page}) async {
+  Future<Map<String, dynamic>?> getAllNotifications({required int page}) async {
     try {
       final response = await _baseService.get(
         '/rest/sms/latest/integration-notification/list',
@@ -16,8 +15,8 @@ class NotificationService {
       );
 
       return response.data;
-    } on Exception catch (error) {
-      throw error.toString();
+    } on Exception {
+      rethrow;
     }
   }
 
@@ -26,8 +25,8 @@ class NotificationService {
       await _baseService.put(
         '/rest/sms/latest/integration-notification/read/$id',
       );
-    } on Exception catch (error) {
-      throw error.toString();
+    } on Exception {
+      rethrow;
     }
   }
 }

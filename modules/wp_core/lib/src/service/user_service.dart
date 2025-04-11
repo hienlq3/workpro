@@ -4,11 +4,10 @@ import 'package:wp_core/wp_core.dart';
 
 @singleton
 class UserService {
+  UserService({required BaseService baseService}) : _baseService = baseService;
   final BaseService _baseService;
 
-  UserService({required BaseService baseService}) : _baseService = baseService;
-
-  Future<Map<String, dynamic>> login({
+  Future<Map<String, dynamic>?> login({
     required String username,
     required String password,
   }) async {
@@ -24,8 +23,8 @@ class UserService {
       );
 
       return response.data;
-    } on Exception catch (error) {
-      throw error.toString();
+    } on Exception {
+      rethrow;
     }
   }
 }

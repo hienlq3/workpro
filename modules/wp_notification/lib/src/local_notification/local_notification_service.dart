@@ -6,13 +6,11 @@ class LocalNotificationService {
       FlutterLocalNotificationsPlugin();
 
   static Future<void> initialize() async {
-    const AndroidInitializationSettings androidInit =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    final DarwinInitializationSettings iosInit =
-        const DarwinInitializationSettings();
+    const iosInit = DarwinInitializationSettings();
 
-    final InitializationSettings initSettings = InitializationSettings(
+    const initSettings = InitializationSettings(
       android: androidInit,
       iOS: iosInit,
     );
@@ -21,14 +19,14 @@ class LocalNotificationService {
   }
 
   static Future<void> showNotification(RemoteMessage message) async {
-    final androidDetails = const AndroidNotificationDetails(
+    const androidDetails = AndroidNotificationDetails(
       'channel_id',
       'channel_name',
       importance: Importance.max,
       priority: Priority.high,
     );
 
-    final details = NotificationDetails(android: androidDetails);
+    const details = NotificationDetails(android: androidDetails);
 
     await _notificationsPlugin.show(
       0,
