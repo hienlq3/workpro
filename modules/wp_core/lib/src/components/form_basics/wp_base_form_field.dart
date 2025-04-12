@@ -14,6 +14,7 @@ abstract class WpBaseFormField<T> extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.disabled = false,
     this.suffixIcon,
+    this.obscureText = false,
   });
   final String labelText;
   final String? Function(String?)? validator;
@@ -24,10 +25,10 @@ abstract class WpBaseFormField<T> extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final bool disabled;
   final Widget? suffixIcon;
+  final bool obscureText;
 }
 
-abstract class WpBaseFormFieldState<T extends WpBaseFormField<T>>
-    extends State<T> {
+abstract class WpBaseFormFieldState<T> extends State<WpBaseFormField<T>> {
   InputDecoration getInputDecoration({
     required TextEditingController controller,
     required FocusNode focusNode,

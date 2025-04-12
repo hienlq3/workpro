@@ -41,7 +41,7 @@ class _UsernameInput extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
-        return WpTextFormField<String>(
+        return WpTextFormField(
           onChanged:
               (username) =>
                   context.read<LoginBloc>().add(LoginUsernameChanged(username)),
@@ -82,7 +82,7 @@ class _PasswordInputState extends State<_PasswordInput> {
               previous.password != current.password ||
               previous.status != current.status,
       builder: (context, state) {
-        return WpTextFormField<String>(
+        return WpTextFormField(
           onChanged:
               (password) =>
                   context.read<LoginBloc>().add(LoginPasswordChanged(password)),

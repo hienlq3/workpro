@@ -3,12 +3,12 @@ import 'package:wp_core/src/components/wp_modal_bottom_sheet/wp_modal_bottom_she
 import 'package:wp_core/wp_core.dart';
 
 class WpModalBottomSheet {
-  static void showWpModalBottomSheet({
+  static Future<void> showWpModalBottomSheet({
     required BuildContext context,
     required String title,
     required Widget child,
-  }) {
-    showModalBottomSheet(
+  }) async {
+    await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(

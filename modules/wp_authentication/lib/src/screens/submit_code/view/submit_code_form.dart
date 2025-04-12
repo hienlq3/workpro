@@ -51,7 +51,7 @@ class _CodeInput extends StatelessWidget {
               previous.errorText != current.errorText ||
               previous.status != current.status,
       builder: (context, state) {
-        return WpTextFormField<String>(
+        return WpTextFormField(
           onChanged:
               (code) =>
                   context.read<SubmitCodeBloc>().add(CodeChanged(code: code)),

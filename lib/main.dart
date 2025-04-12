@@ -7,7 +7,7 @@ import 'package:wp_core/injection.dart';
 import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
 import 'package:wp_notification/injection.dart';
-import 'package:wp_notification/wp_notification.dart';
+// import 'package:wp_notification/wp_notification.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ Future<void> main() async {
 
   configureNotificationDependencies();
 
-  await WPNotification.initialize();
+  // await WPNotification.initialize();
 
   runApp(const MyApp());
 }

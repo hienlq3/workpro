@@ -4,7 +4,7 @@ import 'package:wp_core/src/components/form_basics/wp_wrapper_form.dart';
 import 'package:wp_core/src/config/app_theme.dart';
 import 'package:wp_core/src/utils/extensions/build_context.dart';
 
-class WpTextFormField<String> extends WpBaseFormField<String> {
+class WpTextFormField extends WpBaseFormField<String> {
   const WpTextFormField({
     required super.onChanged,
     required super.labelText,
@@ -15,13 +15,12 @@ class WpTextFormField<String> extends WpBaseFormField<String> {
     super.textInputAction,
     super.textCapitalization,
     super.disabled,
-    this.obscureText = false,
+    super.obscureText = false,
     super.suffixIcon,
   });
-  final bool obscureText;
 
   @override
-  State<WpTextFormField> createState() => _WpTextFormFieldState();
+  WpBaseFormFieldState<String> createState() => _WpTextFormFieldState();
 }
 
 class _WpTextFormFieldState extends WpBaseFormFieldState<String> {
@@ -42,7 +41,7 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<String> {
   }
 
   @override
-  void didUpdateWidget(covariant WpTextFormField<String> oldWidget) {
+  void didUpdateWidget(covariant WpTextFormField oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
