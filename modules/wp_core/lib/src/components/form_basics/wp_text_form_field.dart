@@ -8,7 +8,7 @@ class WpTextFormField extends WpBaseFormField<String> {
   const WpTextFormField({
     required super.onChanged,
     required super.labelText,
-    required super.value,
+    super.value,
     super.key,
     super.validator,
     super.errorText,
@@ -45,7 +45,7 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<String> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _controller.text = widget.value;
+        _controller.text = widget.value ?? '';
       });
     }
   }

@@ -16,12 +16,8 @@ class SystemPropertyService {
         options: Options(contentType: Headers.jsonContentType),
       );
       return response.data;
-    } on DioException catch (e) {
-      if (e.response != null) {
-        throw Exception('Đăng nhập thất bại: ${e.response?.data}');
-      } else {
-        throw Exception('Lỗi kết nối: ${e.message}');
-      }
+    } on Exception {
+      rethrow;
     }
   }
 }

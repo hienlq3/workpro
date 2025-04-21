@@ -16,17 +16,14 @@ class SubmitCodePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<SubmitCodeBloc>(),
-      child: Scaffold(
+      child: const Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: context.mediaQuery.size.height / 7,
-                left: AppSpacing.kSpace16,
-                right: AppSpacing.kSpace16,
-              ),
-              child: const SubmitCodeForm(),
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: AppSpacing.kSpace16,
+              right: AppSpacing.kSpace16,
             ),
+            child: SubmitCodeForm(),
           ),
         ),
       ),

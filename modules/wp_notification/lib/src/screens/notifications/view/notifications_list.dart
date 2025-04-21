@@ -56,9 +56,11 @@ class _NotificationsListState extends State<NotificationsList> {
                       controller: _scrollController,
                       itemCount: state.notifications.length,
                       itemBuilder: (context, index) {
-                        final notification = state.notifications[index];
+                        final notificationId =
+                            state.notifications[index].notificationId;
                         return NotificationItem(
-                          notificationId: notification.notificationId,
+                          key: ValueKey(notificationId),
+                          notificationId: notificationId,
                         );
                       },
                       separatorBuilder:

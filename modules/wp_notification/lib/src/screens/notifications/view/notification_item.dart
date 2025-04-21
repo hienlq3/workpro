@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -13,6 +15,7 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('rebuild');
     return BlocSelector<NotificationBloc, NotificationState, NotificationModel>(
       selector: (state) {
         return state.notifications.firstWhere(
@@ -21,9 +24,8 @@ class NotificationItem extends StatelessWidget {
       },
       builder: (context, notification) {
         return InkWell(
-          key: ValueKey(notification.notificationId),
           onTap: () {
-            if (!(notification.unread ?? false)) {
+            if (notification.unread ?? false) {
               context.read<NotificationBloc>().add(
                 NotificationsMarked(id: notification.notificationId),
               );
@@ -39,46 +41,17 @@ class NotificationItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: AppSpacing.kSpace12,
               children: [
-                SvgPicture.asset(
-                  notification.unread ?? false
-                      ? NotificationAssets.kIcApproveUnreadPath
-                      : NotificationAssets.kIcApprovePath,
-                ),
+                _NotificationIcon(unread: notification.unread ?? false),
                 Flexible(
                   child: Column(
                     spacing: AppSpacing.kSpace8,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Eapprove',
-                        style: context.textTheme.kTitle5.copyWith(
-                          color: AppColor.wpTitleColor.value,
-                        ),
-                      ),
-                      Html(
-                        data: notification.message ?? '',
-                        style: {
-                          '*': Style(
-                            margin: Margins.zero,
-                            padding: HtmlPaddings.zero,
-                            fontSize: FontSize.medium,
-                            fontWeight: FontWeight.normal,
-                            fontFamily: 'Intel',
-                            color: AppColor.wpBodyColor.value,
-                          ),
-                          'strong': Style(
-                            fontSize: FontSize.medium,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Intel',
-                            color: AppColor.wpPrimaryColor.value,
-                          ),
-                        },
-                      ),
-                      Text(
-                        notification.recordedTime?.toFormattedDate() ?? '',
-                        style: context.textTheme.kSubtitle3.copyWith(
-                          color: AppColor.wpSubtitleColor.value,
-                        ),
+                      const _NotificationTitle(),
+                      _NotificationMessage(message: notification.message ?? ''),
+                      _NotificationTime(
+                        recordedTime:
+                            notification.recordedTime?.toFormattedDate() ?? '',
                       ),
                     ],
                   ),
@@ -88,6 +61,77 @@ class NotificationItem extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _NotificationIcon extends StatelessWidget {
+  const _NotificationIcon({required this.unread});
+  final bool unread;
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      unread
+          ? NotificationAssets.kIcApproveUnreadPath
+          : NotificationAssets.kIcApprovePath,
+    );
+  }
+}
+
+class _NotificationTitle extends StatelessWidget {
+  const _NotificationTitle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Eapprove',
+      style: context.textTheme.kTitle5.copyWith(
+        color: AppColor.wpTitleColor.value,
+      ),
+    );
+  }
+}
+
+class _NotificationMessage extends StatelessWidget {
+  const _NotificationMessage({required this.message});
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Html(
+      data: message,
+      style: {
+        '*': Style(
+          margin: Margins.zero,
+          padding: HtmlPaddings.zero,
+          fontSize: FontSize.medium,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Intel',
+          color: AppColor.wpBodyColor.value,
+        ),
+        'strong': Style(
+          fontSize: FontSize.medium,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Intel',
+          color: AppColor.wpPrimaryColor.value,
+        ),
+      },
+    );
+  }
+}
+
+class _NotificationTime extends StatelessWidget {
+  const _NotificationTime({required this.recordedTime});
+  final String recordedTime;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      recordedTime,
+      style: context.textTheme.kSubtitle3.copyWith(
+        color: AppColor.wpSubtitleColor.value,
+      ),
     );
   }
 }

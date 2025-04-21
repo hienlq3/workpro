@@ -80,7 +80,7 @@ class AuthenticationRepository {
 
   void dispose() => _controller.close();
 
-  Future<void> submitCode({required String code}) async {
+  Future<CodeModel?> submitCode({required String code}) async {
     try {
       final result = await _systemPropertyService.getCode(code: code);
       if (result != null) {
@@ -95,7 +95,9 @@ class AuthenticationRepository {
         //   AppColor.setPrimaryColor(codeResult.taskbarColor!);
         // }
         _controller.add(AuthenticationStatus.unauthenticated);
+        return codeResult;
       }
+      return null;
     } on Exception {
       rethrow;
     }

@@ -9,7 +9,7 @@ abstract class WpBaseFormField<T> extends StatefulWidget {
     super.key,
     this.validator,
     this.errorText,
-    required this.value,
+    this.value,
     this.textInputAction,
     this.textCapitalization = TextCapitalization.none,
     this.disabled = false,
@@ -20,7 +20,7 @@ abstract class WpBaseFormField<T> extends StatefulWidget {
   final String? Function(String?)? validator;
   final ValueChanged<T> onChanged;
   final String? errorText;
-  final T value;
+  final T? value;
   final TextInputAction? textInputAction;
   final TextCapitalization textCapitalization;
   final bool disabled;
