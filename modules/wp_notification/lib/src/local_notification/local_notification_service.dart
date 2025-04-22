@@ -29,7 +29,7 @@ class LocalNotificationService {
     const details = NotificationDetails(android: androidDetails);
 
     await _notificationsPlugin.show(
-      0,
+      message.notification.hashCode,
       message.notification?.title,
       message.notification?.body,
       details,

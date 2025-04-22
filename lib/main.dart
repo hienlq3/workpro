@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/routing/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wp_authentication/injection.dart';
 import 'package:wp_authentication/wp_authentication.dart';
-import 'package:wp_core/injection.dart';
 import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
-import 'package:wp_notification/injection.dart';
 import 'package:wp_notification/wp_notification.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await configureDependencies();
+  await WPCore.initialize();
 
-  configureAuthenticationDependencies();
-
-  configureNotificationDependencies();
+  WpAuthentication.initialize();
 
   await WPNotification.initialize();
 

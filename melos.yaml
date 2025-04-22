@@ -1,7 +1,9 @@
 name: apidash
 
 packages:
-  - modules/**
+  - modules/wp_core
+  - modules/wp_authentication
+  - modules/wp_notification
 scripts:
   analyze:
     run: melos exec -- "flutter analyze"

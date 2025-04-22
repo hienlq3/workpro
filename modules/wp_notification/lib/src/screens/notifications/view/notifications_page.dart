@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wp_core/injection.dart';
+import 'package:wp_core/wp_core.dart';
 import 'package:wp_notification/src/repositories/notification_repository.dart';
 import 'package:wp_notification/src/screens/notifications/bloc/notification_bloc.dart';
 import 'package:wp_notification/src/screens/notifications/view/notifications_list.dart';

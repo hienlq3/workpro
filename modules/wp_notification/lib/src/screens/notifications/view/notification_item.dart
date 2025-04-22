@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -15,7 +13,6 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('rebuild');
     return BlocSelector<NotificationBloc, NotificationState, NotificationModel>(
       selector: (state) {
         return state.notifications.firstWhere(
