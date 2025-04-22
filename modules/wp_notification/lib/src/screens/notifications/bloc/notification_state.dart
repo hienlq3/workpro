@@ -1,6 +1,6 @@
 part of 'notification_bloc.dart';
 
-enum NotificationStatus { initial, loading, success, error }
+enum NotificationStatus { initial, loading, success, error, empty }
 
 final class NotificationState extends Equatable {
   const NotificationState({

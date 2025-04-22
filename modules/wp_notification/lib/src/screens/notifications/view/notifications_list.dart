@@ -43,31 +43,40 @@ class _NotificationsListState extends State<NotificationsList> {
   Widget build(BuildContext context) {
     return BlocBuilder<NotificationBloc, NotificationState>(
       builder: (context, state) {
-        return SafeArea(
-          child: RefreshIndicator(
-            onRefresh:
-                () async => context.read<NotificationBloc>().add(
-                  NotificationsRefreshed(),
-                ),
-            child:
-                state.notifications.isEmpty
-                    ? const NotificationsEmpty()
-                    : ListView.separated(
-                      controller: _scrollController,
-                      itemCount: state.notifications.length,
-                      itemBuilder: (context, index) {
-                        final notificationId =
-                            state.notifications[index].notificationId;
-                        return NotificationItem(
-                          key: ValueKey(notificationId),
-                          notificationId: notificationId,
-                        );
-                      },
-                      separatorBuilder:
-                          (context, index) => const Divider(height: 1),
+        switch (state.status) {
+          case NotificationStatus.empty:
+            return const NotificationsEmpty();
+
+          case NotificationStatus.success:
+            return SafeArea(
+              child: RefreshIndicator(
+                onRefresh:
+                    () async => context.read<NotificationBloc>().add(
+                      NotificationFetched(isRefresh: true),
                     ),
-          ),
-        );
+                child: ListView.separated(
+                  controller: _scrollController,
+                  itemCount: state.notifications.length,
+                  itemBuilder: (context, index) {
+                    final notificationId =
+                        state.notifications[index].notificationId;
+                    return NotificationItem(
+                      key: ValueKey(notificationId),
+                      notificationId: notificationId,
+                    );
+                  },
+                  separatorBuilder:
+                      (context, index) => const Divider(height: 1),
+                ),
+              ),
+            );
+
+          case NotificationStatus.error:
+            return const Center(child: Text('Failed to load notifications.'));
+
+          default:
+            return Center(child: CircularProgressIndicator());
+        }
       },
     );
   }

@@ -30,7 +30,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
       transformer: throttleDroppable(throttleDuration),
     );
     on<NotificationsMarked>(_onNotificationsMarked);
-    on<NotificationsRefreshed>(_onNotificationsRefreshed);
   }
   final NotificationRepository _notificationRepository;
 
@@ -38,24 +37,39 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     NotificationFetched event,
     Emitter<NotificationState> emit,
   ) async {
-    if (state.hasReachedMax) return;
+    if (!event.isRefresh && state.hasReachedMax) return;
+
     try {
-      final notifications = await _notificationRepository.notificationsFetch(
-        page:
-            state.isInitial
-                ? 0
-                : state.notifications.length ~/ _notificationLimit,
-      );
-      emit(
-        state.copyWith(
-          status: NotificationStatus.success,
-          notifications:
-              state.isInitial
-                  ? notifications
-                  : [...state.notifications, ...notifications],
-          hasReachedMax: notifications.length < _notificationLimit,
-        ),
-      );
+      final isInitial = event.isRefresh || state.isInitial;
+
+      final fetchedNotifications = await _notificationRepository
+          .notificationsFetch(
+            page:
+                isInitial
+                    ? 0
+                    : state.notifications.length ~/ _notificationLimit,
+          );
+
+      if (isInitial && fetchedNotifications.isEmpty) {
+        emit(
+          state.copyWith(
+            status: NotificationStatus.empty,
+            notifications: [],
+            hasReachedMax: true,
+          ),
+        );
+      } else {
+        emit(
+          state.copyWith(
+            status: NotificationStatus.success,
+            notifications:
+                isInitial
+                    ? fetchedNotifications
+                    : [...state.notifications, ...fetchedNotifications],
+            hasReachedMax: fetchedNotifications.length < _notificationLimit,
+          ),
+        );
+      }
     } catch (error, stackTrace) {
       onError(error, stackTrace);
       emit(state.copyWith(status: NotificationStatus.error));
@@ -81,28 +95,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
       final rollbackNotifications = currentState.notifications;
       onError(error, trace);
       emit(state.copyWith(notifications: rollbackNotifications));
-    }
-  }
-
-  Future<void> _onNotificationsRefreshed(
-    NotificationsRefreshed event,
-    Emitter<NotificationState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: NotificationStatus.initial));
-      final notifications = await _notificationRepository.notificationsFetch(
-        page: 0,
-      );
-      emit(
-        state.copyWith(
-          status: NotificationStatus.success,
-          notifications: notifications,
-          hasReachedMax: notifications.length < _notificationLimit,
-        ),
-      );
-    } catch (error, stackTrace) {
-      onError(error, stackTrace);
-      emit(state.copyWith(status: NotificationStatus.error));
     }
   }
 }
