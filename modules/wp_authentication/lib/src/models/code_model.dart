@@ -6,17 +6,16 @@ part 'code_model.g.dart';
 
 @freezed
 abstract class CodeModel with _$CodeModel {
-  const CodeModel._();
-
   const factory CodeModel({
-    final int? id,
-    @Default('') final String urlSpro,
-    @Default(CodeSSOType.none) final CodeSSOType ssoType,
-    final String? clientId,
-    final String? tenantId,
-    final String? code,
-    final String? taskbarColor,
+    int? id,
+    @Default('') String urlSpro,
+    @Default(CodeSSOType.none) CodeSSOType ssoType,
+    String? clientId,
+    String? tenantId,
+    String? code,
+    String? taskbarColor,
   }) = _CodeModel;
+  const CodeModel._();
 
   factory CodeModel.fromJson(Map<String, dynamic> json) =>
       _$CodeModelFromJson(json);

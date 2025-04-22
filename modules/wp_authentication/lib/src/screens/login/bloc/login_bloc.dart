@@ -16,7 +16,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginSubmitted>(_onSubmitted);
     on<LogoutCodeSubmitted>(_onLogoutCodeSubmitted);
     on<CheckTokenRequested>(_onCheckTokenRequested);
-    add(CheckTokenRequested());
+    add(const CheckTokenRequested());
   }
   final AuthenticationRepository _authenticationRepository;
 

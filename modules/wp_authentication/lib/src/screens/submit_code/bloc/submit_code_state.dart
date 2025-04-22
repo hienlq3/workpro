@@ -1,32 +1,31 @@
 part of 'submit_code_bloc.dart';
 
-enum SubmitCodeStatus { initial, loading, success, error }
-
 class SubmitCodeState extends Equatable {
-  final String code;
-  final SubmitCodeStatus status;
-  final String errorText;
-
   const SubmitCodeState({
-    this.code = '',
-    this.status = SubmitCodeStatus.initial,
+    this.code = const CodeInputModel.pure(),
+    this.status = FormzSubmissionStatus.initial,
     this.errorText = '',
+    this.isValid = false,
   });
+  final CodeInputModel code;
+  final FormzSubmissionStatus status;
+  final String errorText;
+  final bool isValid;
 
   SubmitCodeState copyWith({
-    String? code,
-    SubmitCodeStatus? status,
+    CodeInputModel? code,
+    FormzSubmissionStatus? status,
     String? errorText,
+    bool? isValid,
   }) {
     return SubmitCodeState(
       code: code ?? this.code,
       status: status ?? this.status,
       errorText: errorText ?? this.errorText,
+      isValid: isValid ?? this.isValid,
     );
   }
 
-  bool get isLoading => status == SubmitCodeStatus.loading;
-
   @override
-  List<Object> get props => [code, status, errorText];
+  List<Object> get props => [code, status];
 }

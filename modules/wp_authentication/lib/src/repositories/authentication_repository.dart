@@ -14,12 +14,6 @@ enum AuthenticationStatus {
 
 @singleton
 class AuthenticationRepository {
-  final _controller = StreamController<AuthenticationStatus>();
-  final SystemPropertyService _systemPropertyService;
-  final UserService _userService;
-  final BaseUrlNotifier _baseUrlNotifier;
-  final HeadersNotifier _headersNotifier;
-
   AuthenticationRepository({
     required SystemPropertyService systemPropertyService,
     required UserService userService,
@@ -29,6 +23,11 @@ class AuthenticationRepository {
        _userService = userService,
        _baseUrlNotifier = baseUrlNotifier,
        _headersNotifier = headersNotifier;
+  final _controller = StreamController<AuthenticationStatus>();
+  final SystemPropertyService _systemPropertyService;
+  final UserService _userService;
+  final BaseUrlNotifier _baseUrlNotifier;
+  final HeadersNotifier _headersNotifier;
 
   Stream<AuthenticationStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
@@ -45,20 +44,25 @@ class AuthenticationRepository {
         username: username,
         password: password,
       );
-      final authResponse = BaseResponseModel<AuthModel>.fromJson(
-        responseJson,
-        (json) => AuthModel.fromJson(json as Map<String, dynamic>),
-      );
-      final userInfo = authResponse.userInfo;
-      if (userInfo != null) {
-        if (!userInfo.validateLoginToken()) {
-          _headersNotifier.updateHeader(AppInfo.kSToken, userInfo.loginToken);
-          await AppConstraint.setSproToken(userInfo.loginToken);
-          _controller.add(AuthenticationStatus.authenticated);
+      if (responseJson != null) {
+        final authResponse = BaseResponseModel<AuthModel>.fromJson(
+          responseJson,
+          (json) =>
+              json != null
+                  ? AuthModel.fromJson(json as Map<String, dynamic>)
+                  : const AuthModel(),
+        );
+        final userInfo = authResponse.userInfo;
+        if (userInfo != null) {
+          if (!userInfo.validateLoginToken()) {
+            _headersNotifier.updateHeader(AppInfo.kSToken, userInfo.loginToken);
+            await AppConstraint.setSproToken(userInfo.loginToken);
+            _controller.add(AuthenticationStatus.authenticated);
+          }
         }
       }
-    } catch (error) {
-      throw error.toString();
+    } on Exception {
+      rethrow;
     }
   }
 
@@ -76,28 +80,33 @@ class AuthenticationRepository {
 
   void dispose() => _controller.close();
 
-  Future<void> submitCode({required String code}) async {
+  Future<CodeModel?> submitCode({required String code}) async {
     try {
       final result = await _systemPropertyService.getCode(code: code);
-      final codeResult = CodeModel.fromJson(result);
-      if (!codeResult.validateUrlSpro()) {
-        _baseUrlNotifier.baseUrl = codeResult.urlSpro;
+      if (result != null) {
+        final codeResult = CodeModel.fromJson(result);
+        if (!codeResult.validateUrlSpro()) {
+          _baseUrlNotifier.baseUrl = codeResult.urlSpro;
+        }
+        if (codeResult.code?.isNotEmpty ?? false) {
+          await AppConstraint.setCode(codeResult.code!);
+        }
+        // if (codeResult.taskbarColor?.isNotEmpty == true) {
+        //   AppColor.setPrimaryColor(codeResult.taskbarColor!);
+        // }
+        _controller.add(AuthenticationStatus.unauthenticated);
+        return codeResult;
       }
-      if (codeResult.code?.isNotEmpty == true) {
-        await AppConstraint.setCode(codeResult.code!);
-      }
-      // if (codeResult.taskbarColor?.isNotEmpty == true) {
-      //   AppColor.setPrimaryColor(codeResult.taskbarColor!);
-      // }
-      _controller.add(AuthenticationStatus.unauthenticated);
-    } catch (error) {
-      throw 'Failed to submit code!';
+      return null;
+    } on Exception {
+      rethrow;
     }
   }
 
   Future<void> handleTokenAvailable() async {
     final sproToken = await AppConstraint.getSproToken();
-    if (sproToken?.isNotEmpty == true) {
+    if (sproToken?.isNotEmpty ?? false) {
+      _headersNotifier.updateHeader(AppInfo.kSToken, sproToken!);
       _controller.add(AuthenticationStatus.authenticated);
     }
   }

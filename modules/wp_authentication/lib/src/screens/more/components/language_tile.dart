@@ -26,7 +26,6 @@ class LanguageTile extends StatelessWidget {
       title: Text(appLocalizations.languageLabel, style: textTheme.kTitle6),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             locale?.languageName ?? '',
@@ -35,13 +34,13 @@ class LanguageTile extends StatelessWidget {
           const Icon(Icons.chevron_right),
         ],
       ),
-      onTap: () => _showLanguageSelection(context),
+      onTap: () async => await _showLanguageSelection(context),
     );
   }
 
-  void _showLanguageSelection(BuildContext context) {
+  Future<void> _showLanguageSelection(BuildContext context) async {
     final state = context.read<LocalizationBloc>().state;
-    WpModalBottomSheet.showWpModalBottomSheet(
+    await WpModalBottomSheet.showWpModalBottomSheet(
       context: context,
       title: context.appLocalizations.languageSelection,
       child: ListView.separated(

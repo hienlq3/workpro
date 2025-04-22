@@ -11,13 +11,13 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: AppRoutes.kHome,
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => const HomePage(),
       ),
       GoRoute(
         path: AppRoutes.kSplash,
-        builder: (context, state) => SplashPage(),
+        builder: (context, state) => const SplashPage(),
       ),
-      ...authRoutes
+      ...authRoutes,
     ],
     errorPageBuilder: (context, state) => const MaterialPage(
       child: Scaffold(
@@ -31,7 +31,7 @@ abstract class AppRouter {
       switch (status) {
         case AuthenticationStatus.authenticated:
           if (state.matchedLocation.equalsIgnoreCase(AppRoutes.kLogin)) {
-            return AppRoutes.kMore;
+            return AppRoutes.kHome;
           } else {
             return null;
           }

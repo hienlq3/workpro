@@ -8,9 +8,8 @@ sealed class SubmitCodeEvent extends Equatable {
 }
 
 class CodeChanged extends SubmitCodeEvent {
-  final String code;
-
   const CodeChanged({required this.code});
+  final String code;
 
   @override
   List<Object> get props => [code];

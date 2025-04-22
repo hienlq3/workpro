@@ -2,5 +2,5 @@
   "dart.flutterSdkPath": ".fvm/versions/stable",
   "arb-editor.suppressedWarnings": [
     "missing_metadata_for_key"
-  ],
+  ]
 }

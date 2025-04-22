@@ -1,0 +1,2 @@
+C:/Users/lequy/IdeaProjects/workpro-1/android/app/.cxx/Debug/5s5n1iv5/x86/CMakeFiles/edit_cache.dir
+C:/Users/lequy/IdeaProjects/workpro-1/android/app/.cxx/Debug/5s5n1iv5/x86/CMakeFiles/rebuild_cache.dir

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_authentication/src/screens/submit_code/bloc/submit_code_bloc.dart';
 import 'package:wp_authentication/src/screens/submit_code/view/submit_code_form.dart';
 import 'package:wp_core/wp_core.dart';
-import 'package:wp_core/injection.dart';
 
 class SubmitCodePage extends StatelessWidget {
   const SubmitCodePage({super.key});
@@ -16,17 +15,14 @@ class SubmitCodePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<SubmitCodeBloc>(),
-      child: Scaffold(
+      child: const Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: context.mediaQuery.size.height / 7,
-                left: AppSpacing.kSpace16,
-                right: AppSpacing.kSpace16,
-              ),
-              child: const SubmitCodeForm(),
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: AppSpacing.kSpace16,
+              right: AppSpacing.kSpace16,
             ),
+            child: SubmitCodeForm(),
           ),
         ),
       ),

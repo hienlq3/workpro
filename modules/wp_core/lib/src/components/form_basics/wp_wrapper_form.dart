@@ -5,18 +5,17 @@ import 'package:wp_core/src/config/app_theme.dart';
 import 'package:wp_core/src/utils/extensions/build_context.dart';
 
 class WpBorderWrapper<T> extends StatelessWidget {
+  const WpBorderWrapper({
+    required this.builder,
+    required this.focusNode,
+    super.key,
+    this.errorText,
+    this.validator,
+  });
   final String? errorText;
   final FormFieldValidator<T>? validator;
   final Widget Function(FormFieldState<T> state) builder;
   final FocusNode focusNode;
-
-  const WpBorderWrapper({
-    super.key,
-    this.errorText,
-    this.validator,
-    required this.builder,
-    required this.focusNode,
-  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +23,12 @@ class WpBorderWrapper<T> extends StatelessWidget {
       key: key,
       validator: validator,
       builder: (FormFieldState<T> state) {
-        final hasError = (state.hasError || (errorText?.isNotEmpty ?? false));
+        final hasError = state.hasError || (errorText?.isNotEmpty ?? false);
         return Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            DecoratedBox(
               decoration: BoxDecoration(
                 border: Border.all(
                   color:

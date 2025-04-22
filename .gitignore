@@ -48,3 +48,5 @@ app.*.map.json
 .fvm/
 
 /ios/fastlane/.env.default
+/modules/wp_notification/lib/src/firebase/firebase_options.dart
+/ios/GoogleService-Info.plist

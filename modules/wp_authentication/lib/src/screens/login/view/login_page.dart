@@ -24,11 +24,13 @@ class LoginPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              elevation: 0.0,
+              elevation: 0,
               leading: BackButton(
                 color: Colors.black,
                 onPressed:
-                    () => context.read<LoginBloc>().add(LogoutCodeSubmitted()),
+                    () => context.read<LoginBloc>().add(
+                      const LogoutCodeSubmitted(),
+                    ),
               ),
             ),
             body: SafeArea(

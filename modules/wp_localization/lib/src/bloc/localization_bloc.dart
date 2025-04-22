@@ -9,7 +9,7 @@ part 'localization_event.dart';
 part 'localization_state.dart';
 
 class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
-  LocalizationBloc() : super(LocalizationState()) {
+  LocalizationBloc() : super(const LocalizationState()) {
     on<LanguageChanged>(_onLanguageChanged);
     final languageCode = AppConstraint.getLanguageCode();
     if (languageCode.isNotEmpty) {

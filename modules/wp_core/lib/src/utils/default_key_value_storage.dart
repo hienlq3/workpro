@@ -1,21 +1,20 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DefaultKeyValueStorage {
+  factory DefaultKeyValueStorage() =>
+      _instance ?? const DefaultKeyValueStorage._();
+
+  const DefaultKeyValueStorage._();
   static SharedPreferences? _sharedPrefs;
 
   static FlutterSecureStorage? _secureStorage;
 
   static DefaultKeyValueStorage? _instance;
 
-  factory DefaultKeyValueStorage() =>
-      _instance ?? const DefaultKeyValueStorage._();
-
-  const DefaultKeyValueStorage._();
-
-  void init({
+  Future<void> init({
     required SharedPreferences sharedPrefs,
     required FlutterSecureStorage secureStorage,
   }) async {
@@ -54,13 +53,13 @@ class DefaultKeyValueStorage {
 
   Future<bool> setCommon<T>(String key, T value) async {
     if (T == String) {
-      return await _sharedPrefs!.setString(key, value as String);
+      return _sharedPrefs!.setString(key, value as String);
     } else if (value == int) {
-      return await _sharedPrefs!.setInt(key, value as int);
+      return _sharedPrefs!.setInt(key, value as int);
     } else if (value == bool) {
       return _sharedPrefs!.setBool(key, value as bool);
     } else if (value == double) {
-      return await _sharedPrefs!.setDouble(key, value as double);
+      return _sharedPrefs!.setDouble(key, value as double);
     } else {
       // Handle unsupported types or throw an exception
       // For example:

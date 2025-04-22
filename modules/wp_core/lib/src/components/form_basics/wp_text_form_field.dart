@@ -4,28 +4,26 @@ import 'package:wp_core/src/components/form_basics/wp_wrapper_form.dart';
 import 'package:wp_core/src/config/app_theme.dart';
 import 'package:wp_core/src/utils/extensions/build_context.dart';
 
-class WpTextFormField<String> extends WpBaseFormField {
-  final bool obscureText;
-
+class WpTextFormField extends WpBaseFormField<String> {
   const WpTextFormField({
-    super.key,
-    super.validator,
     required super.onChanged,
     required super.labelText,
-    super.errorText,
     super.value,
+    super.key,
+    super.validator,
+    super.errorText,
     super.textInputAction,
     super.textCapitalization,
     super.disabled,
-    this.obscureText = false,
+    super.obscureText = false,
     super.suffixIcon,
   });
 
   @override
-  State<WpTextFormField> createState() => _WpTextFormFieldState();
+  WpBaseFormFieldState<String> createState() => _WpTextFormFieldState();
 }
 
-class _WpTextFormFieldState extends WpBaseFormFieldState<WpTextFormField> {
+class _WpTextFormFieldState extends WpBaseFormFieldState<String> {
   final FocusNode _focusNode = FocusNode();
   late TextEditingController _controller;
 
@@ -47,7 +45,7 @@ class _WpTextFormFieldState extends WpBaseFormFieldState<WpTextFormField> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _controller.text = widget.value;
+        _controller.text = widget.value ?? '';
       });
     }
   }

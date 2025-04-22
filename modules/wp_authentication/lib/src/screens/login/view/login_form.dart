@@ -52,6 +52,7 @@ class _UsernameInput extends StatelessWidget {
             }
             return null;
           },
+          value: state.username,
           disabled: state.isLoading,
         );
       },
@@ -92,6 +93,7 @@ class _PasswordInputState extends State<_PasswordInput> {
             }
             return null;
           },
+          value: state.password,
           disabled: state.isLoading,
           obscureText: _obscureText,
           suffixIcon: IconButton(
@@ -106,9 +108,8 @@ class _PasswordInputState extends State<_PasswordInput> {
 }
 
 class _LoginButton extends StatelessWidget {
-  final GlobalKey<FormState> formKey;
-
   const _LoginButton({required this.formKey});
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +132,7 @@ class _LoginButton extends StatelessWidget {
                   },
           style: ButtonStyle(
             minimumSize: WidgetStateProperty.all(
-              Size(MediaQuery.of(context).size.width, 48.0),
+              Size(MediaQuery.of(context).size.width, 48),
             ),
           ),
           child: Text(
