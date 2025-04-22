@@ -9,3 +9,7 @@
 ## [1.3.0] - 2025-03-20
 ### Added
 - Tính năng thông báo.
+
+## [1.4.0] - 2025-04-22
+### Added
+- Xem chi tiết phiếu.
