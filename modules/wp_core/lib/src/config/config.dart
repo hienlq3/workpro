@@ -5,3 +5,4 @@ export 'app_routes.dart';
 export 'app_spacing.dart';
 export 'app_theme.dart';
 export 'assets.dart';
+export 'app_routes_params.dart';

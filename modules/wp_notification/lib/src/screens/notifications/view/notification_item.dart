@@ -21,12 +21,19 @@ class NotificationItem extends StatelessWidget {
       },
       builder: (context, notification) {
         return InkWell(
-          onTap: () {
+          onTap: () async {
             if (notification.unread ?? false) {
               context.read<NotificationBloc>().add(
                 NotificationsMarked(id: notification.notificationId),
               );
             }
+            await context.goRouter.pushNamed(
+              AppRoutes.kTicketDetail,
+              pathParameters: <String, String>{
+                AppRouteParams.ticketId:
+                    notification.args?.ticketId.toString() ?? '',
+              },
+            );
           },
           child: Container(
             padding: const EdgeInsets.all(AppSpacing.kSpace16),

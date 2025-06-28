@@ -894,6 +894,13 @@ packages:
       relative: true
     source: path
     version: "1.0.0+1"
+  wp_ticket:
+    dependency: "direct main"
+    description:
+      path: "modules/wp_ticket"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   xdg_directories:
     dependency: transitive
     description:

@@ -4,6 +4,7 @@ packages:
   - modules/wp_core
   - modules/wp_authentication
   - modules/wp_notification
+  - modules/wp_ticket
 scripts:
   analyze:
     run: melos exec -- "flutter analyze"

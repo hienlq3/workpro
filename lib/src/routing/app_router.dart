@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wp_authentication/wp_authentication.dart';
 import 'package:wp_core/wp_core.dart';
+import 'package:wp_ticket/wp_ticket.dart';
 
 abstract class AppRouter {
   static GoRouter router = GoRouter(
@@ -18,6 +19,7 @@ abstract class AppRouter {
         builder: (context, state) => const SplashPage(),
       ),
       ...authRoutes,
+      ...ticketRoutes,
     ],
     errorPageBuilder: (context, state) => const MaterialPage(
       child: Scaffold(
