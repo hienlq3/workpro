@@ -33,6 +33,9 @@ class NotificationItem extends StatelessWidget {
                 AppRouteParams.ticketId:
                     notification.args?.ticketId.toString() ?? '',
               },
+              queryParameters: <String, dynamic>{
+                AppRouteParams.ticketTitle: notification.args?.ticketTitle,
+              },
             );
           },
           child: Container(

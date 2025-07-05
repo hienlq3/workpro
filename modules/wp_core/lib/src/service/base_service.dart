@@ -36,14 +36,15 @@ class BaseService {
     String url, {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
-  }) async {
+  }) {
     try {
-      final response = await _dio.get<Map<String, dynamic>>(
-        url,
-        queryParameters: queryParameters,
-        options: Options(headers: headers),
-      );
-      return response;
+      return _dio
+          .get<Map<String, dynamic>>(
+            url,
+            queryParameters: queryParameters,
+            options: Options(headers: headers),
+          )
+          .then((response) => response);
     } on DioException catch (error) {
       throw _handleDioError(error);
     }

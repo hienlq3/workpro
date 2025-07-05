@@ -17,6 +17,8 @@ class AppColor {
     const Color(0xFF8C8C8C),
   );
 
+  static const Color wpBackgroundGrey1Color = Color(0xFFF2F5F8);
+
   static void setPrimaryColor(String hexColor) {
     final color = Color(int.parse(hexColor.replaceFirst('#', '0xFF')));
     wpPrimaryColor.value = color;

@@ -21,6 +21,7 @@ import '../service/base_service.dart' as _i996;
 import '../service/my_approval_service.dart' as _i855;
 import '../service/notification_service.dart' as _i935;
 import '../service/system_property_service.dart' as _i991;
+import '../service/ticket_service.dart' as _i309;
 import '../service/user_service.dart' as _i193;
 import '../utils/default_key_value_storage.dart' as _i24;
 import '../utils/notifier/base_url_notifier.dart' as _i613;
@@ -62,6 +63,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.singleton<_i935.NotificationService>(
       () => _i935.NotificationService(baseService: gh<_i996.BaseService>()),
+    );
+    gh.singleton<_i309.TicketService>(
+      () => _i309.TicketService(baseService: gh<_i996.BaseService>()),
     );
     gh.singleton<_i193.UserService>(
       () => _i193.UserService(baseService: gh<_i996.BaseService>()),

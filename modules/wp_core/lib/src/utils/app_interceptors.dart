@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
 class AppInterceptors extends InterceptorsWrapper {
-  final logger = Logger(printer: PrettyPrinter());
+  final logger = Logger(printer: PrettyPrinter(), level: Level.off);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {

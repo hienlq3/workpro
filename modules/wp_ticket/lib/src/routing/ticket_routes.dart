@@ -10,7 +10,10 @@ final List<GoRoute> ticketRoutes = [
       final ticketId = int.tryParse(
         state.pathParameters[AppRouteParams.ticketId]?.toString() ?? '',
       );
-      return TicketDetailPage(ticketId: ticketId);
+      final ticketTitle =
+          state.uri.queryParameters[AppRouteParams.ticketTitle]?.toString() ??
+          '';
+      return TicketDetailPage(ticketId: ticketId, ticketTitle: ticketTitle);
     },
   ),
 ];

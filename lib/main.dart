@@ -5,6 +5,7 @@ import 'package:wp_authentication/wp_authentication.dart';
 import 'package:wp_core/wp_core.dart';
 import 'package:wp_localization/wp_localization.dart';
 import 'package:wp_notification/wp_notification.dart';
+import 'package:wp_ticket/wp_ticket.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +15,8 @@ Future<void> main() async {
   WpAuthentication.initialize();
 
   await WPNotification.initialize();
+
+  WPTicket.initialize();
 
   runApp(const MyApp());
 }
