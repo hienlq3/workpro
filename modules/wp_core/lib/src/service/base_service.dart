@@ -36,6 +36,7 @@ class BaseService {
     String url, {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    CancelToken? cancelToken,
   }) {
     try {
       return _dio
@@ -43,6 +44,7 @@ class BaseService {
             url,
             queryParameters: queryParameters,
             options: Options(headers: headers),
+            cancelToken: cancelToken,
           )
           .then((response) => response);
     } on DioException catch (error) {

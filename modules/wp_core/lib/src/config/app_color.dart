@@ -18,6 +18,9 @@ class AppColor {
   );
 
   static const Color wpBackgroundGrey1Color = Color(0xFFF2F5F8);
+  static const Color wpTypographyLabelColor = Color(0xFF394960);
+  static const Color wpBorderBorder1Color = Color(0xFFF2F4F8);
+  static const Color wpTypographySubtitleColor = Color(0xFF6E87AA);
 
   static void setPrimaryColor(String hexColor) {
     final color = Color(int.parse(hexColor.replaceFirst('#', '0xFF')));

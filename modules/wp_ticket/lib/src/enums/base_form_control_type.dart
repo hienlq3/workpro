@@ -1,0 +1,17 @@
+enum BaseControlType {
+  splitter,
+  number,
+  select,
+  date,
+  textarea,
+  text,
+  checkbox,
+  expression,
+  upload,
+  finance,
+  combobox,
+  datetime,
+  picker,
+  time,
+  apiweb,
+}

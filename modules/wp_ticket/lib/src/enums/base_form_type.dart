@@ -1,0 +1,15 @@
+enum BaseFormType {
+  splitter,
+  number,
+  select,
+  date,
+  textarea,
+  text,
+  checkbox,
+  expression,
+  upload,
+  finance,
+  matrix,
+  table,
+  unknown,
+}

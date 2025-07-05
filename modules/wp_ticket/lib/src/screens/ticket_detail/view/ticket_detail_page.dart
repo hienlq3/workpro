@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_core/wp_core.dart';
+import 'package:wp_ticket/src/components/wp_row_detail.dart';
 import 'package:wp_ticket/src/models/ticket_info_model.dart';
 import 'package:wp_ticket/src/repositories/ticket_repository.dart';
+import 'package:wp_ticket/src/screens/ticket_template_detail_expansion_tile/view/ticket_template_detail_expansion_tile.dart';
 import 'package:wp_ticket/src/screens/ticket_detail/bloc/ticket_detail_bloc.dart';
 
 class TicketDetailPage extends StatelessWidget {
@@ -103,7 +105,12 @@ class _TicketTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBarView(
       children: const [
-        Column(spacing: AppSpacing.kSpace16, children: [_TicketDetailTab()]),
+        SingleChildScrollView(
+          child: Column(
+            spacing: AppSpacing.kSpace16,
+            children: [_TicketDetailTab(), TicketTemplateDetailExpansionTile()],
+          ),
+        ),
         SizedBox.shrink(),
       ],
     );
@@ -127,38 +134,15 @@ class _TicketDetailTab extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        return ExpansionTile(
-          title: Text('Thông tin chung', style: context.textTheme.kTitle3),
-          textColor: AppColor.wpTitleColor.value,
-          iconColor: AppColor.wpSubtitleColor.value,
-          backgroundColor: Colors.white,
-          collapsedBackgroundColor: Colors.white,
-          shape: LinearBorder.none,
-          collapsedShape: LinearBorder.none,
-          maintainState: true,
-          initiallyExpanded: true,
+        return WpExpansionTile(
+          title: 'Thông tin chung',
           children: [
-            _InfoItem(title: 'Tên phiếu', value: ticketInfo.title),
-            _InfoItem(title: 'Loại yêu cầu', value: ticketInfo.processName),
-            _InfoItem(title: 'Trạng thái', value: ticketInfo.statusText),
+            WpRowDetail(title: 'Tên phiếu', value: ticketInfo.title),
+            WpRowDetail(title: 'Loại yêu cầu', value: ticketInfo.processName),
+            WpRowDetail(title: 'Trạng thái', value: ticketInfo.statusText),
           ],
         );
       },
-    );
-  }
-}
-
-class _InfoItem extends StatelessWidget {
-  final String title;
-  final String? value;
-
-  const _InfoItem({required this.title, this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title, style: context.textTheme.kBody1),
-      subtitle: Text(value ?? '-'),
     );
   }
 }

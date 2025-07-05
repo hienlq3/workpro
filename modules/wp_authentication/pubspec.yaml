@@ -28,7 +28,6 @@ dependencies:
     path: ../wp_core
   equatable: ^2.0.7
   flutter_bloc: ^9.0.0
-  dio: ^5.8.0+1
   injectable: ^2.5.0
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0

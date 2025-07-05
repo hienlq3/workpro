@@ -1,10 +1,10 @@
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
 class AppInterceptors extends InterceptorsWrapper {
-  final logger = Logger(printer: PrettyPrinter(), level: Level.off);
+  final logger = Logger(printer: PrettyPrinter());
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -20,10 +20,10 @@ class AppInterceptors extends InterceptorsWrapper {
     logger.d(
       'RESPONSE[${response.statusCode}] => URI: ${response.requestOptions.uri}',
     );
-    final prettyString = const JsonEncoder.withIndent(
-      '  ',
-    ).convert(response.data);
-    logger.f(prettyString);
+    // final prettyString = const JsonEncoder.withIndent(
+    //   '  ',
+    // ).convert(response.data);
+    // logger.f(prettyString);
     super.onResponse(response, handler);
   }
 
