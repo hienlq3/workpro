@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:wp_core/src/models/base_response_model.dart';
+import 'package:wp_core/src/utils/app_dio_exceptions.dart';
 
 @singleton
 class BaseService {
@@ -28,7 +28,9 @@ class BaseService {
       );
       return response;
     } on DioException catch (error) {
-      throw _handleDioError(error);
+      throw Exception(
+        AppDioExceptions.fromDioError(dioException: error).errorMessage(),
+      );
     }
   }
 
@@ -37,18 +39,19 @@ class BaseService {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
     CancelToken? cancelToken,
-  }) {
+  }) async {
     try {
-      return _dio
-          .get<Map<String, dynamic>>(
-            url,
-            queryParameters: queryParameters,
-            options: Options(headers: headers),
-            cancelToken: cancelToken,
-          )
-          .then((response) => response);
+      final response = await _dio.get<Map<String, dynamic>>(
+        url,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+        cancelToken: cancelToken,
+      );
+      return response;
     } on DioException catch (error) {
-      throw _handleDioError(error);
+      throw Exception(
+        AppDioExceptions.fromDioError(dioException: error).errorMessage(),
+      );
     }
   }
 
@@ -73,22 +76,9 @@ class BaseService {
       );
       return response;
     } on DioException catch (error) {
-      throw _handleDioError(error);
-    }
-  }
-
-  Exception _handleDioError(DioException error) {
-    if (error.response != null) {
-      var errorMessage = '';
-      final errorResponse = BaseResponseModel.fromJson(
-        (error.response?.data as Map<String, dynamic>?) ??
-            const <String, dynamic>{},
-        (p0) => null,
+      throw Exception(
+        AppDioExceptions.fromDioError(dioException: error).errorMessage(),
       );
-      errorMessage = errorResponse.message ?? '';
-      return Exception('Lỗi API: $errorMessage');
-    } else {
-      return Exception('Lỗi kết nối: ${error.message}');
     }
   }
 }

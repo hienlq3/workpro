@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
@@ -12,13 +13,16 @@ export 'src/service/service.dart';
 export 'src/utils/app_constraint.dart';
 export 'src/utils/extensions/build_context.dart';
 export 'src/utils/extensions/list_extension.dart';
-export 'src/utils/extensions/string_date_time_extension.dart';
+export 'src/utils/extensions/iterable_extension.dart';
 export 'src/utils/extensions/string_extension.dart';
 export 'src/utils/notifier/base_url_notifier.dart';
 export 'src/utils/notifier/headers_notifier.dart';
 export 'src/base/measured_bloc.dart';
+export 'src/utils/app_error_handler.dart';
 
 final getIt = GetIt.instance;
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class WPCore {
   static Future<void> initialize() async {

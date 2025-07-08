@@ -21,4 +21,11 @@ extension BuildContextExtensions on BuildContext {
   ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
 
   GoRouter get goRouter => GoRouter.of(this);
+
+  void popDialogAndMaybePage() {
+    Navigator.of(this).pop();
+    if (Navigator.of(this).canPop()) {
+      Navigator.of(this).pop();
+    }
+  }
 }

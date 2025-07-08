@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wp_core/wp_core.dart';
-import 'package:wp_ticket/src/components/wp_row_detail.dart';
 import 'package:wp_ticket/src/models/ticket_info_model.dart';
 import 'package:wp_ticket/src/repositories/ticket_repository.dart';
-import 'package:wp_ticket/src/screens/ticket_template_detail_expansion_tile/view/ticket_template_detail_expansion_tile.dart';
+import 'package:wp_ticket/src/screens/ticket_template_detail_expansion_tile/view/template_detail_expansion_tile.dart';
 import 'package:wp_ticket/src/screens/ticket_detail/bloc/ticket_detail_bloc.dart';
 
 class TicketDetailPage extends StatelessWidget {
   final String? ticketTitle;
   final int? ticketId;
+  final int? phaseId;
 
-  const TicketDetailPage({super.key, this.ticketTitle, this.ticketId});
+  const TicketDetailPage({
+    super.key,
+    this.ticketTitle,
+    this.ticketId,
+    this.phaseId,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create:
-          (_) =>
-              TicketDetailBloc(ticketRepository: getIt<TicketRepository>())
-                ..add(TicketDetailFetched(ticketId: ticketId ?? -1)),
+          (_) => TicketDetailBloc(ticketRepository: getIt<TicketRepository>())
+            ..add(
+              TicketDetailFetched(ticketId: ticketId ?? -1, phaseId: phaseId),
+            ),
       child: const TicketDetailView(),
     );
   }
@@ -104,11 +110,12 @@ class _TicketTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBarView(
+      physics: const NeverScrollableScrollPhysics(),
       children: const [
         SingleChildScrollView(
           child: Column(
             spacing: AppSpacing.kSpace16,
-            children: [_TicketDetailTab(), TicketTemplateDetailExpansionTile()],
+            children: [_TicketDetailTab(), TemplateDetailExpansionTile()],
           ),
         ),
         SizedBox.shrink(),
@@ -137,9 +144,15 @@ class _TicketDetailTab extends StatelessWidget {
         return WpExpansionTile(
           title: 'Thông tin chung',
           children: [
-            WpRowDetail(title: 'Tên phiếu', value: ticketInfo.title),
-            WpRowDetail(title: 'Loại yêu cầu', value: ticketInfo.processName),
-            WpRowDetail(title: 'Trạng thái', value: ticketInfo.statusText),
+            WpLabelValueField(title: 'Tên phiếu', value: ticketInfo.title),
+            WpLabelValueField(
+              title: 'Loại yêu cầu',
+              value: ticketInfo.processName,
+            ),
+            WpLabelValueField(
+              title: 'Trạng thái',
+              value: ticketInfo.statusText,
+            ),
           ],
         );
       },

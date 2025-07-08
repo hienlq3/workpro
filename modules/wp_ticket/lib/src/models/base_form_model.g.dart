@@ -46,10 +46,7 @@ _BaseFormModel _$BaseFormModelFromJson(Map<String, dynamic> json) =>
       defaultDisplay: defaultDisplayReader(json, 'defaultDisplay') as bool?,
       index: json['index'] ?? -1,
       columnId: (json['columnId'] as num?)?.toInt(),
-      controlType: $enumDecodeNullable(
-        _$BaseControlTypeEnumMap,
-        json['controlType'],
-      ),
+      controlType: controlTypeReader(json, 'controlType'),
       mdConfig:
           json['mdConfig'] == null
               ? null
@@ -84,27 +81,8 @@ Map<String, dynamic> _$BaseFormModelToJson(_BaseFormModel instance) =>
       if (instance.displayConfig?.toJson() case final value?)
         'displayConfig': value,
       if (instance.columnId case final value?) 'columnId': value,
-      if (_$BaseControlTypeEnumMap[instance.controlType] case final value?)
-        'controlType': value,
+      if (instance.controlType case final value?) 'controlType': value,
       if (instance.mdConfig?.toJson() case final value?) 'mdConfig': value,
       if (instance.placeholderText case final value?) 'placeholderText': value,
       if (instance.mobileValue case final value?) 'mobileValue': value,
     };
-
-const _$BaseControlTypeEnumMap = {
-  BaseControlType.splitter: 'splitter',
-  BaseControlType.number: 'number',
-  BaseControlType.select: 'select',
-  BaseControlType.date: 'date',
-  BaseControlType.textarea: 'textarea',
-  BaseControlType.text: 'text',
-  BaseControlType.checkbox: 'checkbox',
-  BaseControlType.expression: 'expression',
-  BaseControlType.upload: 'upload',
-  BaseControlType.finance: 'finance',
-  BaseControlType.combobox: 'combobox',
-  BaseControlType.datetime: 'datetime',
-  BaseControlType.picker: 'picker',
-  BaseControlType.time: 'time',
-  BaseControlType.apiweb: 'apiweb',
-};

@@ -14,4 +14,5 @@ enum BaseControlType {
   picker,
   time,
   apiweb,
+  unknown,
 }

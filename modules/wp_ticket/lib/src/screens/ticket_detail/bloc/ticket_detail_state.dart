@@ -11,9 +11,9 @@ final class TicketDetailInitial extends TicketDetailState {}
 
 final class TicketDetailSuccess extends TicketDetailState {
   final TicketInfoModel? ticketInfo;
-  final TemplateModel? ticketTemplate;
+  final List<BaseFormModel>? baseForms;
 
-  const TicketDetailSuccess({this.ticketInfo, this.ticketTemplate});
+  const TicketDetailSuccess({this.ticketInfo, this.baseForms});
 }
 
 final class TicketDetailError extends TicketDetailState {}

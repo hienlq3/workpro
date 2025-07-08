@@ -38,6 +38,27 @@ Object? typeReader(Map json, String key) {
   return BaseFormType.unknown;
 }
 
+Object? controlTypeReader(Map json, String key) {
+  try {
+    if (key == 'type' &&
+        ((json['childItemType']?.toString().isNotEmpty ?? false))) {
+      if (json['childItemType'].toString().startsWith('master_data')) {
+        return json['childItemType'];
+      }
+      return enumFromString(BaseControlType.values, json['childItemType']);
+    } else if (key == 'type' &&
+        (json['type']?.toString().isNotEmpty ?? false)) {
+      if (json['type'].toString().startsWith('master_data')) {
+        return json['type'];
+      }
+      return enumFromString(BaseControlType.values, json['controlType']);
+    }
+  } catch (_) {
+    return BaseControlType.unknown;
+  }
+  return BaseControlType.unknown;
+}
+
 @freezed
 abstract class BaseFormModel with _$BaseFormModel {
   @JsonSerializable(includeIfNull: false, explicitToJson: true)
@@ -62,7 +83,7 @@ abstract class BaseFormModel with _$BaseFormModel {
     final bool? defaultDisplay,
     @JsonKey(defaultValue: -1, includeToJson: false) final dynamic index,
     final int? columnId,
-    final BaseControlType? controlType,
+    @JsonKey(readValue: controlTypeReader) final dynamic controlType,
     final MasterDataConfigModel? mdConfig,
     final String? placeholderText,
     final String? mobileValue,

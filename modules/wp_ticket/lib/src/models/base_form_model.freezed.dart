@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BaseFormModel {
 
- bool? get display; String get nameText; dynamic get value; int? get id; int? get definedId; int? get splitterId; String get text; int? get position; List<BaseFormModel>? get columns; List<BaseFormModel>? get rows; List<BaseFormModel>? get values;@JsonKey(readValue: typeReader) dynamic get type; String? get filenames; String? get editableAttachmentBlock; FormConditionModel? get conditions; DisplayConfigModel? get displayConfig;@JsonKey(readValue: defaultDisplayReader, includeToJson: false) bool? get defaultDisplay;@JsonKey(defaultValue: -1, includeToJson: false) dynamic get index; int? get columnId; BaseControlType? get controlType; MasterDataConfigModel? get mdConfig; String? get placeholderText; String? get mobileValue;
+ bool? get display; String get nameText; dynamic get value; int? get id; int? get definedId; int? get splitterId; String get text; int? get position; List<BaseFormModel>? get columns; List<BaseFormModel>? get rows; List<BaseFormModel>? get values;@JsonKey(readValue: typeReader) dynamic get type; String? get filenames; String? get editableAttachmentBlock; FormConditionModel? get conditions; DisplayConfigModel? get displayConfig;@JsonKey(readValue: defaultDisplayReader, includeToJson: false) bool? get defaultDisplay;@JsonKey(defaultValue: -1, includeToJson: false) dynamic get index; int? get columnId;@JsonKey(readValue: controlTypeReader) dynamic get controlType; MasterDataConfigModel? get mdConfig; String? get placeholderText; String? get mobileValue;
 /// Create a copy of BaseFormModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,12 +29,12 @@ $BaseFormModelCopyWith<BaseFormModel> get copyWith => _$BaseFormModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BaseFormModel&&(identical(other.display, display) || other.display == display)&&(identical(other.nameText, nameText) || other.nameText == nameText)&&const DeepCollectionEquality().equals(other.value, value)&&(identical(other.id, id) || other.id == id)&&(identical(other.definedId, definedId) || other.definedId == definedId)&&(identical(other.splitterId, splitterId) || other.splitterId == splitterId)&&(identical(other.text, text) || other.text == text)&&(identical(other.position, position) || other.position == position)&&const DeepCollectionEquality().equals(other.columns, columns)&&const DeepCollectionEquality().equals(other.rows, rows)&&const DeepCollectionEquality().equals(other.values, values)&&const DeepCollectionEquality().equals(other.type, type)&&(identical(other.filenames, filenames) || other.filenames == filenames)&&(identical(other.editableAttachmentBlock, editableAttachmentBlock) || other.editableAttachmentBlock == editableAttachmentBlock)&&(identical(other.conditions, conditions) || other.conditions == conditions)&&(identical(other.displayConfig, displayConfig) || other.displayConfig == displayConfig)&&(identical(other.defaultDisplay, defaultDisplay) || other.defaultDisplay == defaultDisplay)&&const DeepCollectionEquality().equals(other.index, index)&&(identical(other.columnId, columnId) || other.columnId == columnId)&&(identical(other.controlType, controlType) || other.controlType == controlType)&&(identical(other.mdConfig, mdConfig) || other.mdConfig == mdConfig)&&(identical(other.placeholderText, placeholderText) || other.placeholderText == placeholderText)&&(identical(other.mobileValue, mobileValue) || other.mobileValue == mobileValue));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BaseFormModel&&(identical(other.display, display) || other.display == display)&&(identical(other.nameText, nameText) || other.nameText == nameText)&&const DeepCollectionEquality().equals(other.value, value)&&(identical(other.id, id) || other.id == id)&&(identical(other.definedId, definedId) || other.definedId == definedId)&&(identical(other.splitterId, splitterId) || other.splitterId == splitterId)&&(identical(other.text, text) || other.text == text)&&(identical(other.position, position) || other.position == position)&&const DeepCollectionEquality().equals(other.columns, columns)&&const DeepCollectionEquality().equals(other.rows, rows)&&const DeepCollectionEquality().equals(other.values, values)&&const DeepCollectionEquality().equals(other.type, type)&&(identical(other.filenames, filenames) || other.filenames == filenames)&&(identical(other.editableAttachmentBlock, editableAttachmentBlock) || other.editableAttachmentBlock == editableAttachmentBlock)&&(identical(other.conditions, conditions) || other.conditions == conditions)&&(identical(other.displayConfig, displayConfig) || other.displayConfig == displayConfig)&&(identical(other.defaultDisplay, defaultDisplay) || other.defaultDisplay == defaultDisplay)&&const DeepCollectionEquality().equals(other.index, index)&&(identical(other.columnId, columnId) || other.columnId == columnId)&&const DeepCollectionEquality().equals(other.controlType, controlType)&&(identical(other.mdConfig, mdConfig) || other.mdConfig == mdConfig)&&(identical(other.placeholderText, placeholderText) || other.placeholderText == placeholderText)&&(identical(other.mobileValue, mobileValue) || other.mobileValue == mobileValue));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,display,nameText,const DeepCollectionEquality().hash(value),id,definedId,splitterId,text,position,const DeepCollectionEquality().hash(columns),const DeepCollectionEquality().hash(rows),const DeepCollectionEquality().hash(values),const DeepCollectionEquality().hash(type),filenames,editableAttachmentBlock,conditions,displayConfig,defaultDisplay,const DeepCollectionEquality().hash(index),columnId,controlType,mdConfig,placeholderText,mobileValue]);
+int get hashCode => Object.hashAll([runtimeType,display,nameText,const DeepCollectionEquality().hash(value),id,definedId,splitterId,text,position,const DeepCollectionEquality().hash(columns),const DeepCollectionEquality().hash(rows),const DeepCollectionEquality().hash(values),const DeepCollectionEquality().hash(type),filenames,editableAttachmentBlock,conditions,displayConfig,defaultDisplay,const DeepCollectionEquality().hash(index),columnId,const DeepCollectionEquality().hash(controlType),mdConfig,placeholderText,mobileValue]);
 
 @override
 String toString() {
@@ -49,7 +49,7 @@ abstract mixin class $BaseFormModelCopyWith<$Res>  {
   factory $BaseFormModelCopyWith(BaseFormModel value, $Res Function(BaseFormModel) _then) = _$BaseFormModelCopyWithImpl;
 @useResult
 $Res call({
- bool? display, String nameText, dynamic value, int? id, int? definedId, int? splitterId, String text, int? position, List<BaseFormModel>? columns, List<BaseFormModel>? rows, List<BaseFormModel>? values,@JsonKey(readValue: typeReader) dynamic type, String? filenames, String? editableAttachmentBlock, FormConditionModel? conditions, DisplayConfigModel? displayConfig,@JsonKey(readValue: defaultDisplayReader, includeToJson: false) bool? defaultDisplay,@JsonKey(defaultValue: -1, includeToJson: false) dynamic index, int? columnId, BaseControlType? controlType, MasterDataConfigModel? mdConfig, String? placeholderText, String? mobileValue
+ bool? display, String nameText, dynamic value, int? id, int? definedId, int? splitterId, String text, int? position, List<BaseFormModel>? columns, List<BaseFormModel>? rows, List<BaseFormModel>? values,@JsonKey(readValue: typeReader) dynamic type, String? filenames, String? editableAttachmentBlock, FormConditionModel? conditions, DisplayConfigModel? displayConfig,@JsonKey(readValue: defaultDisplayReader, includeToJson: false) bool? defaultDisplay,@JsonKey(defaultValue: -1, includeToJson: false) dynamic index, int? columnId,@JsonKey(readValue: controlTypeReader) dynamic controlType, MasterDataConfigModel? mdConfig, String? placeholderText, String? mobileValue
 });
 
 
@@ -88,7 +88,7 @@ as DisplayConfigModel?,defaultDisplay: freezed == defaultDisplay ? _self.default
 as bool?,index: freezed == index ? _self.index : index // ignore: cast_nullable_to_non_nullable
 as dynamic,columnId: freezed == columnId ? _self.columnId : columnId // ignore: cast_nullable_to_non_nullable
 as int?,controlType: freezed == controlType ? _self.controlType : controlType // ignore: cast_nullable_to_non_nullable
-as BaseControlType?,mdConfig: freezed == mdConfig ? _self.mdConfig : mdConfig // ignore: cast_nullable_to_non_nullable
+as dynamic,mdConfig: freezed == mdConfig ? _self.mdConfig : mdConfig // ignore: cast_nullable_to_non_nullable
 as MasterDataConfigModel?,placeholderText: freezed == placeholderText ? _self.placeholderText : placeholderText // ignore: cast_nullable_to_non_nullable
 as String?,mobileValue: freezed == mobileValue ? _self.mobileValue : mobileValue // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -138,7 +138,7 @@ $MasterDataConfigModelCopyWith<$Res>? get mdConfig {
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class _BaseFormModel implements BaseFormModel {
-  const _BaseFormModel({this.display, this.nameText = '', this.value, this.id, this.definedId, this.splitterId, this.text = '', this.position, final  List<BaseFormModel>? columns, final  List<BaseFormModel>? rows, final  List<BaseFormModel>? values, @JsonKey(readValue: typeReader) this.type, this.filenames, this.editableAttachmentBlock, this.conditions, this.displayConfig, @JsonKey(readValue: defaultDisplayReader, includeToJson: false) this.defaultDisplay, @JsonKey(defaultValue: -1, includeToJson: false) this.index, this.columnId, this.controlType, this.mdConfig, this.placeholderText, this.mobileValue}): _columns = columns,_rows = rows,_values = values;
+  const _BaseFormModel({this.display, this.nameText = '', this.value, this.id, this.definedId, this.splitterId, this.text = '', this.position, final  List<BaseFormModel>? columns, final  List<BaseFormModel>? rows, final  List<BaseFormModel>? values, @JsonKey(readValue: typeReader) this.type, this.filenames, this.editableAttachmentBlock, this.conditions, this.displayConfig, @JsonKey(readValue: defaultDisplayReader, includeToJson: false) this.defaultDisplay, @JsonKey(defaultValue: -1, includeToJson: false) this.index, this.columnId, @JsonKey(readValue: controlTypeReader) this.controlType, this.mdConfig, this.placeholderText, this.mobileValue}): _columns = columns,_rows = rows,_values = values;
   factory _BaseFormModel.fromJson(Map<String, dynamic> json) => _$BaseFormModelFromJson(json);
 
 @override final  bool? display;
@@ -184,7 +184,7 @@ class _BaseFormModel implements BaseFormModel {
 @override@JsonKey(readValue: defaultDisplayReader, includeToJson: false) final  bool? defaultDisplay;
 @override@JsonKey(defaultValue: -1, includeToJson: false) final  dynamic index;
 @override final  int? columnId;
-@override final  BaseControlType? controlType;
+@override@JsonKey(readValue: controlTypeReader) final  dynamic controlType;
 @override final  MasterDataConfigModel? mdConfig;
 @override final  String? placeholderText;
 @override final  String? mobileValue;
@@ -202,12 +202,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BaseFormModel&&(identical(other.display, display) || other.display == display)&&(identical(other.nameText, nameText) || other.nameText == nameText)&&const DeepCollectionEquality().equals(other.value, value)&&(identical(other.id, id) || other.id == id)&&(identical(other.definedId, definedId) || other.definedId == definedId)&&(identical(other.splitterId, splitterId) || other.splitterId == splitterId)&&(identical(other.text, text) || other.text == text)&&(identical(other.position, position) || other.position == position)&&const DeepCollectionEquality().equals(other._columns, _columns)&&const DeepCollectionEquality().equals(other._rows, _rows)&&const DeepCollectionEquality().equals(other._values, _values)&&const DeepCollectionEquality().equals(other.type, type)&&(identical(other.filenames, filenames) || other.filenames == filenames)&&(identical(other.editableAttachmentBlock, editableAttachmentBlock) || other.editableAttachmentBlock == editableAttachmentBlock)&&(identical(other.conditions, conditions) || other.conditions == conditions)&&(identical(other.displayConfig, displayConfig) || other.displayConfig == displayConfig)&&(identical(other.defaultDisplay, defaultDisplay) || other.defaultDisplay == defaultDisplay)&&const DeepCollectionEquality().equals(other.index, index)&&(identical(other.columnId, columnId) || other.columnId == columnId)&&(identical(other.controlType, controlType) || other.controlType == controlType)&&(identical(other.mdConfig, mdConfig) || other.mdConfig == mdConfig)&&(identical(other.placeholderText, placeholderText) || other.placeholderText == placeholderText)&&(identical(other.mobileValue, mobileValue) || other.mobileValue == mobileValue));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BaseFormModel&&(identical(other.display, display) || other.display == display)&&(identical(other.nameText, nameText) || other.nameText == nameText)&&const DeepCollectionEquality().equals(other.value, value)&&(identical(other.id, id) || other.id == id)&&(identical(other.definedId, definedId) || other.definedId == definedId)&&(identical(other.splitterId, splitterId) || other.splitterId == splitterId)&&(identical(other.text, text) || other.text == text)&&(identical(other.position, position) || other.position == position)&&const DeepCollectionEquality().equals(other._columns, _columns)&&const DeepCollectionEquality().equals(other._rows, _rows)&&const DeepCollectionEquality().equals(other._values, _values)&&const DeepCollectionEquality().equals(other.type, type)&&(identical(other.filenames, filenames) || other.filenames == filenames)&&(identical(other.editableAttachmentBlock, editableAttachmentBlock) || other.editableAttachmentBlock == editableAttachmentBlock)&&(identical(other.conditions, conditions) || other.conditions == conditions)&&(identical(other.displayConfig, displayConfig) || other.displayConfig == displayConfig)&&(identical(other.defaultDisplay, defaultDisplay) || other.defaultDisplay == defaultDisplay)&&const DeepCollectionEquality().equals(other.index, index)&&(identical(other.columnId, columnId) || other.columnId == columnId)&&const DeepCollectionEquality().equals(other.controlType, controlType)&&(identical(other.mdConfig, mdConfig) || other.mdConfig == mdConfig)&&(identical(other.placeholderText, placeholderText) || other.placeholderText == placeholderText)&&(identical(other.mobileValue, mobileValue) || other.mobileValue == mobileValue));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,display,nameText,const DeepCollectionEquality().hash(value),id,definedId,splitterId,text,position,const DeepCollectionEquality().hash(_columns),const DeepCollectionEquality().hash(_rows),const DeepCollectionEquality().hash(_values),const DeepCollectionEquality().hash(type),filenames,editableAttachmentBlock,conditions,displayConfig,defaultDisplay,const DeepCollectionEquality().hash(index),columnId,controlType,mdConfig,placeholderText,mobileValue]);
+int get hashCode => Object.hashAll([runtimeType,display,nameText,const DeepCollectionEquality().hash(value),id,definedId,splitterId,text,position,const DeepCollectionEquality().hash(_columns),const DeepCollectionEquality().hash(_rows),const DeepCollectionEquality().hash(_values),const DeepCollectionEquality().hash(type),filenames,editableAttachmentBlock,conditions,displayConfig,defaultDisplay,const DeepCollectionEquality().hash(index),columnId,const DeepCollectionEquality().hash(controlType),mdConfig,placeholderText,mobileValue]);
 
 @override
 String toString() {
@@ -222,7 +222,7 @@ abstract mixin class _$BaseFormModelCopyWith<$Res> implements $BaseFormModelCopy
   factory _$BaseFormModelCopyWith(_BaseFormModel value, $Res Function(_BaseFormModel) _then) = __$BaseFormModelCopyWithImpl;
 @override @useResult
 $Res call({
- bool? display, String nameText, dynamic value, int? id, int? definedId, int? splitterId, String text, int? position, List<BaseFormModel>? columns, List<BaseFormModel>? rows, List<BaseFormModel>? values,@JsonKey(readValue: typeReader) dynamic type, String? filenames, String? editableAttachmentBlock, FormConditionModel? conditions, DisplayConfigModel? displayConfig,@JsonKey(readValue: defaultDisplayReader, includeToJson: false) bool? defaultDisplay,@JsonKey(defaultValue: -1, includeToJson: false) dynamic index, int? columnId, BaseControlType? controlType, MasterDataConfigModel? mdConfig, String? placeholderText, String? mobileValue
+ bool? display, String nameText, dynamic value, int? id, int? definedId, int? splitterId, String text, int? position, List<BaseFormModel>? columns, List<BaseFormModel>? rows, List<BaseFormModel>? values,@JsonKey(readValue: typeReader) dynamic type, String? filenames, String? editableAttachmentBlock, FormConditionModel? conditions, DisplayConfigModel? displayConfig,@JsonKey(readValue: defaultDisplayReader, includeToJson: false) bool? defaultDisplay,@JsonKey(defaultValue: -1, includeToJson: false) dynamic index, int? columnId,@JsonKey(readValue: controlTypeReader) dynamic controlType, MasterDataConfigModel? mdConfig, String? placeholderText, String? mobileValue
 });
 
 
@@ -261,7 +261,7 @@ as DisplayConfigModel?,defaultDisplay: freezed == defaultDisplay ? _self.default
 as bool?,index: freezed == index ? _self.index : index // ignore: cast_nullable_to_non_nullable
 as dynamic,columnId: freezed == columnId ? _self.columnId : columnId // ignore: cast_nullable_to_non_nullable
 as int?,controlType: freezed == controlType ? _self.controlType : controlType // ignore: cast_nullable_to_non_nullable
-as BaseControlType?,mdConfig: freezed == mdConfig ? _self.mdConfig : mdConfig // ignore: cast_nullable_to_non_nullable
+as dynamic,mdConfig: freezed == mdConfig ? _self.mdConfig : mdConfig // ignore: cast_nullable_to_non_nullable
 as MasterDataConfigModel?,placeholderText: freezed == placeholderText ? _self.placeholderText : placeholderText // ignore: cast_nullable_to_non_nullable
 as String?,mobileValue: freezed == mobileValue ? _self.mobileValue : mobileValue // ignore: cast_nullable_to_non_nullable
 as String?,

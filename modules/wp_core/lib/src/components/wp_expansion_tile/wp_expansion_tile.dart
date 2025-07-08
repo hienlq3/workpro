@@ -23,6 +23,8 @@ class WpExpansionTile extends StatelessWidget {
       collapsedShape: LinearBorder.none,
       children: children,
       visualDensity: VisualDensity.comfortable,
+      childrenPadding: EdgeInsets.symmetric(horizontal: AppSpacing.kSpace16),
+      maintainState: true,
     );
   }
 }

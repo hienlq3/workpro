@@ -24,8 +24,10 @@ class WpSplitterField extends StatelessWidget {
       collapsedShape: LinearBorder.none,
       children: children,
       showTrailingIcon: false,
-      childrenPadding: EdgeInsets.symmetric(vertical: AppSpacing.kSpace8),
+      childrenPadding: EdgeInsets.only(bottom: AppSpacing.kSpace8),
+      tilePadding: EdgeInsets.zero,
       visualDensity: VisualDensity(vertical: -1),
+      maintainState: true,
     );
   }
 }

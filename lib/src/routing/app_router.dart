@@ -9,6 +9,7 @@ import 'package:wp_ticket/wp_ticket.dart';
 
 abstract class AppRouter {
   static GoRouter router = GoRouter(
+    navigatorKey: navigatorKey,
     routes: [
       GoRoute(
         path: AppRoutes.kHome,

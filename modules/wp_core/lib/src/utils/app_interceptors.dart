@@ -1,6 +1,7 @@
 // import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
 class AppInterceptors extends InterceptorsWrapper {
@@ -8,7 +9,9 @@ class AppInterceptors extends InterceptorsWrapper {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    logger.d('REQUEST[${options.method}] => URI: ${options.uri}');
+    if (kDebugMode) {
+      logger.d('REQUEST[${options.method}] => URI: ${options.uri}');
+    }
     super.onRequest(options, handler);
   }
 
@@ -17,9 +20,11 @@ class AppInterceptors extends InterceptorsWrapper {
     Response<dynamic> response,
     ResponseInterceptorHandler handler,
   ) {
-    logger.d(
-      'RESPONSE[${response.statusCode}] => URI: ${response.requestOptions.uri}',
-    );
+    if (kDebugMode) {
+      logger.d(
+        'RESPONSE[${response.statusCode}] => URI: ${response.requestOptions.uri}',
+      );
+    }
     // final prettyString = const JsonEncoder.withIndent(
     //   '  ',
     // ).convert(response.data);
@@ -29,9 +34,12 @@ class AppInterceptors extends InterceptorsWrapper {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    logger.e(
-      'ERROR[${err.response?.statusCode}] => URI: ${err.requestOptions.uri}',
-    );
+    if (kDebugMode) {
+      logger.e(
+        'ERROR[${err.response?.statusCode}] => URI: ${err.requestOptions.uri}',
+      );
+      logger.e('${err.response}');
+    }
     super.onError(err, handler);
   }
 }

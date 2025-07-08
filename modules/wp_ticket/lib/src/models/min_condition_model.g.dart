@@ -40,4 +40,5 @@ const _$BaseControlTypeEnumMap = {
   BaseControlType.picker: 'picker',
   BaseControlType.time: 'time',
   BaseControlType.apiweb: 'apiweb',
+  BaseControlType.unknown: 'unknown',
 };
